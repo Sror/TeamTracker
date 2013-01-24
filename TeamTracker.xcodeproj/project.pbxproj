@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5370AAF516A885BF007E0DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF416A885BF007E0DBB /* UIKit.framework */; };
+		5370AAF716A885BF007E0DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF616A885BF007E0DBB /* Foundation.framework */; };
+		5370AAF916A885BF007E0DBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF816A885BF007E0DBB /* CoreGraphics.framework */; };
+		5370AAFF16A885BF007E0DBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5370AAFD16A885BF007E0DBB /* InfoPlist.strings */; };
+		5370AB0116A885BF007E0DBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5370AB0016A885BF007E0DBB /* main.m */; };
+		5370AB1C16A885BF007E0DBB /* TTLeagueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */; };
+		5370AB2216A885BF007E0DBB /* TTMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */; };
+		5370AB2D16A885BF007E0DBB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AB2C16A885BF007E0DBB /* SenTestingKit.framework */; };
+		5370AB2E16A885BF007E0DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF416A885BF007E0DBB /* UIKit.framework */; };
+		5370AB2F16A885BF007E0DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF616A885BF007E0DBB /* Foundation.framework */; };
+		5370AB3716A885BF007E0DBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB3516A885BF007E0DBB /* InfoPlist.strings */; };
+		5370AB3A16A885BF007E0DBB /* TeamTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5370AB3916A885BF007E0DBB /* TeamTrackerTests.m */; };
+		5370ACE316AB614D007E0DBB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370ACE216AB6147007E0DBB /* QuartzCore.framework */; };
+		53BE28F316B1B74B0033308B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BE28F216B1B74A0033308B /* SystemConfiguration.framework */; };
+		53BE290D16B1BFE10033308B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290816B1BFE10033308B /* Default-568h@2x.png */; };
+		53BE290E16B1BFE10033308B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290916B1BFE10033308B /* Default.png */; };
+		53BE290F16B1BFE10033308B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290A16B1BFE10033308B /* Default@2x.png */; };
+		53BE291016B1BFE10033308B /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290B16B1BFE10033308B /* reveal-icon.png */; };
+		53BE291116B1BFE10033308B /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290C16B1BFE10033308B /* reveal-icon@2x.png */; };
+		53BE291316B1BFF10033308B /* championship_teams.xml in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291216B1BFF10033308B /* championship_teams.xml */; };
+		53BE291916B1BFFC0033308B /* TTLeagueTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */; };
+		53BE291A16B1BFFC0033308B /* TTMatchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */; };
+		53BE291B16B1BFFC0033308B /* TTPPGTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */; };
+		53BE291C16B1BFFC0033308B /* TTTeamDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */; };
+		53BE291D16B1BFFC0033308B /* TTTeamResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */; };
+		53BE292616B1C0B80033308B /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291E16B1C0B80033308B /* blackButton.png */; };
+		53BE292716B1C0B80033308B /* blackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291F16B1C0B80033308B /* blackButton@2x.png */; };
+		53BE292816B1C0B80033308B /* blackButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292016B1C0B80033308B /* blackButtonHighlight.png */; };
+		53BE292916B1C0B80033308B /* blackButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292116B1C0B80033308B /* blackButtonHighlight@2x.png */; };
+		53BE292A16B1C0B80033308B /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292216B1C0B80033308B /* blueButton.png */; };
+		53BE292B16B1C0B80033308B /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292316B1C0B80033308B /* blueButton@2x.png */; };
+		53BE292C16B1C0B80033308B /* blueButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292416B1C0B80033308B /* blueButtonHighlight.png */; };
+		53BE292D16B1C0B80033308B /* blueButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292516B1C0B80033308B /* blueButtonHighlight@2x.png */; };
+		53BE295216B1C1310033308B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE292F16B1C1310033308B /* MBProgressHUD.m */; };
+		53BE295316B1C1310033308B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293116B1C1310033308B /* Reachability.m */; };
+		53BE295416B1C1310033308B /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293316B1C1310033308B /* SMXMLDocument.m */; };
+		53BE295516B1C1310033308B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293516B1C1310033308B /* SWRevealViewController.m */; };
+		53BE295616B1C1310033308B /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293716B1C1310033308B /* TTAppDelegate.m */; };
+		53BE295716B1C1310033308B /* TTBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293916B1C1310033308B /* TTBackgroundLayer.m */; };
+		53BE295816B1C1310033308B /* TTInfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293B16B1C1310033308B /* TTInfoBox.m */; };
+		53BE295916B1C1310033308B /* TTLeagueTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293D16B1C1310033308B /* TTLeagueTableCell.m */; };
+		53BE295A16B1C1310033308B /* TTLeagueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE293F16B1C1310033308B /* TTLeagueTableViewController.m */; };
+		53BE295B16B1C1310033308B /* TTMatchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294116B1C1310033308B /* TTMatchResult.m */; };
+		53BE295C16B1C1310033308B /* TTMatchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294316B1C1310033308B /* TTMatchResultCell.m */; };
+		53BE295D16B1C1310033308B /* TTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294516B1C1310033308B /* TTMenuViewController.m */; };
+		53BE295E16B1C1310033308B /* TTPPGTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294716B1C1310033308B /* TTPPGTableCell.m */; };
+		53BE295F16B1C1310033308B /* TTTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294916B1C1310033308B /* TTTeam.m */; };
+		53BE296016B1C1310033308B /* TTTeamDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294B16B1C1310033308B /* TTTeamDetailViewController.m */; };
+		53BE296116B1C1310033308B /* TTTeamResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294D16B1C1310033308B /* TTTeamResultsViewController.m */; };
+		53BE296216B1C1310033308B /* TTTeamsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE294F16B1C1310033308B /* TTTeamsParser.m */; };
+		53BE296316B1C1310033308B /* TTTeamXMLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53BE295116B1C1310033308B /* TTTeamXMLCache.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5370AB3016A885BF007E0DBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5370AAE716A885BE007E0DBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5370AAEF16A885BE007E0DBB;
+			remoteInfo = TeamTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5370AAF016A885BE007E0DBB /* TeamTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5370AAF416A885BF007E0DBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5370AAF616A885BF007E0DBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5370AAF816A885BF007E0DBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5370AAFC16A885BF007E0DBB /* TeamTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeamTracker-Info.plist"; sourceTree = "<group>"; };
+		5370AAFE16A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5370AB0016A885BF007E0DBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5370AB0216A885BF007E0DBB /* TeamTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeamTracker-Prefix.pch"; sourceTree = "<group>"; };
+		5370AB0616A885BF007E0DBB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5370AB0816A885BF007E0DBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5370AB0A16A885BF007E0DBB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5370AB1B16A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTLeagueTableViewController.xib; sourceTree = "<group>"; };
+		5370AB2116A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTMenuViewController.xib; sourceTree = "<group>"; };
+		5370AB2B16A885BF007E0DBB /* TeamTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeamTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5370AB2C16A885BF007E0DBB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5370AB3416A885BF007E0DBB /* TeamTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeamTrackerTests-Info.plist"; sourceTree = "<group>"; };
+		5370AB3616A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5370AB3816A885BF007E0DBB /* TeamTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamTrackerTests.h; sourceTree = "<group>"; };
+		5370AB3916A885BF007E0DBB /* TeamTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamTrackerTests.m; sourceTree = "<group>"; };
+		5370ACE216AB6147007E0DBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		53BE28F216B1B74A0033308B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		53BE290816B1BFE10033308B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Images/Default-568h@2x.png"; sourceTree = "<group>"; };
+		53BE290916B1BFE10033308B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Images/Default.png; sourceTree = "<group>"; };
+		53BE290A16B1BFE10033308B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Images/Default@2x.png"; sourceTree = "<group>"; };
+		53BE290B16B1BFE10033308B /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon.png"; path = "Resources/Images/reveal-icon.png"; sourceTree = "<group>"; };
+		53BE290C16B1BFE10033308B /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon@2x.png"; path = "Resources/Images/reveal-icon@2x.png"; sourceTree = "<group>"; };
+		53BE291216B1BFF10033308B /* championship_teams.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = championship_teams.xml; path = Resources/championship_teams.xml; sourceTree = "<group>"; };
+		53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTLeagueTableCell.xib; path = Resources/XIBs/TTLeagueTableCell.xib; sourceTree = "<group>"; };
+		53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMatchResultCell.xib; path = Resources/XIBs/TTMatchResultCell.xib; sourceTree = "<group>"; };
+		53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPPGTableCell.xib; path = Resources/XIBs/TTPPGTableCell.xib; sourceTree = "<group>"; };
+		53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamDetailViewController.xib; path = Resources/XIBs/TTTeamDetailViewController.xib; sourceTree = "<group>"; };
+		53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamResultsViewController.xib; path = Resources/XIBs/TTTeamResultsViewController.xib; sourceTree = "<group>"; };
+		53BE291E16B1C0B80033308B /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButton.png; path = Resources/Images/blackButton.png; sourceTree = "<group>"; };
+		53BE291F16B1C0B80033308B /* blackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blackButton@2x.png"; path = "Resources/Images/blackButton@2x.png"; sourceTree = "<group>"; };
+		53BE292016B1C0B80033308B /* blackButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButtonHighlight.png; path = Resources/Images/blackButtonHighlight.png; sourceTree = "<group>"; };
+		53BE292116B1C0B80033308B /* blackButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blackButtonHighlight@2x.png"; path = "Resources/Images/blackButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		53BE292216B1C0B80033308B /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueButton.png; path = Resources/Images/blueButton.png; sourceTree = "<group>"; };
+		53BE292316B1C0B80033308B /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueButton@2x.png"; path = "Resources/Images/blueButton@2x.png"; sourceTree = "<group>"; };
+		53BE292416B1C0B80033308B /* blueButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueButtonHighlight.png; path = Resources/Images/blueButtonHighlight.png; sourceTree = "<group>"; };
+		53BE292516B1C0B80033308B /* blueButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueButtonHighlight@2x.png"; path = "Resources/Images/blueButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		53BE292E16B1C1310033308B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/MBProgressHUD.h; sourceTree = "<group>"; };
+		53BE292F16B1C1310033308B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/MBProgressHUD.m; sourceTree = "<group>"; };
+		53BE293016B1C1310033308B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Classes/Reachability.h; sourceTree = "<group>"; };
+		53BE293116B1C1310033308B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Classes/Reachability.m; sourceTree = "<group>"; };
+		53BE293216B1C1310033308B /* SMXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXMLDocument.h; path = Classes/SMXMLDocument.h; sourceTree = "<group>"; };
+		53BE293316B1C1310033308B /* SMXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXMLDocument.m; path = Classes/SMXMLDocument.m; sourceTree = "<group>"; };
+		53BE293416B1C1310033308B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Classes/SWRevealViewController.h; sourceTree = "<group>"; };
+		53BE293516B1C1310033308B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Classes/SWRevealViewController.m; sourceTree = "<group>"; };
+		53BE293616B1C1310033308B /* TTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAppDelegate.h; path = Classes/TTAppDelegate.h; sourceTree = "<group>"; };
+		53BE293716B1C1310033308B /* TTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAppDelegate.m; path = Classes/TTAppDelegate.m; sourceTree = "<group>"; };
+		53BE293816B1C1310033308B /* TTBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTBackgroundLayer.h; path = Classes/TTBackgroundLayer.h; sourceTree = "<group>"; };
+		53BE293916B1C1310033308B /* TTBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTBackgroundLayer.m; path = Classes/TTBackgroundLayer.m; sourceTree = "<group>"; };
+		53BE293A16B1C1310033308B /* TTInfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTInfoBox.h; path = Classes/TTInfoBox.h; sourceTree = "<group>"; };
+		53BE293B16B1C1310033308B /* TTInfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTInfoBox.m; path = Classes/TTInfoBox.m; sourceTree = "<group>"; };
+		53BE293C16B1C1310033308B /* TTLeagueTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTLeagueTableCell.h; path = Classes/TTLeagueTableCell.h; sourceTree = "<group>"; };
+		53BE293D16B1C1310033308B /* TTLeagueTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTLeagueTableCell.m; path = Classes/TTLeagueTableCell.m; sourceTree = "<group>"; };
+		53BE293E16B1C1310033308B /* TTLeagueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTLeagueTableViewController.h; path = Classes/TTLeagueTableViewController.h; sourceTree = "<group>"; };
+		53BE293F16B1C1310033308B /* TTLeagueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTLeagueTableViewController.m; path = Classes/TTLeagueTableViewController.m; sourceTree = "<group>"; };
+		53BE294016B1C1310033308B /* TTMatchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMatchResult.h; path = Classes/TTMatchResult.h; sourceTree = "<group>"; };
+		53BE294116B1C1310033308B /* TTMatchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMatchResult.m; path = Classes/TTMatchResult.m; sourceTree = "<group>"; };
+		53BE294216B1C1310033308B /* TTMatchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMatchResultCell.h; path = Classes/TTMatchResultCell.h; sourceTree = "<group>"; };
+		53BE294316B1C1310033308B /* TTMatchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMatchResultCell.m; path = Classes/TTMatchResultCell.m; sourceTree = "<group>"; };
+		53BE294416B1C1310033308B /* TTMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMenuViewController.h; path = Classes/TTMenuViewController.h; sourceTree = "<group>"; };
+		53BE294516B1C1310033308B /* TTMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMenuViewController.m; path = Classes/TTMenuViewController.m; sourceTree = "<group>"; };
+		53BE294616B1C1310033308B /* TTPPGTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTPPGTableCell.h; path = Classes/TTPPGTableCell.h; sourceTree = "<group>"; };
+		53BE294716B1C1310033308B /* TTPPGTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTPPGTableCell.m; path = Classes/TTPPGTableCell.m; sourceTree = "<group>"; };
+		53BE294816B1C1310033308B /* TTTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTeam.h; path = Classes/TTTeam.h; sourceTree = "<group>"; };
+		53BE294916B1C1310033308B /* TTTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTeam.m; path = Classes/TTTeam.m; sourceTree = "<group>"; };
+		53BE294A16B1C1310033308B /* TTTeamDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTeamDetailViewController.h; path = Classes/TTTeamDetailViewController.h; sourceTree = "<group>"; };
+		53BE294B16B1C1310033308B /* TTTeamDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTeamDetailViewController.m; path = Classes/TTTeamDetailViewController.m; sourceTree = "<group>"; };
+		53BE294C16B1C1310033308B /* TTTeamResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTeamResultsViewController.h; path = Classes/TTTeamResultsViewController.h; sourceTree = "<group>"; };
+		53BE294D16B1C1310033308B /* TTTeamResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTeamResultsViewController.m; path = Classes/TTTeamResultsViewController.m; sourceTree = "<group>"; };
+		53BE294E16B1C1310033308B /* TTTeamsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTeamsParser.h; path = Classes/TTTeamsParser.h; sourceTree = "<group>"; };
+		53BE294F16B1C1310033308B /* TTTeamsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTeamsParser.m; path = Classes/TTTeamsParser.m; sourceTree = "<group>"; };
+		53BE295016B1C1310033308B /* TTTeamXMLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTeamXMLCache.h; path = Classes/TTTeamXMLCache.h; sourceTree = "<group>"; };
+		53BE295116B1C1310033308B /* TTTeamXMLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTeamXMLCache.m; path = Classes/TTTeamXMLCache.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5370AAED16A885BE007E0DBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53BE28F316B1B74B0033308B /* SystemConfiguration.framework in Frameworks */,
+				5370ACE316AB614D007E0DBB /* QuartzCore.framework in Frameworks */,
+				5370AAF916A885BF007E0DBB /* CoreGraphics.framework in Frameworks */,
+				5370AAF516A885BF007E0DBB /* UIKit.framework in Frameworks */,
+				5370AAF716A885BF007E0DBB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5370AB2716A885BF007E0DBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5370AB2D16A885BF007E0DBB /* SenTestingKit.framework in Frameworks */,
+				5370AB2E16A885BF007E0DBB /* UIKit.framework in Frameworks */,
+				5370AB2F16A885BF007E0DBB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5370AAE516A885BE007E0DBB = {
+			isa = PBXGroup;
+			children = (
+				5370AAFA16A885BF007E0DBB /* TeamTracker */,
+				5370AB3216A885BF007E0DBB /* TeamTrackerTests */,
+				5370AAF316A885BF007E0DBB /* Frameworks */,
+				5370AAF116A885BF007E0DBB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5370AAF116A885BF007E0DBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5370AAF016A885BE007E0DBB /* TeamTracker.app */,
+				5370AB2B16A885BF007E0DBB /* TeamTrackerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5370AAF316A885BF007E0DBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53BE28F216B1B74A0033308B /* SystemConfiguration.framework */,
+				5370ACE216AB6147007E0DBB /* QuartzCore.framework */,
+				5370AAF416A885BF007E0DBB /* UIKit.framework */,
+				5370AAF616A885BF007E0DBB /* Foundation.framework */,
+				5370AAF816A885BF007E0DBB /* CoreGraphics.framework */,
+				5370AB2C16A885BF007E0DBB /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5370AAFA16A885BF007E0DBB /* TeamTracker */ = {
+			isa = PBXGroup;
+			children = (
+				53BE28F516B1BF440033308B /* Resources */,
+				53BE28F416B1BF360033308B /* Classes */,
+				5370AAFB16A885BF007E0DBB /* Supporting Files */,
+			);
+			path = TeamTracker;
+			sourceTree = "<group>";
+		};
+		5370AAFB16A885BF007E0DBB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5370AAFC16A885BF007E0DBB /* TeamTracker-Info.plist */,
+				5370AAFD16A885BF007E0DBB /* InfoPlist.strings */,
+				5370AB0016A885BF007E0DBB /* main.m */,
+				5370AB0216A885BF007E0DBB /* TeamTracker-Prefix.pch */,
+				5370AB0616A885BF007E0DBB /* Default.png */,
+				5370AB0816A885BF007E0DBB /* Default@2x.png */,
+				5370AB0A16A885BF007E0DBB /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5370AB3216A885BF007E0DBB /* TeamTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5370AB3816A885BF007E0DBB /* TeamTrackerTests.h */,
+				5370AB3916A885BF007E0DBB /* TeamTrackerTests.m */,
+				5370AB3316A885BF007E0DBB /* Supporting Files */,
+			);
+			path = TeamTrackerTests;
+			sourceTree = "<group>";
+		};
+		5370AB3316A885BF007E0DBB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5370AB3416A885BF007E0DBB /* TeamTrackerTests-Info.plist */,
+				5370AB3516A885BF007E0DBB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53BE28F416B1BF360033308B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				53BE292E16B1C1310033308B /* MBProgressHUD.h */,
+				53BE292F16B1C1310033308B /* MBProgressHUD.m */,
+				53BE293016B1C1310033308B /* Reachability.h */,
+				53BE293116B1C1310033308B /* Reachability.m */,
+				53BE293216B1C1310033308B /* SMXMLDocument.h */,
+				53BE293316B1C1310033308B /* SMXMLDocument.m */,
+				53BE293416B1C1310033308B /* SWRevealViewController.h */,
+				53BE293516B1C1310033308B /* SWRevealViewController.m */,
+				53BE293616B1C1310033308B /* TTAppDelegate.h */,
+				53BE293716B1C1310033308B /* TTAppDelegate.m */,
+				53BE293816B1C1310033308B /* TTBackgroundLayer.h */,
+				53BE293916B1C1310033308B /* TTBackgroundLayer.m */,
+				53BE293A16B1C1310033308B /* TTInfoBox.h */,
+				53BE293B16B1C1310033308B /* TTInfoBox.m */,
+				53BE293C16B1C1310033308B /* TTLeagueTableCell.h */,
+				53BE293D16B1C1310033308B /* TTLeagueTableCell.m */,
+				53BE293E16B1C1310033308B /* TTLeagueTableViewController.h */,
+				53BE293F16B1C1310033308B /* TTLeagueTableViewController.m */,
+				53BE294016B1C1310033308B /* TTMatchResult.h */,
+				53BE294116B1C1310033308B /* TTMatchResult.m */,
+				53BE294216B1C1310033308B /* TTMatchResultCell.h */,
+				53BE294316B1C1310033308B /* TTMatchResultCell.m */,
+				53BE294416B1C1310033308B /* TTMenuViewController.h */,
+				53BE294516B1C1310033308B /* TTMenuViewController.m */,
+				53BE294616B1C1310033308B /* TTPPGTableCell.h */,
+				53BE294716B1C1310033308B /* TTPPGTableCell.m */,
+				53BE294816B1C1310033308B /* TTTeam.h */,
+				53BE294916B1C1310033308B /* TTTeam.m */,
+				53BE294A16B1C1310033308B /* TTTeamDetailViewController.h */,
+				53BE294B16B1C1310033308B /* TTTeamDetailViewController.m */,
+				53BE294C16B1C1310033308B /* TTTeamResultsViewController.h */,
+				53BE294D16B1C1310033308B /* TTTeamResultsViewController.m */,
+				53BE294E16B1C1310033308B /* TTTeamsParser.h */,
+				53BE294F16B1C1310033308B /* TTTeamsParser.m */,
+				53BE295016B1C1310033308B /* TTTeamXMLCache.h */,
+				53BE295116B1C1310033308B /* TTTeamXMLCache.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		53BE28F516B1BF440033308B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53BE291216B1BFF10033308B /* championship_teams.xml */,
+				53BE28F716B1BF530033308B /* Images */,
+				53BE28F616B1BF4C0033308B /* XIBs */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		53BE28F616B1BF4C0033308B /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */,
+				5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */,
+				53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */,
+				53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */,
+				53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */,
+				53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */,
+				53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		53BE28F716B1BF530033308B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				53BE291E16B1C0B80033308B /* blackButton.png */,
+				53BE291F16B1C0B80033308B /* blackButton@2x.png */,
+				53BE292016B1C0B80033308B /* blackButtonHighlight.png */,
+				53BE292116B1C0B80033308B /* blackButtonHighlight@2x.png */,
+				53BE292216B1C0B80033308B /* blueButton.png */,
+				53BE292316B1C0B80033308B /* blueButton@2x.png */,
+				53BE292416B1C0B80033308B /* blueButtonHighlight.png */,
+				53BE292516B1C0B80033308B /* blueButtonHighlight@2x.png */,
+				53BE290816B1BFE10033308B /* Default-568h@2x.png */,
+				53BE290916B1BFE10033308B /* Default.png */,
+				53BE290A16B1BFE10033308B /* Default@2x.png */,
+				53BE290B16B1BFE10033308B /* reveal-icon.png */,
+				53BE290C16B1BFE10033308B /* reveal-icon@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5370AAEF16A885BE007E0DBB /* TeamTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5370AB3D16A885BF007E0DBB /* Build configuration list for PBXNativeTarget "TeamTracker" */;
+			buildPhases = (
+				5370AAEC16A885BE007E0DBB /* Sources */,
+				5370AAED16A885BE007E0DBB /* Frameworks */,
+				5370AAEE16A885BE007E0DBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeamTracker;
+			productName = TeamTracker;
+			productReference = 5370AAF016A885BE007E0DBB /* TeamTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5370AB2A16A885BF007E0DBB /* TeamTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5370AB4016A885BF007E0DBB /* Build configuration list for PBXNativeTarget "TeamTrackerTests" */;
+			buildPhases = (
+				5370AB2616A885BF007E0DBB /* Sources */,
+				5370AB2716A885BF007E0DBB /* Frameworks */,
+				5370AB2816A885BF007E0DBB /* Resources */,
+				5370AB2916A885BF007E0DBB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5370AB3116A885BF007E0DBB /* PBXTargetDependency */,
+			);
+			name = TeamTrackerTests;
+			productName = TeamTrackerTests;
+			productReference = 5370AB2B16A885BF007E0DBB /* TeamTrackerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5370AAE716A885BE007E0DBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TT;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Daniel Browne";
+			};
+			buildConfigurationList = 5370AAEA16A885BE007E0DBB /* Build configuration list for PBXProject "TeamTracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5370AAE516A885BE007E0DBB;
+			productRefGroup = 5370AAF116A885BF007E0DBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5370AAEF16A885BE007E0DBB /* TeamTracker */,
+				5370AB2A16A885BF007E0DBB /* TeamTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5370AAEE16A885BE007E0DBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5370AAFF16A885BF007E0DBB /* InfoPlist.strings in Resources */,
+				5370AB1C16A885BF007E0DBB /* TTLeagueTableViewController.xib in Resources */,
+				5370AB2216A885BF007E0DBB /* TTMenuViewController.xib in Resources */,
+				53BE290D16B1BFE10033308B /* Default-568h@2x.png in Resources */,
+				53BE290E16B1BFE10033308B /* Default.png in Resources */,
+				53BE290F16B1BFE10033308B /* Default@2x.png in Resources */,
+				53BE291016B1BFE10033308B /* reveal-icon.png in Resources */,
+				53BE291116B1BFE10033308B /* reveal-icon@2x.png in Resources */,
+				53BE291316B1BFF10033308B /* championship_teams.xml in Resources */,
+				53BE291916B1BFFC0033308B /* TTLeagueTableCell.xib in Resources */,
+				53BE291A16B1BFFC0033308B /* TTMatchResultCell.xib in Resources */,
+				53BE291B16B1BFFC0033308B /* TTPPGTableCell.xib in Resources */,
+				53BE291C16B1BFFC0033308B /* TTTeamDetailViewController.xib in Resources */,
+				53BE291D16B1BFFC0033308B /* TTTeamResultsViewController.xib in Resources */,
+				53BE292616B1C0B80033308B /* blackButton.png in Resources */,
+				53BE292716B1C0B80033308B /* blackButton@2x.png in Resources */,
+				53BE292816B1C0B80033308B /* blackButtonHighlight.png in Resources */,
+				53BE292916B1C0B80033308B /* blackButtonHighlight@2x.png in Resources */,
+				53BE292A16B1C0B80033308B /* blueButton.png in Resources */,
+				53BE292B16B1C0B80033308B /* blueButton@2x.png in Resources */,
+				53BE292C16B1C0B80033308B /* blueButtonHighlight.png in Resources */,
+				53BE292D16B1C0B80033308B /* blueButtonHighlight@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5370AB2816A885BF007E0DBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5370AB3716A885BF007E0DBB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5370AB2916A885BF007E0DBB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5370AAEC16A885BE007E0DBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5370AB0116A885BF007E0DBB /* main.m in Sources */,
+				53BE295216B1C1310033308B /* MBProgressHUD.m in Sources */,
+				53BE295316B1C1310033308B /* Reachability.m in Sources */,
+				53BE295416B1C1310033308B /* SMXMLDocument.m in Sources */,
+				53BE295516B1C1310033308B /* SWRevealViewController.m in Sources */,
+				53BE295616B1C1310033308B /* TTAppDelegate.m in Sources */,
+				53BE295716B1C1310033308B /* TTBackgroundLayer.m in Sources */,
+				53BE295816B1C1310033308B /* TTInfoBox.m in Sources */,
+				53BE295916B1C1310033308B /* TTLeagueTableCell.m in Sources */,
+				53BE295A16B1C1310033308B /* TTLeagueTableViewController.m in Sources */,
+				53BE295B16B1C1310033308B /* TTMatchResult.m in Sources */,
+				53BE295C16B1C1310033308B /* TTMatchResultCell.m in Sources */,
+				53BE295D16B1C1310033308B /* TTMenuViewController.m in Sources */,
+				53BE295E16B1C1310033308B /* TTPPGTableCell.m in Sources */,
+				53BE295F16B1C1310033308B /* TTTeam.m in Sources */,
+				53BE296016B1C1310033308B /* TTTeamDetailViewController.m in Sources */,
+				53BE296116B1C1310033308B /* TTTeamResultsViewController.m in Sources */,
+				53BE296216B1C1310033308B /* TTTeamsParser.m in Sources */,
+				53BE296316B1C1310033308B /* TTTeamXMLCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5370AB2616A885BF007E0DBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5370AB3A16A885BF007E0DBB /* TeamTrackerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5370AB3116A885BF007E0DBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5370AAEF16A885BE007E0DBB /* TeamTracker */;
+			targetProxy = 5370AB3016A885BF007E0DBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5370AAFD16A885BF007E0DBB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5370AAFE16A885BF007E0DBB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5370AB1B16A885BF007E0DBB /* en */,
+			);
+			name = TTLeagueTableViewController.xib;
+			sourceTree = "<group>";
+		};
+		5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5370AB2116A885BF007E0DBB /* en */,
+			);
+			name = TTMenuViewController.xib;
+			sourceTree = "<group>";
+		};
+		5370AB3516A885BF007E0DBB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5370AB3616A885BF007E0DBB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5370AB3B16A885BF007E0DBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5370AB3C16A885BF007E0DBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5370AB3E16A885BF007E0DBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
+				INFOPLIST_FILE = "TeamTracker/TeamTracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5370AB3F16A885BF007E0DBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
+				INFOPLIST_FILE = "TeamTracker/TeamTracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5370AB4116A885BF007E0DBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeamTracker.app/TeamTracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
+				INFOPLIST_FILE = "TeamTrackerTests/TeamTrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5370AB4216A885BF007E0DBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeamTracker.app/TeamTracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
+				INFOPLIST_FILE = "TeamTrackerTests/TeamTrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5370AAEA16A885BE007E0DBB /* Build configuration list for PBXProject "TeamTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5370AB3B16A885BF007E0DBB /* Debug */,
+				5370AB3C16A885BF007E0DBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5370AB3D16A885BF007E0DBB /* Build configuration list for PBXNativeTarget "TeamTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5370AB3E16A885BF007E0DBB /* Debug */,
+				5370AB3F16A885BF007E0DBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5370AB4016A885BF007E0DBB /* Build configuration list for PBXNativeTarget "TeamTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5370AB4116A885BF007E0DBB /* Debug */,
+				5370AB4216A885BF007E0DBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5370AAE716A885BE007E0DBB /* Project object */;
+}
