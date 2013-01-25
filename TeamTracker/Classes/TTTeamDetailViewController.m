@@ -38,7 +38,7 @@
     
     //Set up teamDetailViewController attributes
     self.teamName.text = self.team.name;
-    self.points.text = [NSString stringWithFormat:@"%d pts", self.team.points];
+    self.points.text = [NSString stringWithFormat:@"%dpts", self.team.points];
     //Decide on position suffix...
     NSString *suffix = [NSString string];
     if (self.team.leaguePosition == 1 || self.team.leaguePosition == 21) {

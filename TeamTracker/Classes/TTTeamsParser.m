@@ -90,85 +90,88 @@
         }
         
         //Pull out the <dates> node
-        SMXMLElement *dates = [teamsResultsXMLResponse.root childNamed:@"dates"];
+        SMXMLElement *results = [teamsResultsXMLResponse.root childNamed:@"results"];
         
         //Look through <dates> children of type <date>
         NSInteger matchDateSortID = 0;
-        for (SMXMLElement *date in [dates childrenNamed:@"date"]) {
+        NSString *prevMatchDate = [NSString stringWithFormat:@""];
+        
+        //Look through current <date> node for children of type <result>
+        for (SMXMLElement *result in [results childrenNamed:@"res"]) {
+            NSString *matchDate = [result valueWithPath:@"mDate"];
+            NSString *homeTeam = [result valueWithPath:@"hTeam"];
+            NSString *awayTeam = [result valueWithPath:@"aTeam"];
+            NSInteger homeScore = [[result valueWithPath:@"hScore"] integerValue];
+            NSInteger awayScore = [[result valueWithPath:@"aScore"] integerValue];
+            NSString *homeGoalScorers = [result valueWithPath:@"hGS"];
+            NSString *awayGoalScorers = [result valueWithPath:@"aGS"];
             
-            //Set matchDate string...
-            NSString *matchDate = [date attributeNamed:@"matchdate"];
+            //If the date of THIS result is different to the LAST result, we are on a new set of results
+            if (![matchDate isEqualToString:prevMatchDate]) {
+                //Increment matchDateSortID so that each date's fixtures has its own ID
+                //Useful when sorting ALL league fixtures by date
+                matchDateSortID++;
+            }
             
-            //Look through current <date> node for children of type <result>
-            for (SMXMLElement *result in [date childrenNamed:@"result"]) {
-                NSString *homeTeam = [result valueWithPath:@"hometeam"];
-                NSString *awayTeam = [result valueWithPath:@"awayteam"];
-                NSInteger homeScore = [[result valueWithPath:@"homescore"] integerValue];
-                NSInteger awayScore = [[result valueWithPath:@"awayscore"] integerValue];
-                
-                TTMatchResult *mResult = [[TTMatchResult alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam WithHomeScore:homeScore AndAwayScore:awayScore AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
-                
-                //Find the two teams involed in the result, and update their stats...
-                for (TTTeam *team in self.teams) {
-                    if ([team.name isEqualToString:mResult.homeTeam] || [team.name isEqualToString:mResult.awayTeam]) {
-                        //Update the team's points, and GF & GA based on the result...
-                        //Team won at home...
-                        if ((mResult.homeScore > mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.points += 3;
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeWins++;
-                        }
-                        //Team won away...
-                        else if ((mResult.awayScore > mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.points += 3;
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayWins++;
-                        }
-                        //Team lost at home...
-                        if ((mResult.homeScore < mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeLosses++;
-                        }
-                        //Team lost away...
-                        else if ((mResult.awayScore < mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayLosses++;
-                        }
-                        //Team drew at home...
-                        else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.points += 1;
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeDraws++;
-                        }
-                        //Team drew away...
-                        else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.points += 1;
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayDraws++;
-                        }
-                        
-                        //Update games played, pointsPerGame, historical ppgArray & goal differences
-                        team.gamesPlayed++;
-                        team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
-                        [team.ppgArray addObject:team.latestPPG];
-                        team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
-                        team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
-                        team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
-                        
-                        //Add result to both home and away teams' results arrays...
-                        [team.results addObject:mResult];
+            TTMatchResult *mResult = [[TTMatchResult alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam WithHomeScore:homeScore AndAwayScore:awayScore AndHomeGoalScorers:homeGoalScorers AndAwayGoalScorers:awayGoalScorers AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
+            
+            //Find the two teams involed in the result, and update their stats...
+            for (TTTeam *team in self.teams) {
+                if ([team.name isEqualToString:mResult.homeTeam] || [team.name isEqualToString:mResult.awayTeam]) {
+                    //Update the team's points, and GF & GA based on the result...
+                    //Team won at home...
+                    if ((mResult.homeScore > mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                        team.points += 3;
+                        team.homeGoalsFor += mResult.homeScore;
+                        team.homeGoalsAgainst += mResult.awayScore;
+                        team.homeWins++;
                     }
+                    //Team won away...
+                    else if ((mResult.awayScore > mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                        team.points += 3;
+                        team.awayGoalsFor += mResult.awayScore;
+                        team.awayGoalsAgainst += mResult.homeScore;
+                        team.awayWins++;
+                    }
+                    //Team lost at home...
+                    if ((mResult.homeScore < mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                        team.homeGoalsFor += mResult.homeScore;
+                        team.homeGoalsAgainst += mResult.awayScore;
+                        team.homeLosses++;
+                    }
+                    //Team lost away...
+                    else if ((mResult.awayScore < mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                        team.awayGoalsFor += mResult.awayScore;
+                        team.awayGoalsAgainst += mResult.homeScore;
+                        team.awayLosses++;
+                    }
+                    //Team drew at home...
+                    else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                        team.points += 1;
+                        team.homeGoalsFor += mResult.homeScore;
+                        team.homeGoalsAgainst += mResult.awayScore;
+                        team.homeDraws++;
+                    }
+                    //Team drew away...
+                    else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                        team.points += 1;
+                        team.awayGoalsFor += mResult.awayScore;
+                        team.awayGoalsAgainst += mResult.homeScore;
+                        team.awayDraws++;
+                    }
+                    
+                    //Update games played, pointsPerGame, historical ppgArray & goal differences
+                    team.gamesPlayed++;
+                    team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
+                    [team.ppgArray addObject:team.latestPPG];
+                    team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
+                    team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
+                    team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
+                    
+                    //Add result to both home and away teams' results arrays...
+                    [team.results addObject:mResult];
                 }
             }
-            //Increment matchDateSortID so that each date's fixtures has its own ID
-            //Useful when sorting ALL league fixtures by date
-            matchDateSortID++;
         }
         
         //Sort the teams table...

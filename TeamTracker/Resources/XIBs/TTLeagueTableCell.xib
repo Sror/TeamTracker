@@ -121,7 +121,7 @@
 							<object class="IBUILabel" id="859796058">
 								<reference key="NSNextResponder" ref="39032824"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{252, 12}, {26, 21}}</string>
+								<string key="NSFrame">{{254, 12}, {26, 21}}</string>
 								<reference key="NSSuperview" ref="39032824"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1009496498"/>
@@ -304,7 +304,7 @@
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="1019079685">
+							<object class="IBNSLayoutConstraint" id="548329538">
 								<reference key="firstItem" ref="15487614"/>
 								<int key="firstAttribute">6</int>
 								<int key="relation">0</int>
@@ -312,7 +312,7 @@
 								<int key="secondAttribute">6</int>
 								<float key="multiplier">1</float>
 								<object class="IBLayoutConstant" key="constant">
-									<double key="value">42</double>
+									<double key="value">40</double>
 								</object>
 								<float key="priority">1000</float>
 								<reference key="containingView" ref="15487614"/>
@@ -633,8 +633,8 @@
 						<reference key="parent" ref="15487614"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">182</int>
-						<reference key="object" ref="1019079685"/>
+						<int key="objectID">184</int>
+						<reference key="object" ref="548329538"/>
 						<reference key="parent" ref="15487614"/>
 					</object>
 				</array>
@@ -658,7 +658,7 @@
 				<boolean value="NO" key="16.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="178.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="179.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="182.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="184.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">TTLeagueTableCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<array class="NSMutableArray" key="2.IBViewMetadataConstraints">
@@ -672,7 +672,7 @@
 					<reference ref="366027451"/>
 					<reference ref="156010820"/>
 					<reference ref="468334940"/>
-					<reference ref="1019079685"/>
+					<reference ref="548329538"/>
 					<reference ref="580568418"/>
 					<reference ref="589688775"/>
 					<reference ref="435227133"/>
@@ -698,7 +698,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">182</int>
+			<int key="maxID">184</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

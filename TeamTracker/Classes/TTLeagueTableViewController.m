@@ -219,7 +219,7 @@
     headerLabel.backgroundColor = [UIColor clearColor];
 	headerLabel.opaque = NO;
 	headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
 	headerLabel.highlightedTextColor = [UIColor whiteColor];
 	headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
 	headerLabel.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, 22.0);

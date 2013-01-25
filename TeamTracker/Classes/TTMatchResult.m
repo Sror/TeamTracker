@@ -17,7 +17,7 @@
 @synthesize homeScore;
 @synthesize awayScore;
 
-- (id)initWithHomeTeam:(NSString*)hTeam AndAwayTeam:(NSString*)aTeam WithHomeScore:(NSInteger)hScore AndAwayScore:(NSInteger)aScore AndMatchDate:(NSString*)mDate AndMatchDateSortID:(NSInteger)mDateID {
+- (id)initWithHomeTeam:(NSString*)hTeam AndAwayTeam:(NSString*)aTeam WithHomeScore:(NSInteger)hScore AndAwayScore:(NSInteger)aScore AndHomeGoalScorers:(NSString*)hGS AndAwayGoalScorers:(NSString*)aGS AndMatchDate:(NSString*)mDate AndMatchDateSortID:(NSInteger) mDateID {
     if (self == [super init]) {
         self.matchDate = mDate;
         self.matchDateSortID = mDateID;
@@ -25,6 +25,8 @@
         self.awayTeam = aTeam;
         self.homeScore = hScore;
         self.awayScore = aScore;
+        self.homeGoalScorers = hGS;
+        self.awayGoalScorers = aGS;
     }
     return self;
 }

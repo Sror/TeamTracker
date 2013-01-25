@@ -24,11 +24,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        if (showAllLeagueResults) {
-            self.title = NSLocalizedString(@"All Results", @"All Results");
-        } else {
-            self.title = NSLocalizedString(@"Results", @"Results");
-        }
         
         //Init app delegate
         appDelegate = (TTAppDelegate*)[UIApplication sharedApplication].delegate;
@@ -71,6 +66,9 @@
         NSSortDescriptor *matchDateSort = [NSSortDescriptor sortDescriptorWithKey:@"matchDateSortID" ascending:YES];
         [allLeagueResults sortUsingDescriptors:[NSMutableArray arrayWithObject:matchDateSort]];
         
+        //Set title...
+        self.title = NSLocalizedString(@"All League Results", @"All League Results");
+        
         /*//Count number of results on a particular date (for table sectioning)
         TTMatchResult *mResult = [allLeagueResults lastObject];
         const NSInteger numIDs = mResult.matchDateSortID+1;
@@ -88,6 +86,8 @@
             [dateSectionCounts addObject:[NSNumber numberWithInteger:counts[i]]];
         }*/
         
+    } else {
+        self.title = NSLocalizedString(@"Results", @"Results");
     }
 }
 
@@ -225,7 +225,12 @@
     cell.homeScore.text = [NSString stringWithFormat:@"%d", result.homeScore];
     cell.awayTeam.text = [NSString stringWithFormat:@"%@", result.awayTeam];
     cell.awayScore.text = [NSString stringWithFormat:@"%d", result.awayScore];
-    cell.matchDate.text = [NSString stringWithFormat:@"%@", result.matchDate];
+    //Format the date sensibly for display...
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"yyyy-MM-dd"];
+    NSDate *matchDateObj = [dateFormater dateFromString:result.matchDate];
+    [dateFormater setDateFormat:@"EEEE, dd MMMM"];
+    cell.matchDate.text = [dateFormater stringFromDate:matchDateObj];
     
     return cell;
 }

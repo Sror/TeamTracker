@@ -210,8 +210,8 @@
 		5370AAFA16A885BF007E0DBB /* TeamTracker */ = {
 			isa = PBXGroup;
 			children = (
-				53BE28F516B1BF440033308B /* Resources */,
 				53BE28F416B1BF360033308B /* Classes */,
+				53BE28F516B1BF440033308B /* Resources */,
 				5370AAFB16A885BF007E0DBB /* Supporting Files */,
 			);
 			path = TeamTracker;

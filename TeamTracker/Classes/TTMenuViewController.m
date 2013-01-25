@@ -62,7 +62,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 	// create the parent view that will hold header Label
-	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 22.0)];
+	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
     
     //Create a CAGradientLayer as the background to the tableHeaderView
     CAGradientLayer *bgLayer = [TTBackgroundLayer blueGradient];
@@ -73,18 +73,18 @@
     bgLayer.shadowRadius = 2.5f;
     [customView.layer insertSublayer:bgLayer atIndex:0];
 	
-	// create the button object
+	// create the header label object
 	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	headerLabel.opaque = NO;
     headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
 	headerLabel.textColor = [UIColor whiteColor];
-	headerLabel.highlightedTextColor = [UIColor whiteColor];
-	headerLabel.font = [UIFont boldSystemFontOfSize:20];
-	headerLabel.frame = CGRectMake(0.0, 0.0, 320.0, 22.0);
+	//headerLabel.highlightedTextColor = [UIColor whiteColor];
+	headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
+	headerLabel.frame = CGRectMake(0.0, 0.0, 320.0, 44.0);
     
 	//Center the UILabel + set text
-	headerLabel.frame = CGRectMake(100.0, 0.0, 320.0, 22.0);
+	headerLabel.frame = CGRectMake(100.0, 0.0, 320.0, 44.0);
 	headerLabel.text = @"Menu";
     
 	[customView addSubview:headerLabel];
@@ -94,7 +94,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 22.0;
+	return 44.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -132,7 +132,7 @@
     //Configure cell attributes
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    cell.textLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
     cell.textLabel.text = [menuOptions objectAtIndex:indexPath.row];
     //Set detailTextLabel...
     if (indexPath.row == 3) {
