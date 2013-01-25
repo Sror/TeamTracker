@@ -135,6 +135,7 @@
     //UILabel shadowTextColour
     UIColor *tableTextColor = nil;
     UIColor *tableTextShadowColor = nil;
+    UIColor *tableTextHighlightedColor = nil;
     
     //Use temp var to access custom cell properties...
     TTMatchResultCell *customCell = (TTMatchResultCell*)cell;
@@ -154,10 +155,12 @@
         bgLayer = [TTBackgroundLayer greyGradient];
         //Dark text colour...
         tableTextColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+        tableTextHighlightedColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         tableTextShadowColor = [UIColor whiteColor];
     } else {
         //White text colour...
         tableTextColor = [UIColor whiteColor];
+        tableTextHighlightedColor = [UIColor whiteColor];
         tableTextShadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
         
         //Team won...
@@ -195,13 +198,18 @@
     customCell.awayTeam.shadowColor = tableTextShadowColor;
     customCell.matchDate.shadowColor = tableTextShadowColor;
     customCell.dashLabel.shadowColor = tableTextShadowColor;
+    customCell.homeScore.highlightedTextColor = tableTextHighlightedColor;
+    customCell.homeTeam.highlightedTextColor = tableTextHighlightedColor;
+    customCell.awayScore.highlightedTextColor = tableTextHighlightedColor;
+    customCell.awayTeam.highlightedTextColor = tableTextHighlightedColor;
+    customCell.matchDate.highlightedTextColor = tableTextHighlightedColor;
+    customCell.dashLabel.highlightedTextColor = tableTextHighlightedColor;
     
     //set the UITableViewCell to the TTMatchResultCell
     cell = customCell;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     TTMatchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -233,6 +241,24 @@
     cell.matchDate.text = [dateFormater stringFromDate:matchDateObj];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //Push a TTTeamResultsViewController with relevant team to the navigationController...
+    TTMatchDetailViewController *matchDetailViewController = [[TTMatchDetailViewController alloc] initWithNibName:@"TTMatchDetailViewController" bundle:nil];
+    //Get result object - indexed to place the most recent result first...
+    TTMatchResult *result = nil;
+    if (showAllLeagueResults) {
+        result = [allLeagueResults objectAtIndex:([allLeagueResults count] - 1) - indexPath.row];
+    } else {
+        result = [team.results objectAtIndex:([team.results count] - 1) - indexPath.row];
+    }
+    matchDetailViewController.result = result;
+    
+	[self.navigationController pushViewController:matchDetailViewController animated:YES];
+    
+    //Deselect the cell
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

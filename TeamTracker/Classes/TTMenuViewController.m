@@ -133,17 +133,19 @@
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    cell.textLabel.text = [menuOptions objectAtIndex:indexPath.row];
-    //Set detailTextLabel...
+    //Set textLabel texts...
     if (indexPath.row == 3) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"favouriteTeam"] == nil) {
-            cell.detailTextLabel.text = @"Add your favourite team as a shortcut";
+            cell.textLabel.text = @"Favourite team will appear here...";
         } else {
-            cell.detailTextLabel.text = [defaults objectForKey:@"favouriteTeam"];
+            cell.textLabel.text = [defaults objectForKey:@"favouriteTeam"];
+            cell.detailTextLabel.text = [menuOptions objectAtIndex:indexPath.row];
         }
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    } else {
+        cell.textLabel.text = [menuOptions objectAtIndex:indexPath.row];
     }
     
     return cell;

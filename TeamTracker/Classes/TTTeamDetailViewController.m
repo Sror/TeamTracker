@@ -63,17 +63,16 @@
     UIImage *blueButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     // Set the button background states...
-    [self.seeAllResultsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal]
-    ;
+    [self.seeAllResultsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
     [self.seeAllResultsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
+    [self.moreStatsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
+    [self.moreStatsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"favouriteTeam"] isEqualToString:self.team.name]) {
-        [self.saveAsMyTeamButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal]
-        ;
+        [self.saveAsMyTeamButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
         [self.saveAsMyTeamButton setBackgroundImage:blueButtonImageHighlight forState:UIControlStateHighlighted];
     } else {
-        [self.saveAsMyTeamButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal]
-        ;
+        [self.saveAsMyTeamButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
         [self.saveAsMyTeamButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
     }
 }
@@ -101,6 +100,14 @@
         [defaults setObject:self.team.name forKey:@"favouriteTeam"];
         UIAlertView *teamSavedAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ have been saved as your favourite team.", self.team.name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [teamSavedAlert show];
+        
+        //Reset the favourite team button background for user feedback
+        UIImage *blueButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                    resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        UIImage *blueButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                             resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+        [self.saveAsMyTeamButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
+        [self.saveAsMyTeamButton setBackgroundImage:blueButtonImageHighlight forState:UIControlStateHighlighted];
     }
 }
 
@@ -110,5 +117,9 @@
     teamResultsViewController.showAllLeagueResults = NO;
     
     [self.navigationController pushViewController:teamResultsViewController animated:YES];
+}
+
+- (IBAction)moreStatsButtonTapped:(UIButton *)sender {
+    
 }
 @end

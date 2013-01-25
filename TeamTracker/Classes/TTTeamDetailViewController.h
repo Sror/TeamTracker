@@ -22,10 +22,12 @@
 @property (nonatomic) IBOutlet UILabel *leaguePosition;
 @property (nonatomic) IBOutlet UIView *ppgGraphView;
 @property (nonatomic) IBOutlet UIButton *saveAsMyTeamButton;
-@property (weak, nonatomic) IBOutlet UIButton *seeAllResultsButton;
+@property (nonatomic) IBOutlet UIButton *seeAllResultsButton;
+@property (nonatomic) IBOutlet UIButton *moreStatsButton;
 @property (nonatomic) BOOL didArriveAsFavouriteTeam;
 
 - (IBAction)saveButtonTapped:(UIButton *)sender;
 - (IBAction)seeAllResultsButtonTapped:(UIButton *)sender;
+- (IBAction)moreStatsButtonTapped:(UIButton *)sender;
 
 @end

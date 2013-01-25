@@ -12,6 +12,7 @@
 #import "TTMatchResult.h"
 #import "TTMatchResultCell.h"
 #import "TTBackgroundLayer.h"
+#import "TTMatchDetailViewController.h"
 
 @interface TTTeamResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     TTAppDelegate *appDelegate;
