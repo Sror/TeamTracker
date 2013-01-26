@@ -29,6 +29,7 @@
 @synthesize points;
 @synthesize latestPPG;
 @synthesize ppgArray;
+@synthesize formArray;
 @synthesize leaguePositionArray;
 @synthesize results;
 
@@ -37,6 +38,7 @@
         self.name = teamName;
         self.results = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.ppgArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
+        self.formArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.leaguePositionArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
     }
     return self;

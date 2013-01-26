@@ -233,12 +233,7 @@
     cell.homeScore.text = [NSString stringWithFormat:@"%d", result.homeScore];
     cell.awayTeam.text = [NSString stringWithFormat:@"%@", result.awayTeam];
     cell.awayScore.text = [NSString stringWithFormat:@"%d", result.awayScore];
-    //Format the date sensibly for display...
-    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-    [dateFormater setDateFormat:@"yyyy-MM-dd"];
-    NSDate *matchDateObj = [dateFormater dateFromString:result.matchDate];
-    [dateFormater setDateFormat:@"EEEE, dd MMMM"];
-    cell.matchDate.text = [dateFormater stringFromDate:matchDateObj];
+    cell.matchDate.text = result.matchDate;
     
     return cell;
 }

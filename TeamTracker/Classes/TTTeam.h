@@ -33,6 +33,7 @@
 @property (nonatomic) NSInteger points;
 @property (nonatomic) NSNumber *latestPPG;
 @property (nonatomic, retain) NSMutableArray *ppgArray;
+@property (nonatomic, retain) NSMutableArray *formArray;
 @property (nonatomic, retain) NSMutableArray *leaguePositionArray;
 @property (nonatomic, retain) NSMutableArray *results;
 

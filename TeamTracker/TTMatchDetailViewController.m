@@ -18,8 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        self.title = NSLocalizedString(@"Result", @"Result");
+        //
     }
     return self;
 }
@@ -27,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //title
+    self.title = NSLocalizedString(self.result.matchDate, self.result.matchDate);
+    
     //Init the UILabels & UITextViews
     self.homeTeam.text = self.result.homeTeam;
     self.homeScore.text = [NSString stringWithFormat:@"%d", self.result.homeScore];

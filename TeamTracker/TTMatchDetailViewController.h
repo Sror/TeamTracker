@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TTMatchResult.h"
+#import "TTTeam.h"
 #import "SWRevealViewController.h"
 
 @interface TTMatchDetailViewController : UIViewController
@@ -15,8 +16,10 @@
 @property (nonatomic) IBOutlet UILabel *homeScore;
 @property (nonatomic) IBOutlet UILabel *homeTeam;
 @property (nonatomic) IBOutlet UITextView *homeGoalScorers;
+@property (nonatomic) IBOutlet UILabel *homeForm;
 @property (nonatomic) IBOutlet UILabel *awayScore;
 @property (nonatomic) IBOutlet UILabel *awayTeam;
 @property (nonatomic) IBOutlet UITextView *awayGoalScorers;
+@property (nonatomic) IBOutlet UILabel *awayForm;
 
 @end

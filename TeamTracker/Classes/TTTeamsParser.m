@@ -98,7 +98,13 @@
         
         //Look through current <date> node for children of type <result>
         for (SMXMLElement *result in [results childrenNamed:@"res"]) {
-            NSString *matchDate = [result valueWithPath:@"mDate"];
+            //Format the date sensibly for display...
+            NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+            [dateFormater setDateFormat:@"yyyy-MM-dd"];
+            NSDate *matchDateObj = [dateFormater dateFromString:[result valueWithPath:@"mDate"]];
+            [dateFormater setDateFormat:@"EEEE, dd MMMM"];
+            
+            NSString *matchDate = [dateFormater stringFromDate:matchDateObj];
             NSString *homeTeam = [result valueWithPath:@"hTeam"];
             NSString *awayTeam = [result valueWithPath:@"aTeam"];
             NSInteger homeScore = [[result valueWithPath:@"hScore"] integerValue];
@@ -125,6 +131,7 @@
                         team.homeGoalsFor += mResult.homeScore;
                         team.homeGoalsAgainst += mResult.awayScore;
                         team.homeWins++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"W"]];
                     }
                     //Team won away...
                     else if ((mResult.awayScore > mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
@@ -132,18 +139,21 @@
                         team.awayGoalsFor += mResult.awayScore;
                         team.awayGoalsAgainst += mResult.homeScore;
                         team.awayWins++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"W"]];
                     }
                     //Team lost at home...
                     if ((mResult.homeScore < mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
                         team.homeGoalsFor += mResult.homeScore;
                         team.homeGoalsAgainst += mResult.awayScore;
                         team.homeLosses++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"L"]];
                     }
                     //Team lost away...
                     else if ((mResult.awayScore < mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
                         team.awayGoalsFor += mResult.awayScore;
                         team.awayGoalsAgainst += mResult.homeScore;
                         team.awayLosses++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"L"]];
                     }
                     //Team drew at home...
                     else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
@@ -151,6 +161,7 @@
                         team.homeGoalsFor += mResult.homeScore;
                         team.homeGoalsAgainst += mResult.awayScore;
                         team.homeDraws++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"D"]];
                     }
                     //Team drew away...
                     else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.awayTeam]) {
@@ -158,6 +169,7 @@
                         team.awayGoalsFor += mResult.awayScore;
                         team.awayGoalsAgainst += mResult.homeScore;
                         team.awayDraws++;
+                        [team.formArray addObject:[NSString stringWithFormat:@"D"]];
                     }
                     
                     //Update games played, pointsPerGame, historical ppgArray & goal differences

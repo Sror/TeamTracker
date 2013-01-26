@@ -487,8 +487,8 @@
 				53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */,
 				53B6BE6716B2A52C0027E09A /* TTMatchDetailViewController.xib */,
 				53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */,
-				53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */,
 				53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */,
+				53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";

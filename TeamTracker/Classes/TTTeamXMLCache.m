@@ -24,8 +24,8 @@
     //Current date
     NSDate *currentDate = [NSDate date];
     NSTimeInterval comparison = [currentDate timeIntervalSinceDate:cacheExpiryDate];
+    //Check if cache expiry time is in past or future...
     if (comparison < 0) {
-        //Cache has not expired
         return cacheData;
     } else {
         cacheData = nil;
@@ -34,6 +34,7 @@
 }
 
 - (void)setCacheWithData:(NSData*)data {
+    //Set cache data
     cacheData = data;
 }
 
