@@ -14,14 +14,15 @@
 #import "TTMatchResult.h"
 #import "TTMatchResultCell.h"
 #import "TTTeamResultsViewController.h"
-#import "CorePlot-CocoaTouch.h"
+#import "TTGraphView.h"
 
-@interface TTTeamDetailViewController : UIViewController <CPTPlotDataSource>
+@interface TTTeamDetailViewController : UIViewController
+
 @property (nonatomic) TTTeam *team;
 @property (nonatomic) IBOutlet UILabel *teamName;
 @property (nonatomic) IBOutlet UILabel *points;
 @property (nonatomic) IBOutlet UILabel *leaguePosition;
-@property (nonatomic) IBOutlet UIView *ppgGraphView;
+@property (nonatomic) IBOutlet UIView *predTotalGraphView;
 @property (nonatomic) IBOutlet UIButton *saveAsMyTeamButton;
 @property (nonatomic) IBOutlet UIButton *seeAllResultsButton;
 @property (nonatomic) IBOutlet UIButton *moreStatsButton;
@@ -31,10 +32,5 @@
 - (IBAction)saveButtonTapped:(UIButton *)sender;
 - (IBAction)seeAllResultsButtonTapped:(UIButton *)sender;
 - (IBAction)moreStatsButtonTapped:(UIButton *)sender;
--(void)initPlot;
--(void)configureHost;
--(void)configureGraph;
--(void)configureChart;
--(void)configureLegend;
 
 @end
