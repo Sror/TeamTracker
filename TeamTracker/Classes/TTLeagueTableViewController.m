@@ -197,6 +197,7 @@
         }
     }
     //Force the CAGradientLayers being used in table cells + header views to snap to new bounds
+    //Also helps if as we are showing/hiding labels showing WDL stats
     [self.leagueTable reloadData];
 }
 
@@ -290,19 +291,54 @@
         //Set other UILabel attributes...
         customCell.leaguePosition.textColor = tableTextColor;
         customCell.leaguePosition.highlightedTextColor = tableTextHighlightedColor;
+        customCell.leaguePosition.shadowColor = tableTextShadowColor;
         customCell.teamName.textColor = tableTextColor;
         customCell.teamName.highlightedTextColor = tableTextHighlightedColor;
+        customCell.teamName.shadowColor = tableTextShadowColor;
         customCell.gamesPlayed.textColor = tableTextColor;
         customCell.gamesPlayed.highlightedTextColor = tableTextHighlightedColor;
+        customCell.gamesPlayed.shadowColor = tableTextShadowColor;
         customCell.totalGoalDifference.textColor = tableTextColor;
         customCell.totalGoalDifference.highlightedTextColor = tableTextHighlightedColor;
+        customCell.totalGoalDifference.shadowColor = tableTextShadowColor;
         customCell.points.textColor = tableTextColor;
         customCell.points.highlightedTextColor = tableTextHighlightedColor;
-        customCell.leaguePosition.shadowColor = tableTextShadowColor;
-        customCell.teamName.shadowColor = tableTextShadowColor;
-        customCell.gamesPlayed.shadowColor = tableTextShadowColor;
-        customCell.totalGoalDifference.shadowColor = tableTextShadowColor;
         customCell.points.shadowColor = tableTextShadowColor;
+        
+        //If we are in landscape, setup the WDL labels and show them, else hide them
+        if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            customCell.homeWins.hidden = NO;
+            customCell.homeWins.textColor = tableTextColor;
+            customCell.homeWins.highlightedTextColor = tableTextHighlightedColor;
+            customCell.homeWins.shadowColor = tableTextShadowColor;
+            customCell.homeDraws.hidden = NO;
+            customCell.homeDraws.textColor = tableTextColor;
+            customCell.homeDraws.highlightedTextColor = tableTextHighlightedColor;
+            customCell.homeDraws.shadowColor = tableTextShadowColor;
+            customCell.homeLosses.hidden = NO;
+            customCell.homeLosses.textColor = tableTextColor;
+            customCell.homeLosses.highlightedTextColor = tableTextHighlightedColor;
+            customCell.homeLosses.shadowColor = tableTextShadowColor;
+            customCell.awayWins.hidden = NO;
+            customCell.awayWins.textColor = tableTextColor;
+            customCell.awayWins.highlightedTextColor = tableTextHighlightedColor;
+            customCell.awayWins.shadowColor = tableTextShadowColor;
+            customCell.awayDraws.hidden = NO;
+            customCell.awayDraws.textColor = tableTextColor;
+            customCell.awayDraws.highlightedTextColor = tableTextHighlightedColor;
+            customCell.awayDraws.shadowColor = tableTextShadowColor;
+            customCell.awayLosses.hidden = NO;
+            customCell.awayLosses.textColor = tableTextColor;
+            customCell.awayLosses.highlightedTextColor = tableTextHighlightedColor;
+            customCell.awayLosses.shadowColor = tableTextShadowColor;
+        } else {
+            customCell.homeWins.hidden = YES;
+            customCell.homeDraws.hidden = YES;
+            customCell.homeLosses.hidden = YES;
+            customCell.awayWins.hidden = YES;
+            customCell.awayDraws.hidden = YES;
+            customCell.awayLosses.hidden = YES;
+        }
         
         //set the UITableViewCell to the TTLeagueTableCell
         cell = customCell;
@@ -383,6 +419,12 @@
             cell.totalGoalDifference.text = [NSString stringWithFormat:@"%d", team.totalGoalDifference];
         }
         cell.points.text = [NSString stringWithFormat:@"%d", team.points];
+        cell.homeWins.text = [NSString stringWithFormat:@"%d", team.homeWins];
+        cell.homeDraws.text = [NSString stringWithFormat:@"%d", team.homeDraws];
+        cell.homeLosses.text = [NSString stringWithFormat:@"%d", team.homeLosses];
+        cell.awayWins.text = [NSString stringWithFormat:@"%d", team.awayWins];
+        cell.awayDraws.text = [NSString stringWithFormat:@"%d", team.awayDraws];
+        cell.awayLosses.text = [NSString stringWithFormat:@"%d", team.awayLosses];
         
         return cell;
     } else {

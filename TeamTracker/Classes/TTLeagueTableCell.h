@@ -14,5 +14,11 @@
 @property (nonatomic) IBOutlet UILabel *gamesPlayed;
 @property (nonatomic) IBOutlet UILabel *totalGoalDifference;
 @property (nonatomic) IBOutlet UILabel *points;
+@property (nonatomic) IBOutlet UILabel *homeWins;
+@property (nonatomic) IBOutlet UILabel *homeDraws;
+@property (nonatomic) IBOutlet UILabel *homeLosses;
+@property (nonatomic) IBOutlet UILabel *awayWins;
+@property (nonatomic) IBOutlet UILabel *awayDraws;
+@property (nonatomic) IBOutlet UILabel *awayLosses;
 
 @end
