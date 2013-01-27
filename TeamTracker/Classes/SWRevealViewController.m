@@ -151,7 +151,6 @@ typedef enum
     return self;
 }
 
-
 - (void)layoutSubviews
 {
     CGRect bounds = self.bounds;
@@ -400,10 +399,22 @@ static NSString * const SWSegueFrontIdentifier = @"sw_front";
 //  [_rearViewController view];
 }
 
-
-- (NSUInteger)supportedInterfaceOrientations
+-(BOOL)shouldAutorotate
 {
-    return UIInterfaceOrientationMaskAll;
+    UINavigationController *navC = (UINavigationController*)_frontViewController;
+    return [[navC.viewControllers lastObject] shouldAutorotate];
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    UINavigationController *navC = (UINavigationController*)_frontViewController;
+    return [[navC.viewControllers lastObject] supportedInterfaceOrientations];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    UINavigationController *navC = (UINavigationController*)_frontViewController;
+    return [[navC.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
 }
 
 

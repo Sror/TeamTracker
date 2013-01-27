@@ -7,11 +7,9 @@
 //
 
 #import "TTAppDelegate.h"
-
+#import "UINavigationController+ChildInterfaceOrientationsIniOS6.h"
 #import "TTLeagueTableViewController.h"
-
 #import "TTMenuViewController.h"
-
 #import "TTTeamsParser.h"
 
 @implementation TTAppDelegate
@@ -55,7 +53,6 @@
 	SWRevealViewController *revealController = [[SWRevealViewController alloc] initWithRearViewController:rearViewController frontViewController:navigationController];
     revealController.delegate = self;
     
-    //self.window.rootViewController = revealController;
     [self.window setRootViewController:revealController];
     
     //Get a URL to the teams list file...

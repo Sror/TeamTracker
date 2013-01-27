@@ -24,6 +24,7 @@
 		53B6BE6816B2A52C0027E09A /* TTMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BE6616B2A52C0027E09A /* TTMatchDetailViewController.m */; };
 		53B6BE6916B2A52C0027E09A /* TTMatchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B6BE6716B2A52C0027E09A /* TTMatchDetailViewController.xib */; };
 		53B6BE7B16B49D240027E09A /* TTGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BE7A16B49D230027E09A /* TTGraphView.m */; };
+		53B6BE7E16B55C880027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BE7D16B55C830027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.m */; };
 		53BE28F316B1B74B0033308B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BE28F216B1B74A0033308B /* SystemConfiguration.framework */; };
 		53BE290D16B1BFE10033308B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290816B1BFE10033308B /* Default-568h@2x.png */; };
 		53BE290E16B1BFE10033308B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290916B1BFE10033308B /* Default.png */; };
@@ -175,6 +176,8 @@
 		53B6BE6716B2A52C0027E09A /* TTMatchDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMatchDetailViewController.xib; sourceTree = "<group>"; };
 		53B6BE7916B49D230027E09A /* TTGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGraphView.h; sourceTree = "<group>"; };
 		53B6BE7A16B49D230027E09A /* TTGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGraphView.m; sourceTree = "<group>"; };
+		53B6BE7C16B55C7F0027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ChildInterfaceOrientationsIniOS6.h"; sourceTree = "<group>"; };
+		53B6BE7D16B55C830027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ChildInterfaceOrientationsIniOS6.m"; sourceTree = "<group>"; };
 		53BE28F216B1B74A0033308B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		53BE290816B1BFE10033308B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		53BE290916B1BFE10033308B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Images/Default.png; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				53B6BE6616B2A52C0027E09A /* TTMatchDetailViewController.m */,
 				53B6BE7916B49D230027E09A /* TTGraphView.h */,
 				53B6BE7A16B49D230027E09A /* TTGraphView.m */,
+				53B6BE7C16B55C7F0027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.h */,
+				53B6BE7D16B55C830027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -668,6 +673,7 @@
 				53BE296316B1C1310033308B /* TTTeamXMLCache.m in Sources */,
 				53B6BE6816B2A52C0027E09A /* TTMatchDetailViewController.m in Sources */,
 				53B6BE7B16B49D240027E09A /* TTGraphView.m in Sources */,
+				53B6BE7E16B55C880027E09A /* UINavigationController+ChildInterfaceOrientationsIniOS6.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

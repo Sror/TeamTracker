@@ -23,10 +23,10 @@
     if (self) {
         //Init data array
         data = graphData;
-        //Init graph plot
-        [self initPlot];
         //Init title
         title = graphTitle;
+        //Init graph plot
+        [self initPlot];
     }
     return self;
 }
@@ -44,7 +44,7 @@
     }
 	else
 	{
-		if(plot.identifier == @"PPG") {
+		if(plot.identifier == @"predTotal") {
             NSNumber *numToPlot = [data objectAtIndex:index];
             float predTotal = [numToPlot floatValue];
             predTotal *= 46.0f;
@@ -67,6 +67,11 @@
     // 2 - Create host view
     hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     hostView.allowPinchScaling = NO;
+    //View layer stuff
+    hostView.layer.shadowOpacity = 1.0;
+    hostView.layer.shadowColor = [UIColor blackColor].CGColor;
+    hostView.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
+    hostView.layer.shadowRadius = 2.5f;
     [self addSubview:hostView];
 }
 
@@ -75,13 +80,13 @@
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     graph.plotAreaFrame.masksToBorder = NO;
     hostView.hostedGraph = graph;
-    graph.paddingLeft = 20.0f;
+    graph.paddingLeft = 30.0f;
     graph.paddingTop = 20.0f;
     graph.paddingRight = 20.0f;
-    graph.paddingBottom = 20.0f;
+    graph.paddingBottom = 30.0f;
     
     //Color to tie in with rest of UI
-    uiTextColor = [CPTColor colorWithComponentRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    uiTextColor = [CPTColor whiteColor];
     // 2 - Set up text style
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
     textStyle.color = uiTextColor;
@@ -116,16 +121,19 @@
     axisTextStyle.color = uiTextColor;
     axisTextStyle.fontName = @"HelveticaNeue-Light";
     axisTextStyle.fontSize = 11.0f;
-    CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
-    tickLineStyle.lineColor = [CPTColor darkGrayColor];
-    tickLineStyle.lineWidth = 2.0f;
+    CPTMutableLineStyle *minorTickLineStyle = [CPTMutableLineStyle lineStyle];
+    minorTickLineStyle.lineColor = [CPTColor darkGrayColor];
+    minorTickLineStyle.lineWidth = 0.5f;
+    CPTMutableLineStyle *majorTickLineStyle = [CPTMutableLineStyle lineStyle];
+    majorTickLineStyle.lineColor = [CPTColor lightGrayColor];
+    majorTickLineStyle.lineWidth = 1.0f;
     CPTMutableLineStyle *majorGridLineStyle = [CPTMutableLineStyle lineStyle];
     majorGridLineStyle.lineColor = [CPTColor grayColor];
-    majorGridLineStyle.lineWidth = 1.0f;
+    majorGridLineStyle.lineWidth = 0.5f;
     majorGridLineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.0f], [NSNumber numberWithFloat:2.0f], nil];
     CPTMutableLineStyle *minorGridLineStyle = [CPTMutableLineStyle lineStyle];
     minorGridLineStyle.lineColor = [CPTColor lightGrayColor];
-    minorGridLineStyle.lineWidth = 1.0f;
+    minorGridLineStyle.lineWidth = 0.5f;
     minorGridLineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.0f], [NSNumber numberWithFloat:2.0f], nil];
     
     // 2 - Get axis set
@@ -134,7 +142,7 @@
     CPTAxis *x = axisSet.xAxis;
     x.title = @"Match Number";
     x.titleTextStyle = axisTitleStyle;
-    x.titleOffset = -35.0f;
+    x.titleOffset = -30.0f;
     x.axisLineStyle = axisLineStyle;
     x.majorGridLineStyle = majorGridLineStyle;
     x.minorGridLineStyle = minorGridLineStyle;
@@ -142,8 +150,9 @@
     x.minorTicksPerInterval = 4;
     x.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
     x.labelTextStyle = axisTextStyle;
-    x.labelOffset = -25.0f;
-    x.majorTickLineStyle = tickLineStyle;
+    x.labelOffset = -20.0f;
+    x.majorTickLineStyle = majorTickLineStyle;
+    x.minorTickLineStyle = minorTickLineStyle;
     x.majorTickLength = 4.0f;
     x.tickDirection = CPTSignPositive;
     
@@ -163,7 +172,8 @@
     y.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
     y.labelTextStyle = axisTextStyle;
     y.labelOffset = -25.0f;
-    y.majorTickLineStyle = tickLineStyle;
+    y.majorTickLineStyle = majorTickLineStyle;
+    y.minorTickLineStyle = minorTickLineStyle;
     y.majorTickLength = 4.0f;
     y.minorTickLength = 2.0f;
     y.tickDirection = CPTSignPositive;
@@ -174,18 +184,24 @@
     [yFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     y.labelFormatter = xFormatter;
 	
-	CPTScatterPlot *ppgPlot = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
-	ppgPlot.identifier = @"PPG";
-    //ppgPlot.dataLineStyle = lineStyle;
-	//xSquaredPlot.dataLineStyle.lineWidth = 1.0f;
-	//xSquaredPlot.dataLineStyle.lineColor = [CPColor redColor];
-	ppgPlot.dataSource = self;
-	[graph addPlot:ppgPlot toPlotSpace:graph.defaultPlotSpace];
+	CPTScatterPlot *predTotalPlot = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
+	predTotalPlot.identifier = @"predTotal";
+    CPTMutableLineStyle *predTotalLineStyle = [CPTMutableLineStyle lineStyle];
+    predTotalLineStyle.lineWidth = 1.0f;
+    predTotalLineStyle.lineColor = [CPTColor whiteColor];
+    CPTMutableShadow *lineShadow = [CPTMutableShadow shadow];
+    lineShadow.shadowOffset = CGSizeMake(0.0, -2.0f);
+    lineShadow.shadowBlurRadius = 2.0f;
+    lineShadow.shadowColor = [CPTColor blackColor];
+    predTotalPlot.dataLineStyle = predTotalLineStyle;
+    predTotalPlot.shadow = lineShadow;
+	predTotalPlot.dataSource = self;
+	[graph addPlot:predTotalPlot toPlotSpace:graph.defaultPlotSpace];
 	
     // 4 - Set theme
     //[graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
-    graph.fill = [CPTFill fillWithColor:[CPTColor clearColor]];
-    graph.plotAreaFrame.fill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.9 green:0.9 blue:0.9 alpha:1.0]];
+    graph.fill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.2 green:0.2 blue:0.2 alpha:1.0]];
+    graph.plotAreaFrame.fill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.15 green:0.15 blue:0.15 alpha:1.0]];
 }
 
 

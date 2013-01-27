@@ -18,9 +18,9 @@
 #import "TTInfoBox.h"
 
 #define HEADER_TEXT_LEAGUE_PORTRAIT     @"     Team                                Pld  GD  Pts"
-#define HEADER_TEXT_PPG_PORTRAIT        @"     Team                                   Pld    PPG"
+#define HEADER_TEXT_PPG_PORTRAIT        @"     Team                                  Pld    PPG"
 #define HEADER_TEXT_LEAGUE_LANDSCAPE    @"     Team                                                                  Pld  GD  Pts"
-#define HEADER_TEXT_PPG_LANDSCAPE       @"     Team                                                                     Pld    PPG"
+#define HEADER_TEXT_PPG_LANDSCAPE       @"     Team                                                                    Pld    PPG"
 
 @interface TTLeagueTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     TTAppDelegate *appDelegate;
