@@ -13,34 +13,34 @@
 -(id)initWithCacheExpiryTimeOut:(NSTimeInterval)expiryTimeout {
     if (self == [super init]) {
         //Init
-        cacheData = nil;
+        cacheDataArray = nil;
         cacheExpiryTimeout = expiryTimeout;
         cacheExpiryDate = [NSDate dateWithTimeIntervalSinceNow:cacheExpiryTimeout];
     }
     return self;
 }
 
-- (NSData*)checkValidityOfCache {
+- (NSMutableArray*)checkValidityOfCache {
     //Current date
     NSDate *currentDate = [NSDate date];
     NSTimeInterval comparison = [currentDate timeIntervalSinceDate:cacheExpiryDate];
     //Check if cache expiry time is in past or future...
     if (comparison < 0) {
-        return cacheData;
+        return cacheDataArray;
     } else {
-        cacheData = nil;
+        cacheDataArray = nil;
         return nil;
     }
 }
 
-- (void)setCacheWithData:(NSData*)data {
+- (void)setCacheWithData:(NSMutableArray*)dataArray {
     //Set cache data
-    cacheData = data;
+    cacheDataArray = dataArray;
 }
 
 - (void)invalidateCache {
     //Delete cache data
-    cacheData = nil;
+    cacheDataArray = nil;
     //Reset cache expiry
     cacheExpiryDate = [NSDate dateWithTimeIntervalSinceNow:cacheExpiryTimeout];
 }

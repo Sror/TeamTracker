@@ -255,30 +255,26 @@
             }
             break;
         case 3:
-            //Only create new frontController instance if it is a DIFFERENT viewController class...
-            if ( ![frontNavigationController.topViewController isKindOfClass:[TTTeamDetailViewController class]] ) {
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                if ([defaults objectForKey:@"favouriteTeam"] != nil) {
-                    //Find favourite team...
-                    TTTeam *team;
-                    for (team in appDelegate.teamsParser.teams) {
-                        if ([team.name isEqualToString:[defaults objectForKey:@"favouriteTeam"]]) {
-                            break;
-                        }
+        {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults objectForKey:@"favouriteTeam"] != nil) {
+                //Find favourite team...
+                TTTeam *team;
+                for (team in appDelegate.teamsParser.teams) {
+                    if ([team.name isEqualToString:[defaults objectForKey:@"favouriteTeam"]]) {
+                        break;
                     }
-                    TTTeamDetailViewController *frontViewController = nil;
-                    frontViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailViewController" bundle:nil];
-                    frontViewController.team = team;
-                    frontViewController.didArriveAsFavouriteTeam = YES;
-                    
-                    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                    navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
-                    [revealController setFrontViewController:navigationController animated:YES];
                 }
-            } else {
-                //Toggle back to the frontViewController to show ALL league results...
-                [revealController revealToggle:self];
+                TTTeamDetailViewController *frontViewController = nil;
+                frontViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailViewController" bundle:nil];
+                frontViewController.team = team;
+                frontViewController.didArriveAsFavouriteTeam = YES;
+                
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                [revealController setFrontViewController:navigationController animated:YES];
             }
+        }
             break;
         default:
             break;

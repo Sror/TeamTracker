@@ -12,14 +12,14 @@
 #define TTTeamXMLCacheExpiryDefault 3600     //1 hour
 
 @interface TTTeamXMLCache : NSObject {
-    NSData *cacheData;
+    NSMutableArray *cacheDataArray;
     NSDate *cacheExpiryDate;
     NSTimeInterval cacheExpiryTimeout;
 }
 
 -(id)initWithCacheExpiryTimeOut:(NSTimeInterval)expiryTimeout;
-- (NSData*)checkValidityOfCache;
-- (void)setCacheWithData:(NSData*)data;
+- (NSMutableArray*)checkValidityOfCache;
+- (void)setCacheWithData:(NSMutableArray*)dataArray;
 - (void)invalidateCache;
 
 @end
