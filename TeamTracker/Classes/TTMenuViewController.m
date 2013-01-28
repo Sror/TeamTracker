@@ -216,8 +216,8 @@
             else {
                 //Toggle back to the frontViewController & reload the league table sorting by points...
                 TTLeagueTableViewController *frontViewController = (TTLeagueTableViewController*)frontNavigationController.topViewController;
-                [revealController revealToggle:self];
                 frontViewController.sortMode = TTLeagueTableSortByPoints;
+                [revealController revealToggle:self];
                 [frontViewController reloadLeagueTable];
             }
             break;
@@ -235,8 +235,8 @@
             else {
                 //Toggle back to the frontViewController & reload the league table sorting by points per game...
                 TTLeagueTableViewController *frontViewController = (TTLeagueTableViewController*)frontNavigationController.topViewController;
-                [revealController revealToggle:self];
                 frontViewController.sortMode = TTLeagueTableSortByPointsPerGame;
+                [revealController revealToggle:self];
                 [frontViewController reloadLeagueTable];
             }
             break;

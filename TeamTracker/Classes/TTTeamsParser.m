@@ -196,25 +196,29 @@
         }
     } else {
         //Cache valid, so teams array already in memory & no need to parse -> no error
+        
+        //Sort the teams table...
+        [self sortTeamsForLeagueTableBy:sortMode];
         return nil;
     }
 }
 
 - (void)sortTeamsForLeagueTableBy:(NSInteger)sortMode {
-    //Sort table by doing least significant factor -> most significant factor
-    //First sort by goals For...
-    NSSortDescriptor *totalGoalsForSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalsFor" ascending:NO];
-    [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalsForSort]];
-    
-    //Then sort by goal difference...
-    NSSortDescriptor *totalGoalDifferenceSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalDifference" ascending:NO];
-    [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalDifferenceSort]];
-    
-    //Finally sort by points or pointsPerGame...
     if (sortMode == TTLeagueTableSortByPoints) {
+        //Sort table by doing least significant factor -> most significant factor
+        //First sort by goals For...
+        NSSortDescriptor *totalGoalsForSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalsFor" ascending:NO];
+        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalsForSort]];
+        
+        //Then sort by goal difference...
+        NSSortDescriptor *totalGoalDifferenceSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalDifference" ascending:NO];
+        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalDifferenceSort]];
+        
+        //Finally sort by points or pointsPerGame...
         NSSortDescriptor *pointsSort = [NSSortDescriptor sortDescriptorWithKey:@"points" ascending:NO];
         [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
     } else {
+        //Just sort by PPG...
         NSSortDescriptor *pointsSort = [NSSortDescriptor sortDescriptorWithKey:@"latestPPG" ascending:NO];
         [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
     }
@@ -250,7 +254,7 @@
         team.awayDraws = 0;
         team.awayLosses = 0;
         team.points = 0;
-        team.latestPPG = 0;
+        team.latestPPG = [NSNumber numberWithFloat:0.0f];
         [team.ppgArray removeAllObjects];
         [team.results removeAllObjects];
     }
