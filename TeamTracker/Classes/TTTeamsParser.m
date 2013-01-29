@@ -119,69 +119,73 @@
                     matchDateSortID++;
                 }
                 
-                TTMatchResult *mResult = [[TTMatchResult alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam WithHomeScore:homeScore AndAwayScore:awayScore AndHomeGoalScorers:homeGoalScorers AndAwayGoalScorers:awayGoalScorers AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
-                
-                //Find the two teams involed in the result, and update their stats...
-                for (TTTeam *team in self.teams) {
-                    if ([team.name isEqualToString:mResult.homeTeam] || [team.name isEqualToString:mResult.awayTeam]) {
-                        //Update the team's points, and GF & GA based on the result...
-                        //Team won at home...
-                        if ((mResult.homeScore > mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.points += 3;
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeWins++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"W"]];
+                //Only init the result & add it to the team if it has been played
+                //If the home and away score objects are nil, the match has NOT been played yet
+                if ([result valueWithPath:@"hScore"] != nil && [result valueWithPath:@"aScore"] != nil) {
+                    TTMatchResult *mResult = [[TTMatchResult alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam WithHomeScore:homeScore AndAwayScore:awayScore AndHomeGoalScorers:homeGoalScorers AndAwayGoalScorers:awayGoalScorers AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
+                    
+                    //Find the two teams involed in the result, and update their stats...
+                    for (TTTeam *team in self.teams) {
+                        if ([team.name isEqualToString:mResult.homeTeam] || [team.name isEqualToString:mResult.awayTeam]) {
+                            //Update the team's points, and GF & GA based on the result...
+                            //Team won at home...
+                            if ((mResult.homeScore > mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                                team.points += 3;
+                                team.homeGoalsFor += mResult.homeScore;
+                                team.homeGoalsAgainst += mResult.awayScore;
+                                team.homeWins++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"W"]];
+                            }
+                            //Team won away...
+                            else if ((mResult.awayScore > mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                                team.points += 3;
+                                team.awayGoalsFor += mResult.awayScore;
+                                team.awayGoalsAgainst += mResult.homeScore;
+                                team.awayWins++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"W"]];
+                            }
+                            //Team lost at home...
+                            if ((mResult.homeScore < mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                                team.homeGoalsFor += mResult.homeScore;
+                                team.homeGoalsAgainst += mResult.awayScore;
+                                team.homeLosses++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"L"]];
+                            }
+                            //Team lost away...
+                            else if ((mResult.awayScore < mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                                team.awayGoalsFor += mResult.awayScore;
+                                team.awayGoalsAgainst += mResult.homeScore;
+                                team.awayLosses++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"L"]];
+                            }
+                            //Team drew at home...
+                            else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
+                                team.points += 1;
+                                team.homeGoalsFor += mResult.homeScore;
+                                team.homeGoalsAgainst += mResult.awayScore;
+                                team.homeDraws++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"D"]];
+                            }
+                            //Team drew away...
+                            else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.awayTeam]) {
+                                team.points += 1;
+                                team.awayGoalsFor += mResult.awayScore;
+                                team.awayGoalsAgainst += mResult.homeScore;
+                                team.awayDraws++;
+                                [team.formArray addObject:[NSString stringWithFormat:@"D"]];
+                            }
+                            
+                            //Update games played, pointsPerGame, historical ppgArray & goal differences
+                            team.gamesPlayed++;
+                            team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
+                            [team.ppgArray addObject:team.latestPPG];
+                            team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
+                            team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
+                            team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
+                            
+                            //Add result to both home and away teams' results arrays...
+                            [team.results addObject:mResult];
                         }
-                        //Team won away...
-                        else if ((mResult.awayScore > mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.points += 3;
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayWins++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"W"]];
-                        }
-                        //Team lost at home...
-                        if ((mResult.homeScore < mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeLosses++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"L"]];
-                        }
-                        //Team lost away...
-                        else if ((mResult.awayScore < mResult.homeScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayLosses++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"L"]];
-                        }
-                        //Team drew at home...
-                        else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.homeTeam]) {
-                            team.points += 1;
-                            team.homeGoalsFor += mResult.homeScore;
-                            team.homeGoalsAgainst += mResult.awayScore;
-                            team.homeDraws++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"D"]];
-                        }
-                        //Team drew away...
-                        else if ((mResult.homeScore == mResult.awayScore) && [team.name isEqualToString:mResult.awayTeam]) {
-                            team.points += 1;
-                            team.awayGoalsFor += mResult.awayScore;
-                            team.awayGoalsAgainst += mResult.homeScore;
-                            team.awayDraws++;
-                            [team.formArray addObject:[NSString stringWithFormat:@"D"]];
-                        }
-                        
-                        //Update games played, pointsPerGame, historical ppgArray & goal differences
-                        team.gamesPlayed++;
-                        team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
-                        [team.ppgArray addObject:team.latestPPG];
-                        team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
-                        team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
-                        team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
-                        
-                        //Add result to both home and away teams' results arrays...
-                        [team.results addObject:mResult];
                     }
                 }
             }

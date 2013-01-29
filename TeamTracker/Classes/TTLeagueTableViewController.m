@@ -19,6 +19,7 @@
 
 @synthesize leagueTable;
 @synthesize sortMode;
+@synthesize networkDataConnectionIsPresent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,10 +42,6 @@
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
-    //Add a menu button to the navigation bar that will also allow access...
-    UIBarButtonItem *refreshButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonTapped)];
-    self.navigationItem.rightBarButtonItem = refreshButtonItem;
-    
     //set seperator colour for table
     self.leagueTable.separatorColor = [UIColor darkTextColor];
     
@@ -61,8 +58,24 @@
                                              selector:@selector(reachabilityChanged:)
                                                  name:kReachabilityChangedNotification
                                                object:nil];
-    
+    //Start reachability notifications
     [reach startNotifier];
+    
+    // setup pull-to-refresh
+    __weak TTLeagueTableViewController *weakSelf = self;
+    [self.leagueTable addPullToRefreshWithActionHandler:^{
+        if (weakSelf.networkDataConnectionIsPresent) {
+            //invalidate cache...
+            [appDelegate.teamsParser invalidateCacheData];
+            //Reload the league table...
+            [weakSelf reloadLeagueTable];
+        } else {
+            //Display an info box to user...
+            TTInfoBox *box = [[TTInfoBox alloc] addToView:weakSelf.view withInfoText:@"No Network Connection" WhilstAnimating:YES];
+        }
+        //Stop & hide the pull-to-refresh view...
+        [weakSelf.leagueTable.pullToRefreshView stopAnimating];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,25 +101,13 @@
     //Update reachability flag
     if([reach isReachable])
     {
-        networkDataConnectionIsPresent = TRUE;
+        self.networkDataConnectionIsPresent = TRUE;
     }
     else
     {
-        networkDataConnectionIsPresent = FALSE;
+        self.networkDataConnectionIsPresent = FALSE;
         //Display an info box to user...
         TTInfoBox *box = [[TTInfoBox alloc] addToView:self.view withInfoText:@"Network Connection Lost" WhilstAnimating:YES];
-    }
-}
-                                                                                                                                                                  
-- (void)refreshButtonTapped {
-    if (networkDataConnectionIsPresent) {
-        //invalidate cache...
-        [appDelegate.teamsParser invalidateCacheData];
-        //Reload the league table...
-        [self reloadLeagueTable];
-    } else {
-        //Display an info box to user...
-        TTInfoBox *box = [[TTInfoBox alloc] addToView:self.view withInfoText:@"No Network Connection" WhilstAnimating:YES];
     }
 }
 
@@ -136,17 +137,13 @@
     //Show the progress HUD and spawn a BG thread for XML parsing...
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        //Get a URL to the results file
-        //NSURL *resultsURL = [NSURL URLWithString:@"http://dl.dropbox.com/u/5400542/championship_results.xml"];
         //Parse the latest results for league table on background thread...
-        //NSError *resultsError = [appDelegate parseResultsXMLAtURL:resultsURL SortingBy:sortMode];
         NSError *resultsError = [appDelegate.teamsParser parseTeamsResultsXMLSortingBy:sortMode];
         
         if (resultsError == nil) {
-            //Reload the table, scroll to top + hide the progress HUD back on the main thread...
+            //Reload the table + hide the progress HUD back on the main thread...
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.leagueTable reloadData];
-                [self.leagueTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
         } else {
@@ -447,45 +444,6 @@
         return cell;
     }
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
