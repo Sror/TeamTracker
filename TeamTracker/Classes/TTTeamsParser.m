@@ -190,6 +190,11 @@
                 }
             }
             
+            //Reverse results for each team so most recent team result first
+            for (TTTeam *team in self.teams) {
+                team.results = (NSMutableArray*)[[team.results reverseObjectEnumerator] allObjects];
+            }
+            
             //Add results array to cache
             [teamsCache setCacheWithData:self.teams];
             

@@ -107,9 +107,6 @@
     } else {
         self.title = NSLocalizedString(@"Results", @"Results");
         
-        //Reverse so most recent team result first
-        self.team.results = (NSMutableArray*)[[self.team.results reverseObjectEnumerator] allObjects];
-        
         //Set up initial amount of results to display
         for (int i = 0; i < 15; i++) {
             //Only add if result exists at index
