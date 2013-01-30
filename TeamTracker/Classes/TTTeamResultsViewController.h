@@ -13,15 +13,16 @@
 #import "TTMatchResultCell.h"
 #import "TTBackgroundLayer.h"
 #import "TTMatchDetailViewController.h"
+#import "SVPullToRefresh.h"
 
 @interface TTTeamResultsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     TTAppDelegate *appDelegate;
-    NSMutableArray *allLeagueResults;
-    //NSMutableArray *dateSectionCounts;
 }
 
 @property (nonatomic, retain) TTTeam *team;
 @property (nonatomic, retain) IBOutlet UITableView *resultsTable;
+@property (nonatomic) NSMutableArray *dataSource;
+@property (nonatomic) NSMutableArray *allLeagueResults;
 @property (nonatomic) BOOL showAllLeagueResults;
 
 @end

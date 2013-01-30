@@ -17,6 +17,8 @@
 
 @synthesize team;
 @synthesize resultsTable;
+@synthesize dataSource;
+@synthesize allLeagueResults;
 @synthesize showAllLeagueResults;
 
 
@@ -37,6 +39,9 @@
     //set seperator colour for table
     self.resultsTable.separatorColor = [UIColor darkTextColor];
     
+    //table dataSource
+    self.dataSource = [NSMutableArray array];
+    
     //Collate ALL league results if requested...
     if (showAllLeagueResults) {
         //Add a menu button to the navigation bar that will also allow access...
@@ -45,49 +50,92 @@
         UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
         self.navigationItem.leftBarButtonItem = revealButtonItem;
         
-        allLeagueResults = [NSMutableArray array];
+        self.allLeagueResults = [NSMutableArray array];
         for (TTTeam *t in appDelegate.teamsParser.teams) {
-            [allLeagueResults addObjectsFromArray:t.results];
+            [self.allLeagueResults addObjectsFromArray:t.results];
         }
         //Strip out duplicate results
         NSMutableArray *unique = [NSMutableArray array];
-        for (id obj in allLeagueResults) {
+        for (id obj in self.allLeagueResults) {
             if (![unique containsObject:obj]) {
                 [unique addObject:obj];
             }
         }
         //Copy all unique result objects back to allLeagueResults
         //Do it in a way that removes redundant results from memory
-        [allLeagueResults removeAllObjects];
-        [allLeagueResults addObjectsFromArray:unique];
+        [self.allLeagueResults removeAllObjects];
+        [self.allLeagueResults addObjectsFromArray:unique];
         [unique removeAllObjects];
         
         //Sort by matchDateSortID to put ALL results together grouped by date
         NSSortDescriptor *matchDateSort = [NSSortDescriptor sortDescriptorWithKey:@"matchDateSortID" ascending:YES];
-        [allLeagueResults sortUsingDescriptors:[NSMutableArray arrayWithObject:matchDateSort]];
+        [self.allLeagueResults sortUsingDescriptors:[NSMutableArray arrayWithObject:matchDateSort]];
+        
+        //Reverse so most recent result is at index == 0
+        self.allLeagueResults = (NSMutableArray*)[[self.allLeagueResults reverseObjectEnumerator] allObjects];
         
         //Set title...
         self.title = NSLocalizedString(@"All League Results", @"All League Results");
         
-        /*//Count number of results on a particular date (for table sectioning)
-        TTMatchResult *mResult = [allLeagueResults lastObject];
-        const NSInteger numIDs = mResult.matchDateSortID+1;
-        NSInteger counts[numIDs];
-        dateSectionCounts = [NSMutableArray arrayWithCapacity:numIDs];
-        for (int i = 0; i < numIDs; i++) {
-            counts[i] = 0;
+        //Set up initial amount of results to display
+        for (int i = 0; i < 15; i++) {
+            //Only add if result exists at index
+            if (i < [self.allLeagueResults count]) {
+                [self.dataSource addObject:[self.allLeagueResults objectAtIndex:i]];
+            } else
+                break;
         }
-        //Count number of results for a particular date
-        for(TTMatchResult *result in allLeagueResults) {
-            counts[result.matchDateSortID]++;
-        }
-        //Assign to class array
-        for (int i = 0; i < numIDs; i++) {
-            [dateSectionCounts addObject:[NSNumber numberWithInteger:counts[i]]];
-        }*/
+        
+        // setup infinite scrolling
+        __weak TTTeamResultsViewController *weakSelf = self;
+        [self.resultsTable addInfiniteScrollingWithActionHandler:^{
+            
+            [weakSelf.resultsTable beginUpdates];
+            for (int i = 0; i < 15; i++) {
+                //Only add if result exists at index
+                if ([weakSelf.dataSource count] < [weakSelf.allLeagueResults count]) {
+                    [weakSelf.dataSource addObject:[weakSelf.allLeagueResults objectAtIndex:[weakSelf.dataSource count]]];
+                    [weakSelf.resultsTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[weakSelf.dataSource count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+                } else
+                    break;
+            }
+            [weakSelf.resultsTable endUpdates];
+            
+            [weakSelf.resultsTable.infiniteScrollingView stopAnimating];
+        }];
         
     } else {
         self.title = NSLocalizedString(@"Results", @"Results");
+        
+        //Reverse so most recent team result first
+        self.team.results = (NSMutableArray*)[[self.team.results reverseObjectEnumerator] allObjects];
+        
+        //Set up initial amount of results to display
+        for (int i = 0; i < 15; i++) {
+            //Only add if result exists at index
+            if (i < [self.team.results count]) {
+                [self.dataSource addObject:[self.team.results objectAtIndex:i]];
+            } else
+                break;
+        }
+        
+        // setup infinite scrolling
+        __weak TTTeamResultsViewController *weakSelf = self;
+        [self.resultsTable addInfiniteScrollingWithActionHandler:^{
+            
+            [weakSelf.resultsTable beginUpdates];
+            for (int i = 0; i < 15; i++) {
+                //Only add if result exists at index
+                if ([weakSelf.dataSource count] < [weakSelf.team.results count]) {
+                    [weakSelf.dataSource addObject:[weakSelf.team.results objectAtIndex:[weakSelf.dataSource count]]];
+                    [weakSelf.resultsTable insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[weakSelf.dataSource count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+                } else
+                    break;
+            }
+            [weakSelf.resultsTable endUpdates];
+            
+            [weakSelf.resultsTable.infiniteScrollingView stopAnimating];
+        }];
     }
 }
 
@@ -128,11 +176,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section...
-    if (showAllLeagueResults) {
-        return [allLeagueResults count];
-    } else {
-        return [self.team.results count];
-    }
+    return [self.dataSource count];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,12 +200,7 @@
     TTMatchResultCell *customCell = (TTMatchResultCell*)cell;
     
     //Get result object - indexed to place the most recent result first...
-    TTMatchResult *mResult = nil;
-    if (showAllLeagueResults) {
-        mResult = [allLeagueResults objectAtIndex:([allLeagueResults count] - 1) - indexPath.row];
-    } else {
-        mResult = [team.results objectAtIndex:([team.results count] - 1) - indexPath.row];
-    }
+    TTMatchResult *mResult = [self.dataSource objectAtIndex:indexPath.row];
     
     //Figure out W, D, L to decide cell background colour (W = green, D = orange, L = red)
     CAGradientLayer *bgLayer = nil;
@@ -237,12 +276,7 @@
     }
     
     //Get result object - indexed to place the most recent result first...
-    TTMatchResult *result = nil;
-    if (showAllLeagueResults) {
-        result = [allLeagueResults objectAtIndex:([allLeagueResults count] - 1) - indexPath.row];
-    } else {
-        result = [team.results objectAtIndex:([team.results count] - 1) - indexPath.row];
-    }
+    TTMatchResult *result = [self.dataSource objectAtIndex:indexPath.row];
     
     cell.homeTeam.text = [NSString stringWithFormat:@"%@", result.homeTeam];
     cell.homeScore.text = [NSString stringWithFormat:@"%d", result.homeScore];
