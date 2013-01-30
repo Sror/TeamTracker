@@ -393,10 +393,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *leagueCellIdentifier = @"leagueCellIdentifier";
+    static NSString *ppgCellIdentifier = @"ppgCellIdentifier";
     //Set up cell depending on sortMode...
     if (sortMode == TTLeagueTableSortByPoints) {
-        TTLeagueTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        TTLeagueTableCell *cell = [tableView dequeueReusableCellWithIdentifier:leagueCellIdentifier];
         
         // Configure the cell...
         if (cell == nil) {
@@ -425,7 +426,7 @@
         
         return cell;
     } else {
-        TTPPGTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        TTPPGTableCell *cell = [tableView dequeueReusableCellWithIdentifier:ppgCellIdentifier];
         
         // Configure the cell...
         if (cell == nil) {

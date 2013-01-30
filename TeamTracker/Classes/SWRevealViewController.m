@@ -399,22 +399,29 @@ static NSString * const SWSegueFrontIdentifier = @"sw_front";
 //  [_rearViewController view];
 }
 
+//Forward the autorotation settings of the frontController's children if it is a UINavigationController
 -(BOOL)shouldAutorotate
 {
-    UINavigationController *navC = (UINavigationController*)_frontViewController;
-    return [[navC.viewControllers lastObject] shouldAutorotate];
+    if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navC = (UINavigationController*)_frontViewController;
+        return [[navC.viewControllers lastObject] shouldAutorotate];
+    }
 }
 
 -(NSUInteger)supportedInterfaceOrientations
 {
-    UINavigationController *navC = (UINavigationController*)_frontViewController;
-    return [[navC.viewControllers lastObject] supportedInterfaceOrientations];
+    if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navC = (UINavigationController*)_frontViewController;
+        return [[navC.viewControllers lastObject] supportedInterfaceOrientations];
+    }
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    UINavigationController *navC = (UINavigationController*)_frontViewController;
-    return [[navC.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
+    if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navC = (UINavigationController*)_frontViewController;
+        return [[navC.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
+    }
 }
 
 
