@@ -44,7 +44,7 @@
     }
 	else
 	{
-		if(plot.identifier == @"predTotal") {
+		if([(NSString*)plot.identifier isEqualToString:@"predTotal"]) {
             NSNumber *numToPlot = [data objectAtIndex:index];
             float predTotal = [numToPlot floatValue];
             predTotal *= 46.0f;

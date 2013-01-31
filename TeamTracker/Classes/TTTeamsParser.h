@@ -11,6 +11,7 @@
 #import "SMXMLDocument.h"
 #import "TTTeam.h"
 #import "TTMatchResult.h"
+#import "TTFixture.h"
 
 
 #define NUM_TEAMS 24

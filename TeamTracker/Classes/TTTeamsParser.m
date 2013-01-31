@@ -94,7 +94,6 @@
             
             //Look through <dates> children of type <date>
             NSInteger matchDateSortID = 0;
-            NSString *prevMatchDate = [NSString stringWithFormat:@""];
             
             //Look through current <date> node for children of type <result>
             for (SMXMLElement *result in [results childrenNamed:@"res"]) {
@@ -112,12 +111,9 @@
                 NSString *homeGoalScorers = [result valueWithPath:@"hGS"];
                 NSString *awayGoalScorers = [result valueWithPath:@"aGS"];
                 
-                //If the date of THIS result is different to the LAST result, we are on a new set of results
-                if (![matchDate isEqualToString:prevMatchDate]) {
-                    //Increment matchDateSortID so that each date's fixtures has its own ID
-                    //Useful when sorting ALL league fixtures by date
-                    matchDateSortID++;
-                }
+                //Increment matchDateSortID so that each fixture has its own ID
+                //Useful when sorting ALL league fixtures by date
+                matchDateSortID++;
                 
                 //Only init the result & add it to the team if it has been played
                 //If the home and away score objects are nil, the match has NOT been played yet
@@ -187,10 +183,20 @@
                             [team.results addObject:mResult];
                         }
                     }
+                } else {
+                    TTFixture *mFixture = [[TTFixture alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
+                    
+                    //Find the two teams involed in the result, and update their stats...
+                    for (TTTeam *team in self.teams) {
+                        if ([team.name isEqualToString:mFixture.homeTeam] || [team.name isEqualToString:mFixture.awayTeam]) {
+                            //add fixture
+                            [team.fixtures addObject:mFixture];
+                        }
+                    }
                 }
             }
             
-            //Reverse results for each team so most recent team result first
+            //Reverse results & fixtures for each team so most recent team result first
             for (TTTeam *team in self.teams) {
                 team.results = (NSMutableArray*)[[team.results reverseObjectEnumerator] allObjects];
             }

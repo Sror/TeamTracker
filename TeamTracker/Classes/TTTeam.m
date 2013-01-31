@@ -32,11 +32,13 @@
 @synthesize formArray;
 @synthesize leaguePositionArray;
 @synthesize results;
+@synthesize fixtures;
 
 - (id)initTeamWithName:(NSString*)teamName {
     if (self == [super init]) {
         self.name = teamName;
         self.results = [NSMutableArray arrayWithCapacity:NUM_GAMES];
+        self.fixtures = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.ppgArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.formArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.leaguePositionArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];

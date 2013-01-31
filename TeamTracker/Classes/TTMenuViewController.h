@@ -14,6 +14,7 @@
 #import "TTLeagueTableViewController.h"
 #import "TTTeamDetailViewController.h"
 #import "TTTeamResultsViewController.h"
+#import "TTFixturesViewController.h"
 
 @interface TTMenuViewController : UIViewController {
     TTAppDelegate *appDelegate;

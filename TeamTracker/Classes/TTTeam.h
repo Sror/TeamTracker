@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TTAppDelegate.h"
 #import "TTMatchResult.h"
+#import "TTFixture.h"
 
 @interface TTTeam : NSObject {
 
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) NSMutableArray *formArray;
 @property (nonatomic, retain) NSMutableArray *leaguePositionArray;
 @property (nonatomic, retain) NSMutableArray *results;
+@property (nonatomic, retain) NSMutableArray *fixtures;
 
 - (id)initTeamWithName:(NSString*)teamName;
 - (void)addMatchResult:(TTMatchResult*)mResult;

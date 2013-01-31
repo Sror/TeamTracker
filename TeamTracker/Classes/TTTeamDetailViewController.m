@@ -7,13 +7,13 @@
 //
 
 #import "TTTeamDetailViewController.h"
+#import "TTFixture.h"
 
 @interface TTTeamDetailViewController ()
 
 @end
 
 @implementation TTTeamDetailViewController
-@synthesize hostView;
 @synthesize didArriveAsFavouriteTeam;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,6 +68,8 @@
     [self.seeAllResultsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
     [self.moreStatsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
     [self.moreStatsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
+    [self.upcomingFixturesButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
+    [self.upcomingFixturesButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"favouriteTeam"] isEqualToString:self.team.name]) {
         [self.saveAsMyTeamButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
@@ -140,7 +142,17 @@
 }
 
 - (IBAction)moreStatsButtonTapped:(UIButton *)sender {
+    TTMoreStatsViewController *moreStatsViewController = [[TTMoreStatsViewController alloc] initWithNibName:@"TTMoreStatsView" bundle:nil];
+    moreStatsViewController.team = self.team;
+    [self.navigationController pushViewController:moreStatsViewController animated:YES];
+}
+
+- (IBAction)upcomingFixturesButtonTapped:(id)sender {
+    TTFixturesViewController *fixturesViewController = [[TTFixturesViewController alloc] initWithNibName:@"TTFixturesView" bundle:nil];
+    fixturesViewController.team = self.team;
+    fixturesViewController.showAllFixtures = NO;
     
+    [self.navigationController pushViewController:fixturesViewController animated:YES];
 }
 
 @end

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		531BF85E16BA755800D975AC /* TTFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 531BF85D16BA755800D975AC /* TTFixture.m */; };
+		531BF86116BA7CF100D975AC /* TTFixturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 531BF86016BA7CF000D975AC /* TTFixturesViewController.m */; };
+		531BF86316BA82B200D975AC /* TTFixturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531BF86216BA82B200D975AC /* TTFixturesView.xib */; };
+		531BF86616BA84C000D975AC /* TTFixtureTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 531BF86516BA84BF00D975AC /* TTFixtureTableCell.m */; };
+		531BF86816BA84E700D975AC /* TTFixtureTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531BF86716BA84E600D975AC /* TTFixtureTableCell.xib */; };
+		5357C97316BAB7C700E0207A /* TTMoreStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */; };
+		5357C97416BAB7C700E0207A /* TTMoreStatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */; };
 		5370AAF516A885BF007E0DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF416A885BF007E0DBB /* UIKit.framework */; };
 		5370AAF716A885BF007E0DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF616A885BF007E0DBB /* Foundation.framework */; };
 		5370AAF916A885BF007E0DBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF816A885BF007E0DBB /* CoreGraphics.framework */; };
@@ -77,6 +84,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		531BF85C16BA755800D975AC /* TTFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFixture.h; path = Classes/TTFixture.h; sourceTree = "<group>"; };
+		531BF85D16BA755800D975AC /* TTFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFixture.m; path = Classes/TTFixture.m; sourceTree = "<group>"; };
+		531BF85F16BA7CF000D975AC /* TTFixturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFixturesViewController.h; path = Classes/TTFixturesViewController.h; sourceTree = "<group>"; };
+		531BF86016BA7CF000D975AC /* TTFixturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFixturesViewController.m; path = Classes/TTFixturesViewController.m; sourceTree = "<group>"; };
+		531BF86216BA82B200D975AC /* TTFixturesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTFixturesView.xib; path = Resources/XIBs/TTFixturesView.xib; sourceTree = "<group>"; };
+		531BF86416BA84BE00D975AC /* TTFixtureTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTFixtureTableCell.h; path = Classes/TTFixtureTableCell.h; sourceTree = "<group>"; };
+		531BF86516BA84BF00D975AC /* TTFixtureTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTFixtureTableCell.m; path = Classes/TTFixtureTableCell.m; sourceTree = "<group>"; };
+		531BF86716BA84E600D975AC /* TTFixtureTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTFixtureTableCell.xib; path = Resources/XIBs/TTFixtureTableCell.xib; sourceTree = "<group>"; };
+		5357C97016BAB7C700E0207A /* TTMoreStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMoreStatsViewController.h; path = Classes/TTMoreStatsViewController.h; sourceTree = "<group>"; };
+		5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMoreStatsViewController.m; path = Classes/TTMoreStatsViewController.m; sourceTree = "<group>"; };
+		5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMoreStatsView.xib; path = Classes/TTMoreStatsView.xib; sourceTree = "<group>"; };
 		5370AAF016A885BE007E0DBB /* TeamTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5370AAF416A885BF007E0DBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5370AAF616A885BF007E0DBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -267,6 +285,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5357C96916BAB22D00E0207A /* SMXMLDocument */ = {
+			isa = PBXGroup;
+			children = (
+				53BE293216B1C1310033308B /* SMXMLDocument.h */,
+				53BE293316B1C1310033308B /* SMXMLDocument.m */,
+			);
+			name = SMXMLDocument;
+			sourceTree = "<group>";
+		};
+		5357C96A16BAB23D00E0207A /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				53C3EEB316B86B68009896DB /* SVPullToRefresh.h */,
+				53C3EEBA16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.h */,
+				53C3EEBB16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m */,
+				53C3EEBC16B86B68009896DB /* UIScrollView+SVPullToRefresh.h */,
+				53C3EEBD16B86B68009896DB /* UIScrollView+SVPullToRefresh.m */,
+			);
+			name = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		5357C96B16BAB25C00E0207A /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				53BE293016B1C1310033308B /* Reachability.h */,
+				53BE293116B1C1310033308B /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		5357C96C16BAB26900E0207A /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53BE293416B1C1310033308B /* SWRevealViewController.h */,
+				53BE293516B1C1310033308B /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		5357C96D16BAB28900E0207A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				53BE292E16B1C1310033308B /* MBProgressHUD.h */,
+				53BE292F16B1C1310033308B /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		5357C96E16BAB2BC00E0207A /* Object Classes */ = {
+			isa = PBXGroup;
+			children = (
+				53BE293816B1C1310033308B /* TTBackgroundLayer.h */,
+				53BE293916B1C1310033308B /* TTBackgroundLayer.m */,
+				531BF85C16BA755800D975AC /* TTFixture.h */,
+				531BF85D16BA755800D975AC /* TTFixture.m */,
+				53BE293A16B1C1310033308B /* TTInfoBox.h */,
+				53BE293B16B1C1310033308B /* TTInfoBox.m */,
+				53BE294016B1C1310033308B /* TTMatchResult.h */,
+				53BE294116B1C1310033308B /* TTMatchResult.m */,
+				53BE294816B1C1310033308B /* TTTeam.h */,
+				53BE294916B1C1310033308B /* TTTeam.m */,
+				53BE294E16B1C1310033308B /* TTTeamsParser.h */,
+				53BE294F16B1C1310033308B /* TTTeamsParser.m */,
+				53BE295016B1C1310033308B /* TTTeamXMLCache.h */,
+				53BE295116B1C1310033308B /* TTTeamXMLCache.m */,
+			);
+			name = "Object Classes";
+			sourceTree = "<group>";
+		};
+		5357C96F16BAB32B00E0207A /* Custom Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				531BF86416BA84BE00D975AC /* TTFixtureTableCell.h */,
+				531BF86516BA84BF00D975AC /* TTFixtureTableCell.m */,
+				53BE293C16B1C1310033308B /* TTLeagueTableCell.h */,
+				53BE293D16B1C1310033308B /* TTLeagueTableCell.m */,
+				53BE294216B1C1310033308B /* TTMatchResultCell.h */,
+				53BE294316B1C1310033308B /* TTMatchResultCell.m */,
+				53BE294616B1C1310033308B /* TTPPGTableCell.h */,
+				53BE294716B1C1310033308B /* TTPPGTableCell.m */,
+			);
+			name = "Custom Table Cells";
+			sourceTree = "<group>";
+		};
 		5370AAE516A885BE007E0DBB = {
 			isa = PBXGroup;
 			children = (
@@ -436,51 +538,31 @@
 		53BE28F416B1BF360033308B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				53C3EEB316B86B68009896DB /* SVPullToRefresh.h */,
-				53C3EEB416B86B68009896DB /* TTGraphView.h */,
-				53C3EEB516B86B68009896DB /* TTGraphView.m */,
-				53C3EEB616B86B68009896DB /* TTMatchDetailViewController.h */,
-				53C3EEB716B86B68009896DB /* TTMatchDetailViewController.m */,
-				53C3EEBA16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.h */,
-				53C3EEBB16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m */,
-				53C3EEBC16B86B68009896DB /* UIScrollView+SVPullToRefresh.h */,
-				53C3EEBD16B86B68009896DB /* UIScrollView+SVPullToRefresh.m */,
-				53BE292E16B1C1310033308B /* MBProgressHUD.h */,
-				53BE292F16B1C1310033308B /* MBProgressHUD.m */,
-				53BE293016B1C1310033308B /* Reachability.h */,
-				53BE293116B1C1310033308B /* Reachability.m */,
-				53BE293216B1C1310033308B /* SMXMLDocument.h */,
-				53BE293316B1C1310033308B /* SMXMLDocument.m */,
-				53BE293416B1C1310033308B /* SWRevealViewController.h */,
-				53BE293516B1C1310033308B /* SWRevealViewController.m */,
+				5357C96F16BAB32B00E0207A /* Custom Table Cells */,
+				5357C96E16BAB2BC00E0207A /* Object Classes */,
+				5357C96D16BAB28900E0207A /* MBProgressHUD */,
+				5357C96C16BAB26900E0207A /* SWRevealViewController */,
+				5357C96B16BAB25C00E0207A /* Reachability */,
+				5357C96A16BAB23D00E0207A /* SVPullToRefresh */,
+				5357C96916BAB22D00E0207A /* SMXMLDocument */,
 				53BE293616B1C1310033308B /* TTAppDelegate.h */,
 				53BE293716B1C1310033308B /* TTAppDelegate.m */,
-				53BE293816B1C1310033308B /* TTBackgroundLayer.h */,
-				53BE293916B1C1310033308B /* TTBackgroundLayer.m */,
-				53BE293A16B1C1310033308B /* TTInfoBox.h */,
-				53BE293B16B1C1310033308B /* TTInfoBox.m */,
-				53BE293C16B1C1310033308B /* TTLeagueTableCell.h */,
-				53BE293D16B1C1310033308B /* TTLeagueTableCell.m */,
+				531BF85F16BA7CF000D975AC /* TTFixturesViewController.h */,
+				531BF86016BA7CF000D975AC /* TTFixturesViewController.m */,
+				53C3EEB416B86B68009896DB /* TTGraphView.h */,
+				53C3EEB516B86B68009896DB /* TTGraphView.m */,
 				53BE293E16B1C1310033308B /* TTLeagueTableViewController.h */,
 				53BE293F16B1C1310033308B /* TTLeagueTableViewController.m */,
-				53BE294016B1C1310033308B /* TTMatchResult.h */,
-				53BE294116B1C1310033308B /* TTMatchResult.m */,
-				53BE294216B1C1310033308B /* TTMatchResultCell.h */,
-				53BE294316B1C1310033308B /* TTMatchResultCell.m */,
+				53C3EEB616B86B68009896DB /* TTMatchDetailViewController.h */,
+				53C3EEB716B86B68009896DB /* TTMatchDetailViewController.m */,
 				53BE294416B1C1310033308B /* TTMenuViewController.h */,
 				53BE294516B1C1310033308B /* TTMenuViewController.m */,
-				53BE294616B1C1310033308B /* TTPPGTableCell.h */,
-				53BE294716B1C1310033308B /* TTPPGTableCell.m */,
-				53BE294816B1C1310033308B /* TTTeam.h */,
-				53BE294916B1C1310033308B /* TTTeam.m */,
 				53BE294A16B1C1310033308B /* TTTeamDetailViewController.h */,
 				53BE294B16B1C1310033308B /* TTTeamDetailViewController.m */,
 				53BE294C16B1C1310033308B /* TTTeamResultsViewController.h */,
 				53BE294D16B1C1310033308B /* TTTeamResultsViewController.m */,
-				53BE294E16B1C1310033308B /* TTTeamsParser.h */,
-				53BE294F16B1C1310033308B /* TTTeamsParser.m */,
-				53BE295016B1C1310033308B /* TTTeamXMLCache.h */,
-				53BE295116B1C1310033308B /* TTTeamXMLCache.m */,
+				5357C97016BAB7C700E0207A /* TTMoreStatsViewController.h */,
+				5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -498,6 +580,7 @@
 		53BE28F616B1BF4C0033308B /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */,
 				53C3EEC316B86B81009896DB /* TTMatchDetailViewController.xib */,
 				5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */,
 				5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */,
@@ -506,6 +589,8 @@
 				53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */,
 				53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */,
 				53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */,
+				531BF86216BA82B200D975AC /* TTFixturesView.xib */,
+				531BF86716BA84E600D975AC /* TTFixtureTableCell.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -625,6 +710,9 @@
 				53BE292C16B1C0B80033308B /* blueButtonHighlight.png in Resources */,
 				53BE292D16B1C0B80033308B /* blueButtonHighlight@2x.png in Resources */,
 				53C3EEC416B86B81009896DB /* TTMatchDetailViewController.xib in Resources */,
+				531BF86316BA82B200D975AC /* TTFixturesView.xib in Resources */,
+				531BF86816BA84E700D975AC /* TTFixtureTableCell.xib in Resources */,
+				5357C97416BAB7C700E0207A /* TTMoreStatsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +770,10 @@
 				53C3EEBF16B86B68009896DB /* TTMatchDetailViewController.m in Sources */,
 				53C3EEC116B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				53C3EEC216B86B68009896DB /* UIScrollView+SVPullToRefresh.m in Sources */,
+				531BF85E16BA755800D975AC /* TTFixture.m in Sources */,
+				531BF86116BA7CF100D975AC /* TTFixturesViewController.m in Sources */,
+				531BF86616BA84C000D975AC /* TTFixtureTableCell.m in Sources */,
+				5357C97316BAB7C700E0207A /* TTMoreStatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

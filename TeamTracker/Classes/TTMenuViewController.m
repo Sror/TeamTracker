@@ -27,7 +27,7 @@
         appDelegate = (TTAppDelegate*)[UIApplication sharedApplication].delegate;
         
         //Init menu options
-        menuOptions = [NSArray arrayWithObjects:@"Championship Table", @"Points per Game Table", @"All League Results", @"Favourite Team", nil];
+        menuOptions = [NSArray arrayWithObjects:@"Championship Table", @"Points per Game Table", @"All Previous Results", @"All Upcoming Fixtures", @"Favourite Team", nil];
     }
     return self;
 }
@@ -134,7 +134,7 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
     //Set textLabel texts...
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"favouriteTeam"] == nil) {
             cell.textLabel.text = @"Favourite team will appear here...";
@@ -150,45 +150,6 @@
     
     return cell;
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
@@ -255,6 +216,22 @@
             }
             break;
         case 3:
+        {
+            //Only create new frontController instance if it is a DIFFERENT viewController class...
+            if ( ![frontNavigationController.topViewController isKindOfClass:[TTFixturesViewController class]] ) {
+                TTFixturesViewController *frontViewController = [[TTFixturesViewController alloc] initWithNibName:@"TTFixturesView" bundle:nil];
+                frontViewController.showAllFixtures = YES;
+                
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                [revealController setFrontViewController:navigationController animated:YES];
+            } else {
+                //Toggle back to the frontViewController to show favourite team...
+                [revealController revealToggle:self];
+            }
+        }
+            break;
+        case 4:
         {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             if ([defaults objectForKey:@"favouriteTeam"] != nil) {

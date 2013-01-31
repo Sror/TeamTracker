@@ -202,8 +202,9 @@
     //Figure out W, D, L to decide cell background colour (W = green, D = orange, L = red)
     CAGradientLayer *bgLayer = nil;
     if (showAllLeagueResults) {
-        //Neutral colour if showing all results...
-        bgLayer = [TTBackgroundLayer greyGradient];
+        //Neutral colour if showing all results...        
+        bgLayer = [TTBackgroundLayer lightGreyGradient];
+        
         //Dark text colour...
         tableTextColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         tableTextHighlightedColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
@@ -290,9 +291,9 @@
     //Get result object - indexed to place the most recent result first...
     TTMatchResult *result = nil;
     if (showAllLeagueResults) {
-        result = [allLeagueResults objectAtIndex:([allLeagueResults count] - 1) - indexPath.row];
+        result = [allLeagueResults objectAtIndex:indexPath.row];
     } else {
-        result = [team.results objectAtIndex:([team.results count] - 1) - indexPath.row];
+        result = [team.results objectAtIndex:indexPath.row];
     }
     matchDetailViewController.result = result;
     

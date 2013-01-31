@@ -11,11 +11,12 @@
 
 @interface TTBackgroundLayer : NSObject
 
-+(CAGradientLayer*) greyGradient;
-+(CAGradientLayer*) darkGreyGradient;
-+(CAGradientLayer*) blueGradient;
-+(CAGradientLayer*) greenGradient;
-+(CAGradientLayer*) orangeGradient;
-+(CAGradientLayer*) redGradient;
++ (CAGradientLayer*)lightGreyGradient;
++ (CAGradientLayer*)greyGradient;
++ (CAGradientLayer*)darkGreyGradient;
++ (CAGradientLayer*)blueGradient;
++ (CAGradientLayer*)greenGradient;
++ (CAGradientLayer*)orangeGradient;
++ (CAGradientLayer*)redGradient;
 
 @end

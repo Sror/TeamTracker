@@ -14,6 +14,8 @@
 #import "TTMatchResult.h"
 #import "TTMatchResultCell.h"
 #import "TTTeamResultsViewController.h"
+#import "TTFixturesViewController.h"
+#import "TTMoreStatsViewController.h"
 #import "TTGraphView.h"
 
 @interface TTTeamDetailViewController : UIViewController
@@ -25,12 +27,13 @@
 @property (nonatomic) IBOutlet UIView *predTotalGraphView;
 @property (nonatomic) IBOutlet UIButton *saveAsMyTeamButton;
 @property (nonatomic) IBOutlet UIButton *seeAllResultsButton;
+@property (nonatomic) IBOutlet UIButton *upcomingFixturesButton;
 @property (nonatomic) IBOutlet UIButton *moreStatsButton;
-@property (nonatomic) CPTGraphHostingView *hostView;
 @property (nonatomic) BOOL didArriveAsFavouriteTeam;
 
 - (IBAction)saveButtonTapped:(UIButton *)sender;
 - (IBAction)seeAllResultsButtonTapped:(UIButton *)sender;
 - (IBAction)moreStatsButtonTapped:(UIButton *)sender;
+- (IBAction)upcomingFixturesButtonTapped:(id)sender;
 
 @end

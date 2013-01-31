@@ -11,12 +11,34 @@
 @implementation TTBackgroundLayer
 
 //Metallic grey gradient background
-+ (CAGradientLayer*)greyGradient {
++ (CAGradientLayer*)lightGreyGradient {
     
     UIColor *colorOne = [UIColor colorWithWhite:0.9 alpha:1.0];
     UIColor *colorTwo = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.95 alpha:1.0];
     UIColor *colorThree     = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.8 alpha:1.0];
     UIColor *colorFour = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.5 alpha:1.0];
+    
+    NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, colorThree.CGColor, colorFour.CGColor, nil];
+    
+    NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:0.02];
+    NSNumber *stopThree = [NSNumber numberWithFloat:0.99];
+    NSNumber *stopFour = [NSNumber numberWithFloat:1.0];
+    
+    NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, stopThree, stopFour, nil];
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+    headerLayer.colors = colors;
+    headerLayer.locations = locations;
+    
+    return headerLayer;
+}
+
++ (CAGradientLayer*)greyGradient {
+    
+    UIColor *colorOne = [UIColor colorWithWhite:0.7 alpha:1.0];
+    UIColor *colorTwo = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.75 alpha:1.0];
+    UIColor *colorThree     = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.6 alpha:1.0];
+    UIColor *colorFour = [UIColor colorWithHue:0.625 saturation:0.0 brightness:0.3 alpha:1.0];
     
     NSArray *colors =  [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, colorThree.CGColor, colorFour.CGColor, nil];
     

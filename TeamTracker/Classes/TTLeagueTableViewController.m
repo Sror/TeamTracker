@@ -277,7 +277,7 @@
         //default
         else {
             //Create a CAGradientLayer as the background to the tableHeaderView
-            bgLayer = [TTBackgroundLayer greyGradient];
+            bgLayer = [TTBackgroundLayer lightGreyGradient];
         }
         //Set CAGradientLayer to cell background...
         bgLayer.frame = cell.bounds;
@@ -364,7 +364,7 @@
         //default
         else {
             //Create a CAGradientLayer as the background to the tableHeaderView
-            bgLayer = [TTBackgroundLayer greyGradient];
+            bgLayer = [TTBackgroundLayer lightGreyGradient];
         }
         //Set CAGradientLayer to cell background...
         bgLayer.frame = cell.bounds;
