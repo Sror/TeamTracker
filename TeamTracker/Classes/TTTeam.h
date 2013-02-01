@@ -38,6 +38,7 @@
 @property (nonatomic, retain) NSMutableArray *leaguePositionArray;
 @property (nonatomic, retain) NSMutableArray *results;
 @property (nonatomic, retain) NSMutableArray *fixtures;
+@property (nonatomic) BOOL played;
 
 - (id)initTeamWithName:(NSString*)teamName;
 - (void)addMatchResult:(TTMatchResult*)mResult;

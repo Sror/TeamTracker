@@ -89,14 +89,28 @@
                 }
             }
             
-            //Pull out the <dates> node
+            //Pull out the <results> node
             SMXMLElement *results = [teamsResultsXMLResponse.root childNamed:@"results"];
             
-            //Look through <dates> children of type <date>
+            //Init matchDateSortID
             NSInteger matchDateSortID = 0;
             
-            //Look through current <date> node for children of type <result>
-            for (SMXMLElement *result in [results childrenNamed:@"res"]) {
+            NSString *currentDate = nil;
+            NSString *nextDate = nil;
+            //Look through current <result> node for children of type <result>
+            for (int i = 0; i < [[results childrenNamed:@"res"] count]; i++) {
+                
+                //Get current & next result
+                //Useful for storing league position after every fixture a team plays
+                SMXMLElement *result = [[results childrenNamed:@"res"] objectAtIndex:i];
+                currentDate = [result valueWithPath:@"mDate"];
+                if (i+1 <= [[results childrenNamed:@"res"] count]-1) {
+                    SMXMLElement *nextResult = [[results childrenNamed:@"res"] objectAtIndex:i+1];
+                    nextDate = [nextResult valueWithPath:@"mDate"];
+                } else {
+                    nextDate = nil;
+                }
+                
                 //Format the date sensibly for display...
                 NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
                 [dateFormater setDateFormat:@"yyyy-MM-dd"];
@@ -118,6 +132,7 @@
                 //Only init the result & add it to the team if it has been played
                 //If the home and away score objects are nil, the match has NOT been played yet
                 if ([result valueWithPath:@"hScore"] != nil && [result valueWithPath:@"aScore"] != nil) {
+                    
                     TTMatchResult *mResult = [[TTMatchResult alloc] initWithHomeTeam:homeTeam AndAwayTeam:awayTeam WithHomeScore:homeScore AndAwayScore:awayScore AndHomeGoalScorers:homeGoalScorers AndAwayGoalScorers:awayGoalScorers AndMatchDate:matchDate AndMatchDateSortID:matchDateSortID];
                     
                     //Find the two teams involed in the result, and update their stats...
@@ -178,6 +193,7 @@
                             team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
                             team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
                             team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
+                            team.played = YES;
                             
                             //Add result to both home and away teams' results arrays...
                             [team.results addObject:mResult];
@@ -191,6 +207,19 @@
                         if ([team.name isEqualToString:mFixture.homeTeam] || [team.name isEqualToString:mFixture.awayTeam]) {
                             //add fixture
                             [team.fixtures addObject:mFixture];
+                        }
+                    }
+                }
+                
+                //If we are sorting by points, and the next RESULT is a different date, 
+                if (sortMode == TTLeagueTableSortByPoints && ![nextDate isEqualToString:currentDate] && [result valueWithPath:@"hScore"] != nil && [result valueWithPath:@"aScore"] != nil) {
+                    //Sort table to find league positions at this stage
+                    [self sortTeamsForLeagueTableBy:sortMode];
+                    //If a team has played on this date, store their league position
+                    for (TTTeam *t in self.teams) {
+                        if (t.played) {
+                            [t.leaguePositionArray addObject:[NSNumber numberWithInteger:t.leaguePosition]];
+                            t.played = NO;
                         }
                     }
                 }
@@ -219,30 +248,34 @@
 }
 
 - (void)sortTeamsForLeagueTableBy:(NSInteger)sortMode {
+    NSMutableArray *arrayToSort = [NSMutableArray arrayWithArray:(NSArray*)self.teams];
+    
     if (sortMode == TTLeagueTableSortByPoints) {
         //Sort table by doing least significant factor -> most significant factor
         //First sort by goals For...
         NSSortDescriptor *totalGoalsForSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalsFor" ascending:NO];
-        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalsForSort]];
+        [arrayToSort sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalsForSort]];
         
         //Then sort by goal difference...
         NSSortDescriptor *totalGoalDifferenceSort = [NSSortDescriptor sortDescriptorWithKey:@"totalGoalDifference" ascending:NO];
-        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalDifferenceSort]];
+        [arrayToSort sortUsingDescriptors:[NSMutableArray arrayWithObject:totalGoalDifferenceSort]];
         
         //Finally sort by points or pointsPerGame...
         NSSortDescriptor *pointsSort = [NSSortDescriptor sortDescriptorWithKey:@"points" ascending:NO];
-        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
+        [arrayToSort sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
     } else {
         //Just sort by PPG...
         NSSortDescriptor *pointsSort = [NSSortDescriptor sortDescriptorWithKey:@"latestPPG" ascending:NO];
-        [self.teams sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
+        [arrayToSort sortUsingDescriptors:[NSMutableArray arrayWithObject:pointsSort]];
     }
     
     //Set league postion value
     for (int i = 0; i < NUM_TEAMS; i++) {
-        TTTeam *team = [self.teams objectAtIndex:i];
+        TTTeam *team = [arrayToSort objectAtIndex:i];
         team.leaguePosition = i+1;
     }
+    
+    self.teams = arrayToSort;
 }
 
 - (void)invalidateCacheData {
@@ -271,6 +304,9 @@
         team.points = 0;
         team.latestPPG = [NSNumber numberWithFloat:0.0f];
         [team.ppgArray removeAllObjects];
+        [team.formArray removeAllObjects];
+        [team.leaguePositionArray removeAllObjects];
+        [team.fixtures removeAllObjects];
         [team.results removeAllObjects];
     }
 }

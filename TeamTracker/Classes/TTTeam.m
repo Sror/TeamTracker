@@ -33,6 +33,7 @@
 @synthesize leaguePositionArray;
 @synthesize results;
 @synthesize fixtures;
+@synthesize played;
 
 - (id)initTeamWithName:(NSString*)teamName {
     if (self == [super init]) {
@@ -42,6 +43,7 @@
         self.ppgArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.formArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.leaguePositionArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
+        self.played = NO;
     }
     return self;
 }

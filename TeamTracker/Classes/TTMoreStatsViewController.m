@@ -21,7 +21,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"More Stats", @"More Stats");
     }
     return self;
 }
@@ -29,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSString *statsTitle = [NSString stringWithFormat:@"%@ Stats", self.team.name];
+    self.title = statsTitle;
     
     //layout graphs for current UI orienation
     [self layoutGraphsForInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
@@ -64,12 +66,6 @@
             [self.scrollView addSubview:graphView];
         }
         
-        //Hide other UI
-        self.previousFormLabel.hidden = YES;
-        self.pageControl.hidden = YES;
-        self.titleLabel.hidden = YES;
-        self.barView.hidden = YES;
-        
     } else if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
         self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.view.frame.size.height/2.0);
         
@@ -82,22 +78,45 @@
             TTGraphView *graphView = [[TTGraphView alloc] initWithFrame:graphFrame AndGraphData:(NSArray*)self.team.ppgArray AndTitle:@"Predicted Total Points"];
             [self.scrollView addSubview:graphView];
         }
-        
-        //Show other UI
-        self.previousFormLabel.hidden = NO;
-        self.pageControl.hidden = NO;
-        self.titleLabel.hidden = NO;
-        self.barView.hidden = NO;
     }
     
     //Set scrollView contentSize
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * GRAPHS_COUNT, self.scrollView.frame.size.height);
+    
+    [UIView animateWithDuration:0.5f animations:^{self.scrollView.alpha = 1.0f;}
+                     completion:^ (BOOL finished) {
+                         if (finished) {
+                             //
+                         }
+                     }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        //Hide other UI
+        self.previousFormLabel.hidden = YES;
+        self.pageControl.hidden = YES;
+        self.titleLabel.hidden = YES;
+        self.barView.hidden = YES;
+    } else {
+        //Hide other UI
+        self.previousFormLabel.hidden = NO;
+        self.pageControl.hidden = NO;
+        self.titleLabel.hidden = NO;
+        self.barView.hidden = NO;
+    }
+    [UIView animateWithDuration:0.5 animations:^{self.scrollView.alpha = 0.0f;}
+                     completion:^ (BOOL finished) {
+                         if (finished) {
+                             //
+                         }
+                     }];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
