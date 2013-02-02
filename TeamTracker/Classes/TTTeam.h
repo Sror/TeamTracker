@@ -31,6 +31,8 @@
 @property (nonatomic) NSInteger awayWins;
 @property (nonatomic) NSInteger awayDraws;
 @property (nonatomic) NSInteger awayLosses;
+@property (nonatomic) NSInteger homeGamesPlayed;
+@property (nonatomic) NSInteger awayGamesPlayed;
 @property (nonatomic) NSInteger points;
 @property (nonatomic) NSNumber *latestPPG;
 @property (nonatomic, retain) NSMutableArray *ppgArray;

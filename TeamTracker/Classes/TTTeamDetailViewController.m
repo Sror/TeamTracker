@@ -80,7 +80,7 @@
     }
     
     //Init ppg plot
-    TTGraphView *graphView = [[TTGraphView alloc] initWithFrame:self.predTotalGraphView.bounds AndGraphData:(NSArray*)self.team.ppgArray AndTitle:@"Predicted Total Points"];
+    TTGraphView *graphView = [[TTGraphView alloc] initWithFrame:self.predTotalGraphView.bounds AndGraphData:(NSArray*)self.team.ppgArray AndGraphType:TTGraphViewTypePredictedTotal];
     [self.predTotalGraphView addSubview:graphView];
 }
 

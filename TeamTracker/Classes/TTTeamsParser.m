@@ -188,6 +188,8 @@
                             
                             //Update games played, pointsPerGame, historical ppgArray & goal differences
                             team.gamesPlayed++;
+                            team.homeGamesPlayed = team.homeWins + team.homeDraws + team.homeLosses;
+                            team.awayGamesPlayed = team.awayWins + team.awayDraws + team.awayLosses;
                             team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
                             [team.ppgArray addObject:team.latestPPG];
                             team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
@@ -231,6 +233,7 @@
             }
             
             //Add results array to cache
+            [teamsCache invalidateCache];
             [teamsCache setCacheWithData:self.teams];
             
             //Sort the teams table...
@@ -288,6 +291,8 @@
     for (TTTeam *team in self.teams) {
         team.leaguePosition = 0;
         team.gamesPlayed = 0;
+        team.homeGamesPlayed = 0;
+        team.awayGamesPlayed = 0;
         team.homeGoalsFor = 0;
         team.homeGoalsAgainst = 0;
         team.awayGoalsFor = 0;

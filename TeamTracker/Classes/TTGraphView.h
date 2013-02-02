@@ -10,14 +10,20 @@
 #import "CorePlot-CocoaTouch.h"
 #import "TTAppDelegate.h"
 
+typedef enum {
+    TTGraphViewTypePredictedTotal,
+    TTGraphViewTypeLeaguePosition
+} TTGraphViewType;
+
 @interface TTGraphView : UIView <CPTPlotDataSource> {
     CPTGraphHostingView *hostView;
     NSArray *data;
     NSString *title;
     CPTColor *uiTextColor;
+    NSInteger graphType;
 }
 
-- (id)initWithFrame:(CGRect)frame AndGraphData:(NSArray*)graphData AndTitle:(NSString*)graphTitle;
+- (id)initWithFrame:(CGRect)frame AndGraphData:(NSArray*)graphData AndGraphType:(NSInteger)type;
 - (void)initPlot;
 - (void)configureHost;
 - (void)configureGraph;

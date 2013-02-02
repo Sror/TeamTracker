@@ -18,13 +18,25 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame AndGraphData:(NSArray*)graphData AndTitle:(NSString *)graphTitle {
+- (id)initWithFrame:(CGRect)frame AndGraphData:(NSArray*)graphData AndGraphType:(NSInteger)type {
     self = [super initWithFrame:frame];
     if (self) {
         //Init data array
         data = graphData;
         //Init title
-        title = graphTitle;
+        switch (type) {
+            case TTGraphViewTypePredictedTotal:
+                title = @"Predicted Total";
+                break;
+            case TTGraphViewTypeLeaguePosition:
+                title = @"League Position";
+                break;
+            default:
+                break;
+        }
+        
+        graphType = type;
+        
         //Init graph plot
         [self initPlot];
     }
@@ -44,12 +56,23 @@
     }
 	else
 	{
-		if([(NSString*)plot.identifier isEqualToString:@"predTotal"]) {
+		if([(NSString*)plot.identifier isEqualToString:@"plot"]) {
             NSNumber *numToPlot = [data objectAtIndex:index];
-            float predTotal = [numToPlot floatValue];
-            predTotal *= 46.0f;
-            numToPlot = [NSNumber numberWithFloat:predTotal];
-            return numToPlot;
+            
+            switch (graphType) {
+                case TTGraphViewTypePredictedTotal:
+                    ;
+                    float predTotal = [numToPlot floatValue];
+                    predTotal *= 46.0f;
+                    numToPlot = [NSNumber numberWithFloat:predTotal];
+                    return numToPlot;
+                    break;
+                case TTGraphViewTypeLeaguePosition:
+                    return numToPlot;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
@@ -76,6 +99,7 @@
 }
 
 -(void)configureGraph {
+    
     // 1 - Create and initialize graph
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:hostView.bounds];
     graph.plotAreaFrame.masksToBorder = NO;
@@ -83,7 +107,15 @@
     graph.paddingLeft = 30.0f;
     graph.paddingTop = 20.0f;
     graph.paddingRight = 20.0f;
-    graph.paddingBottom = 30.0f;
+    switch (graphType) {
+        case TTGraphViewTypePredictedTotal:
+            graph.paddingBottom = 30.0f;
+            break;
+        case TTGraphViewTypeLeaguePosition:
+            graph.paddingBottom = 20.0f;
+        default:
+            break;
+    }
     
     //Color to tie in with rest of UI
     uiTextColor = [CPTColor whiteColor];
@@ -102,7 +134,15 @@
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = NO;
 	plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(NUM_GAMES)];
-	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(140.0)];
+    switch (graphType) {
+        case TTGraphViewTypePredictedTotal:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(140.0f)];
+            break;
+        case TTGraphViewTypeLeaguePosition:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(24.0f) length:CPTDecimalFromFloat(-24.0f)];
+        default:
+            break;
+    }
 }
 
 -(void)configureChart {
@@ -142,15 +182,24 @@
     CPTAxis *x = axisSet.xAxis;
     x.title = @"Match Number";
     x.titleTextStyle = axisTitleStyle;
-    x.titleOffset = -30.0f;
     x.axisLineStyle = axisLineStyle;
     x.majorGridLineStyle = majorGridLineStyle;
     x.minorGridLineStyle = minorGridLineStyle;
-    x.majorIntervalLength = [[NSNumber numberWithFloat:10.0] decimalValue];
+    x.majorIntervalLength = [[NSNumber numberWithFloat:10.0f] decimalValue];
     x.minorTicksPerInterval = 4;
-    x.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
     x.labelTextStyle = axisTextStyle;
-    x.labelOffset = -20.0f;
+    x.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
+    switch (graphType) {
+        case TTGraphViewTypePredictedTotal:
+            x.titleOffset = -30.0f;
+            x.labelOffset = -20.0f;
+            break;
+        case TTGraphViewTypeLeaguePosition:
+            x.titleOffset = 30.0f;
+            x.labelOffset = 30.0f;
+        default:
+            break;
+    }
     x.majorTickLineStyle = majorTickLineStyle;
     x.minorTickLineStyle = minorTickLineStyle;
     x.majorTickLength = 4.0f;
@@ -163,11 +212,22 @@
     x.labelFormatter = xFormatter;
     
     // 4 - Configure y-axis
+    float yMajorInterval = 0.0f;
+    switch (graphType) {
+        case TTGraphViewTypePredictedTotal:
+            yMajorInterval = 20.0f;
+            break;
+        case TTGraphViewTypeLeaguePosition:
+            yMajorInterval = 2.0f;
+        default:
+            break;
+    }
+    
     CPTAxis *y = axisSet.yAxis;
     y.axisLineStyle = axisLineStyle;
     y.majorGridLineStyle = majorGridLineStyle;
     y.minorGridLineStyle = minorGridLineStyle;
-    y.majorIntervalLength = [[NSNumber numberWithFloat:20.0] decimalValue];
+    y.majorIntervalLength = [[NSNumber numberWithFloat:yMajorInterval] decimalValue];
     y.minorTicksPerInterval = 1;
     y.labelingPolicy = CPTAxisLabelingPolicyFixedInterval;
     y.labelTextStyle = axisTextStyle;
@@ -178,14 +238,14 @@
     y.minorTickLength = 2.0f;
     y.tickDirection = CPTSignPositive;
     
-    //Show integer values only for X-axis labels
+    //Show integer values only for Y-axis labels
     NSNumberFormatter *yFormatter = [[NSNumberFormatter alloc] init];
     [yFormatter setGeneratesDecimalNumbers:NO];
     [yFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    y.labelFormatter = xFormatter;
+    y.labelFormatter = yFormatter;
 	
 	CPTScatterPlot *predTotalPlot = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
-	predTotalPlot.identifier = @"predTotal";
+	predTotalPlot.identifier = @"plot";
     CPTMutableLineStyle *predTotalLineStyle = [CPTMutableLineStyle lineStyle];
     predTotalLineStyle.lineWidth = 1.0f;
     predTotalLineStyle.lineColor = [CPTColor whiteColor];

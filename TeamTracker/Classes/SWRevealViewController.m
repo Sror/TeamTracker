@@ -404,7 +404,9 @@ static NSString * const SWSegueFrontIdentifier = @"sw_front";
 {
     if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navC = (UINavigationController*)_frontViewController;
-        return [[navC.viewControllers lastObject] shouldAutorotate];
+        return [navC.visibleViewController shouldAutorotate];
+    } else {
+        return YES;
     }
 }
 
@@ -412,7 +414,9 @@ static NSString * const SWSegueFrontIdentifier = @"sw_front";
 {
     if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navC = (UINavigationController*)_frontViewController;
-        return [[navC.viewControllers lastObject] supportedInterfaceOrientations];
+        return [navC.visibleViewController supportedInterfaceOrientations];
+    } else {
+        return UIInterfaceOrientationMaskAll;
     }
 }
 
@@ -420,7 +424,9 @@ static NSString * const SWSegueFrontIdentifier = @"sw_front";
 {
     if ([_frontViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navC = (UINavigationController*)_frontViewController;
-        return [[navC.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
+        return [navC.visibleViewController preferredInterfaceOrientationForPresentation];
+    } else {
+        return UIInterfaceOrientationPortrait;
     }
 }
 
