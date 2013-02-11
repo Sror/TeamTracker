@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #define TTTeamXMLCacheExpiryNever 3155760000 //100 years
+#define TTTeamXMLCacheExpiryTwoHours 7200     //2 hour
 #define TTTeamXMLCacheExpiryDefault 3600     //1 hour
+#define TTTeamXMLCacheExpiryImmediate 0     //Never cache
 
 @interface TTTeamXMLCache : NSObject {
     NSMutableArray *cacheDataArray;

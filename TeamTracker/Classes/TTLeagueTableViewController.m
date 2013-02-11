@@ -240,7 +240,7 @@
     UIColor *tableTextColor = nil;
     UIColor *tableTextShadowColor = nil;
     UIColor *tableTextHighlightedColor = nil;
-    if (indexPath.row >= 6 && indexPath.row < 21) {
+    if (indexPath.row >= PLAYOFF_PLACES && indexPath.row < RELEGATION_PLACES-1) {
         tableTextColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         tableTextShadowColor = [UIColor whiteColor];
         tableTextHighlightedColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
@@ -259,17 +259,17 @@
         //Set background colour of cells depending on league position
         CAGradientLayer *bgLayer = nil;
         //Automatic promotion places
-        if (indexPath.row < 2) {
+        if (indexPath.row < AUTOS_PLACES) {
             //Create a CAGradientLayer as the background to the tableHeaderView
             bgLayer = [TTBackgroundLayer greenGradient];
         }
         //Playoffs
-        else if (indexPath.row >=2 && indexPath.row < 6) {
+        else if (indexPath.row >=AUTOS_PLACES && indexPath.row < PLAYOFF_PLACES) {
             //Create a CAGradientLayer as the background to the tableHeaderView
             bgLayer = [TTBackgroundLayer orangeGradient];
         }
         //Relegation
-        else if (indexPath.row >= 21 && indexPath.row < 24)
+        else if (indexPath.row >= RELEGATION_PLACES-1 && indexPath.row < NUM_TEAMS)
         {
             //Create a CAGradientLayer as the background to the tableHeaderView
             bgLayer = [TTBackgroundLayer redGradient];
@@ -451,7 +451,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //Push a TTTeamResultsViewController with relevant team to the navigationController...
-    TTTeamDetailViewController *teamDetailViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailViewController" bundle:nil];
+    TTTeamDetailViewController *teamDetailViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailView" bundle:nil];
     teamDetailViewController.team = [appDelegate.teamsParser.teams objectAtIndex:indexPath.row];
     teamDetailViewController.didArriveAsFavouriteTeam = NO;
     

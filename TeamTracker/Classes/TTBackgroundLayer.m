@@ -75,8 +75,8 @@
 //Blue gradient background
 + (CAGradientLayer*)blueGradient {
     
-    UIColor *colorOne = [UIColor colorWithRed:(120/255.0) green:(135/255.0) blue:(150/255.0) alpha:1.0];
-    UIColor *colorTwo = [UIColor colorWithRed:0.0 green:(37/255.0) blue:(74/255.0) alpha:1.0];
+    UIColor *colorOne = [UIColor colorWithRed:(93.0/255.0) green:(154.0/255.0) blue:(254.0/255.0) alpha:1.0];
+    UIColor *colorTwo = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
     
     NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
     NSNumber *stopOne = [NSNumber numberWithFloat:0.0];

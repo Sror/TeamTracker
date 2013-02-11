@@ -64,12 +64,12 @@
     UIImage *blueButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     // Set the button background states...
-    [self.seeAllResultsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
-    [self.seeAllResultsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
-    [self.moreStatsButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
-    [self.moreStatsButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
-    [self.upcomingFixturesButton setBackgroundImage:blackButtonImage forState:UIControlStateNormal];
-    [self.upcomingFixturesButton setBackgroundImage:blackButtonImageHighlight forState:UIControlStateHighlighted];
+    [self.seeAllResultsButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
+    [self.seeAllResultsButton setBackgroundImage:blueButtonImageHighlight forState:UIControlStateHighlighted];
+    [self.moreStatsButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
+    [self.moreStatsButton setBackgroundImage:blueButtonImageHighlight forState:UIControlStateHighlighted];
+    [self.upcomingFixturesButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
+    [self.upcomingFixturesButton setBackgroundImage:blueButtonImageHighlight forState:UIControlStateHighlighted];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"favouriteTeam"] isEqualToString:self.team.name]) {
         [self.saveAsMyTeamButton setBackgroundImage:blueButtonImage forState:UIControlStateNormal];
@@ -80,7 +80,7 @@
     }
     
     //Init ppg plot
-    TTGraphView *graphView = [[TTGraphView alloc] initWithFrame:self.predTotalGraphView.bounds AndGraphData:(NSArray*)self.team.ppgArray AndGraphType:TTGraphViewTypePredictedTotal];
+    TTGraphView *graphView = [[TTGraphView alloc] initWithFrame:self.predTotalGraphView.bounds AndGraphData:(NSArray*)self.team.leaguePositionArray AndGraphType:TTGraphViewTypeLeaguePosition];
     [self.predTotalGraphView addSubview:graphView];
 }
 
@@ -134,7 +134,7 @@
 }
 
 - (IBAction)seeAllResultsButtonTapped:(UIButton *)sender {
-    TTTeamResultsViewController *teamResultsViewController = [[TTTeamResultsViewController alloc] initWithNibName:@"TTTeamResultsViewController" bundle:nil];
+    TTTeamResultsViewController *teamResultsViewController = [[TTTeamResultsViewController alloc] initWithNibName:@"TTTeamResultsView" bundle:nil];
     teamResultsViewController.team = self.team;
     teamResultsViewController.showAllLeagueResults = NO;
     

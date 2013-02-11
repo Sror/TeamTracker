@@ -14,32 +14,44 @@
 		531BF86816BA84E700D975AC /* TTFixtureTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 531BF86716BA84E600D975AC /* TTFixtureTableCell.xib */; };
 		5357C97316BAB7C700E0207A /* TTMoreStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */; };
 		5357C97416BAB7C700E0207A /* TTMoreStatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */; };
+		5357C97816C18FF700E0207A /* TTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5357C97616C18FF200E0207A /* TTSettingsViewController.m */; };
+		5357C97B16C1904D00E0207A /* TTSettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5357C97A16C1904C00E0207A /* TTSettingsView.xib */; };
+		5357C99A16C1A0C900E0207A /* TTAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5357C99816C1A0C600E0207A /* TTAboutViewController.m */; };
+		5357C99D16C1A12200E0207A /* TTAboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5357C99C16C1A12200E0207A /* TTAboutView.xib */; };
+		5357C9C216C3165600E0207A /* grass_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5357C9BF16C3165600E0207A /* grass_iphone.png */; };
+		5357C9C416C3165600E0207A /* grass_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5357C9C116C3165600E0207A /* grass_iphone@2x.png */; };
+		5361DBF516C66E040084494D /* prem_teams.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBF416C66E040084494D /* prem_teams.xml */; };
+		5361DBFF16C96CF70084494D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBFA16C96CF20084494D /* Default.png */; };
+		5361DC0016C96CF70084494D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBFB16C96CF30084494D /* Default-568h@2x.png */; };
+		5361DC0116C96CF70084494D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBFC16C96CF40084494D /* Default@2x.png */; };
+		5361DC0216C96CF70084494D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBFD16C96CF50084494D /* Icon.png */; };
+		5361DC0316C96CF70084494D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5361DBFE16C96CF60084494D /* Icon@2x.png */; };
 		5370AAF516A885BF007E0DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF416A885BF007E0DBB /* UIKit.framework */; };
 		5370AAF716A885BF007E0DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF616A885BF007E0DBB /* Foundation.framework */; };
 		5370AAF916A885BF007E0DBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF816A885BF007E0DBB /* CoreGraphics.framework */; };
 		5370AAFF16A885BF007E0DBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5370AAFD16A885BF007E0DBB /* InfoPlist.strings */; };
 		5370AB0116A885BF007E0DBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5370AB0016A885BF007E0DBB /* main.m */; };
-		5370AB1C16A885BF007E0DBB /* TTLeagueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */; };
-		5370AB2216A885BF007E0DBB /* TTMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */; };
+		5370AB1C16A885BF007E0DBB /* TTLeagueTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB1A16A885BF007E0DBB /* TTLeagueTableView.xib */; };
+		5370AB2216A885BF007E0DBB /* TTMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB2016A885BF007E0DBB /* TTMenuView.xib */; };
 		5370AB2D16A885BF007E0DBB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AB2C16A885BF007E0DBB /* SenTestingKit.framework */; };
 		5370AB2E16A885BF007E0DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF416A885BF007E0DBB /* UIKit.framework */; };
 		5370AB2F16A885BF007E0DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370AAF616A885BF007E0DBB /* Foundation.framework */; };
 		5370AB3716A885BF007E0DBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5370AB3516A885BF007E0DBB /* InfoPlist.strings */; };
 		5370AB3A16A885BF007E0DBB /* TeamTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5370AB3916A885BF007E0DBB /* TeamTrackerTests.m */; };
 		5370ACE316AB614D007E0DBB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5370ACE216AB6147007E0DBB /* QuartzCore.framework */; };
+		5390446716C42A5F00DC1F79 /* grass_bottom_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5390446516C42A5F00DC1F79 /* grass_bottom_iphone.png */; };
+		5390446816C42A5F00DC1F79 /* grass_bottom_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5390446616C42A5F00DC1F79 /* grass_bottom_iphone@2x.png */; };
+		5390446A16C42D1700DC1F79 /* grass_iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5390446916C42D1700DC1F79 /* grass_iphone-568h@2x.png */; };
 		53B6BE6416B299C30027E09A /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B6BE6316B299C30027E09A /* libCorePlot-CocoaTouch.a */; };
 		53BE28F316B1B74B0033308B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BE28F216B1B74A0033308B /* SystemConfiguration.framework */; };
-		53BE290D16B1BFE10033308B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290816B1BFE10033308B /* Default-568h@2x.png */; };
-		53BE290E16B1BFE10033308B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290916B1BFE10033308B /* Default.png */; };
-		53BE290F16B1BFE10033308B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290A16B1BFE10033308B /* Default@2x.png */; };
 		53BE291016B1BFE10033308B /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290B16B1BFE10033308B /* reveal-icon.png */; };
 		53BE291116B1BFE10033308B /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE290C16B1BFE10033308B /* reveal-icon@2x.png */; };
 		53BE291316B1BFF10033308B /* championship_teams.xml in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291216B1BFF10033308B /* championship_teams.xml */; };
 		53BE291916B1BFFC0033308B /* TTLeagueTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */; };
 		53BE291A16B1BFFC0033308B /* TTMatchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */; };
 		53BE291B16B1BFFC0033308B /* TTPPGTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */; };
-		53BE291C16B1BFFC0033308B /* TTTeamDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */; };
-		53BE291D16B1BFFC0033308B /* TTTeamResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */; };
+		53BE291C16B1BFFC0033308B /* TTTeamDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291716B1BFFC0033308B /* TTTeamDetailView.xib */; };
+		53BE291D16B1BFFC0033308B /* TTTeamResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291816B1BFFC0033308B /* TTTeamResultsView.xib */; };
 		53BE292616B1C0B80033308B /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291E16B1C0B80033308B /* blackButton.png */; };
 		53BE292716B1C0B80033308B /* blackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE291F16B1C0B80033308B /* blackButton@2x.png */; };
 		53BE292816B1C0B80033308B /* blackButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 53BE292016B1C0B80033308B /* blackButtonHighlight.png */; };
@@ -70,7 +82,7 @@
 		53C3EEBF16B86B68009896DB /* TTMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3EEB716B86B68009896DB /* TTMatchDetailViewController.m */; };
 		53C3EEC116B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3EEBB16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m */; };
 		53C3EEC216B86B68009896DB /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3EEBD16B86B68009896DB /* UIScrollView+SVPullToRefresh.m */; };
-		53C3EEC416B86B81009896DB /* TTMatchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C3EEC316B86B81009896DB /* TTMatchDetailViewController.xib */; };
+		53C3EEC416B86B81009896DB /* TTMatchDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C3EEC316B86B81009896DB /* TTMatchDetailView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +107,20 @@
 		5357C97016BAB7C700E0207A /* TTMoreStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTMoreStatsViewController.h; path = Classes/TTMoreStatsViewController.h; sourceTree = "<group>"; };
 		5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTMoreStatsViewController.m; path = Classes/TTMoreStatsViewController.m; sourceTree = "<group>"; };
 		5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMoreStatsView.xib; path = Classes/TTMoreStatsView.xib; sourceTree = "<group>"; };
+		5357C97516C18FED00E0207A /* TTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSettingsViewController.h; path = Classes/TTSettingsViewController.h; sourceTree = "<group>"; };
+		5357C97616C18FF200E0207A /* TTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSettingsViewController.m; path = Classes/TTSettingsViewController.m; sourceTree = "<group>"; };
+		5357C97A16C1904C00E0207A /* TTSettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTSettingsView.xib; path = Resources/XIBs/TTSettingsView.xib; sourceTree = "<group>"; };
+		5357C99716C1A0C500E0207A /* TTAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTAboutViewController.h; path = Classes/TTAboutViewController.h; sourceTree = "<group>"; };
+		5357C99816C1A0C600E0207A /* TTAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTAboutViewController.m; path = Classes/TTAboutViewController.m; sourceTree = "<group>"; };
+		5357C99C16C1A12200E0207A /* TTAboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTAboutView.xib; path = Resources/XIBs/TTAboutView.xib; sourceTree = "<group>"; };
+		5357C9BF16C3165600E0207A /* grass_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_iphone.png; path = Resources/Images/grass_iphone.png; sourceTree = "<group>"; };
+		5357C9C116C3165600E0207A /* grass_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grass_iphone@2x.png"; path = "Resources/Images/grass_iphone@2x.png"; sourceTree = "<group>"; };
+		5361DBF416C66E040084494D /* prem_teams.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = prem_teams.xml; path = Resources/prem_teams.xml; sourceTree = "<group>"; };
+		5361DBFA16C96CF20084494D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5361DBFB16C96CF30084494D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5361DBFC16C96CF40084494D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5361DBFD16C96CF50084494D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		5361DBFE16C96CF60084494D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		5370AAF016A885BE007E0DBB /* TeamTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5370AAF416A885BF007E0DBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5370AAF616A885BF007E0DBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,11 +129,8 @@
 		5370AAFE16A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5370AB0016A885BF007E0DBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5370AB0216A885BF007E0DBB /* TeamTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeamTracker-Prefix.pch"; sourceTree = "<group>"; };
-		5370AB0616A885BF007E0DBB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		5370AB0816A885BF007E0DBB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		5370AB0A16A885BF007E0DBB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5370AB1B16A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTLeagueTableViewController.xib; sourceTree = "<group>"; };
-		5370AB2116A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTMenuViewController.xib; sourceTree = "<group>"; };
+		5370AB1B16A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTLeagueTableView.xib; sourceTree = "<group>"; };
+		5370AB2116A885BF007E0DBB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TTMenuView.xib; sourceTree = "<group>"; };
 		5370AB2B16A885BF007E0DBB /* TeamTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeamTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5370AB2C16A885BF007E0DBB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5370AB3416A885BF007E0DBB /* TeamTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeamTrackerTests-Info.plist"; sourceTree = "<group>"; };
@@ -115,6 +138,9 @@
 		5370AB3816A885BF007E0DBB /* TeamTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamTrackerTests.h; sourceTree = "<group>"; };
 		5370AB3916A885BF007E0DBB /* TeamTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamTrackerTests.m; sourceTree = "<group>"; };
 		5370ACE216AB6147007E0DBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5390446516C42A5F00DC1F79 /* grass_bottom_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_bottom_iphone.png; path = Resources/Images/grass_bottom_iphone.png; sourceTree = "<group>"; };
+		5390446616C42A5F00DC1F79 /* grass_bottom_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grass_bottom_iphone@2x.png"; path = "Resources/Images/grass_bottom_iphone@2x.png"; sourceTree = "<group>"; };
+		5390446916C42D1700DC1F79 /* grass_iphone-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grass_iphone-568h@2x.png"; path = "Resources/Images/grass_iphone-568h@2x.png"; sourceTree = "<group>"; };
 		53B6BE1916B299C30027E09A /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		53B6BE1A16B299C30027E09A /* CPTAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotation.h; sourceTree = "<group>"; };
 		53B6BE1B16B299C30027E09A /* CPTAnnotationHostLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotationHostLayer.h; sourceTree = "<group>"; };
@@ -191,17 +217,14 @@
 		53B6BE6216B299C30027E09A /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		53B6BE6316B299C30027E09A /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		53BE28F216B1B74A0033308B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		53BE290816B1BFE10033308B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Images/Default-568h@2x.png"; sourceTree = "<group>"; };
-		53BE290916B1BFE10033308B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Images/Default.png; sourceTree = "<group>"; };
-		53BE290A16B1BFE10033308B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Images/Default@2x.png"; sourceTree = "<group>"; };
 		53BE290B16B1BFE10033308B /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon.png"; path = "Resources/Images/reveal-icon.png"; sourceTree = "<group>"; };
 		53BE290C16B1BFE10033308B /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon@2x.png"; path = "Resources/Images/reveal-icon@2x.png"; sourceTree = "<group>"; };
 		53BE291216B1BFF10033308B /* championship_teams.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = championship_teams.xml; path = Resources/championship_teams.xml; sourceTree = "<group>"; };
 		53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTLeagueTableCell.xib; path = Resources/XIBs/TTLeagueTableCell.xib; sourceTree = "<group>"; };
 		53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMatchResultCell.xib; path = Resources/XIBs/TTMatchResultCell.xib; sourceTree = "<group>"; };
 		53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTPPGTableCell.xib; path = Resources/XIBs/TTPPGTableCell.xib; sourceTree = "<group>"; };
-		53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamDetailViewController.xib; path = Resources/XIBs/TTTeamDetailViewController.xib; sourceTree = "<group>"; };
-		53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamResultsViewController.xib; path = Resources/XIBs/TTTeamResultsViewController.xib; sourceTree = "<group>"; };
+		53BE291716B1BFFC0033308B /* TTTeamDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamDetailView.xib; path = Resources/XIBs/TTTeamDetailView.xib; sourceTree = "<group>"; };
+		53BE291816B1BFFC0033308B /* TTTeamResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTTeamResultsView.xib; path = Resources/XIBs/TTTeamResultsView.xib; sourceTree = "<group>"; };
 		53BE291E16B1C0B80033308B /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButton.png; path = Resources/Images/blackButton.png; sourceTree = "<group>"; };
 		53BE291F16B1C0B80033308B /* blackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blackButton@2x.png"; path = "Resources/Images/blackButton@2x.png"; sourceTree = "<group>"; };
 		53BE292016B1C0B80033308B /* blackButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButtonHighlight.png; path = Resources/Images/blackButtonHighlight.png; sourceTree = "<group>"; };
@@ -255,7 +278,7 @@
 		53C3EEBB16B86B68009896DB /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVInfiniteScrolling.m"; path = "Classes/UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		53C3EEBC16B86B68009896DB /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SVPullToRefresh.h"; path = "Classes/UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		53C3EEBD16B86B68009896DB /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SVPullToRefresh.m"; path = "Classes/UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
-		53C3EEC316B86B81009896DB /* TTMatchDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMatchDetailViewController.xib; path = Resources/XIBs/TTMatchDetailViewController.xib; sourceTree = "<group>"; };
+		53C3EEC316B86B81009896DB /* TTMatchDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TTMatchDetailView.xib; path = Resources/XIBs/TTMatchDetailView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,9 +442,6 @@
 				5370AAFD16A885BF007E0DBB /* InfoPlist.strings */,
 				5370AB0016A885BF007E0DBB /* main.m */,
 				5370AB0216A885BF007E0DBB /* TeamTracker-Prefix.pch */,
-				5370AB0616A885BF007E0DBB /* Default.png */,
-				5370AB0816A885BF007E0DBB /* Default@2x.png */,
-				5370AB0A16A885BF007E0DBB /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -563,6 +583,10 @@
 				53BE294D16B1C1310033308B /* TTTeamResultsViewController.m */,
 				5357C97016BAB7C700E0207A /* TTMoreStatsViewController.h */,
 				5357C97116BAB7C700E0207A /* TTMoreStatsViewController.m */,
+				5357C97516C18FED00E0207A /* TTSettingsViewController.h */,
+				5357C97616C18FF200E0207A /* TTSettingsViewController.m */,
+				5357C99716C1A0C500E0207A /* TTAboutViewController.h */,
+				5357C99816C1A0C600E0207A /* TTAboutViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -570,6 +594,7 @@
 		53BE28F516B1BF440033308B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5361DBF416C66E040084494D /* prem_teams.xml */,
 				53BE291216B1BFF10033308B /* championship_teams.xml */,
 				53BE28F716B1BF530033308B /* Images */,
 				53BE28F616B1BF4C0033308B /* XIBs */,
@@ -580,15 +605,17 @@
 		53BE28F616B1BF4C0033308B /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				5357C99C16C1A12200E0207A /* TTAboutView.xib */,
+				5357C97A16C1904C00E0207A /* TTSettingsView.xib */,
 				5357C97216BAB7C700E0207A /* TTMoreStatsView.xib */,
-				53C3EEC316B86B81009896DB /* TTMatchDetailViewController.xib */,
-				5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */,
-				5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */,
+				53C3EEC316B86B81009896DB /* TTMatchDetailView.xib */,
+				5370AB1A16A885BF007E0DBB /* TTLeagueTableView.xib */,
+				5370AB2016A885BF007E0DBB /* TTMenuView.xib */,
 				53BE291416B1BFFC0033308B /* TTLeagueTableCell.xib */,
 				53BE291516B1BFFC0033308B /* TTMatchResultCell.xib */,
 				53BE291616B1BFFC0033308B /* TTPPGTableCell.xib */,
-				53BE291816B1BFFC0033308B /* TTTeamResultsViewController.xib */,
-				53BE291716B1BFFC0033308B /* TTTeamDetailViewController.xib */,
+				53BE291816B1BFFC0033308B /* TTTeamResultsView.xib */,
+				53BE291716B1BFFC0033308B /* TTTeamDetailView.xib */,
 				531BF86216BA82B200D975AC /* TTFixturesView.xib */,
 				531BF86716BA84E600D975AC /* TTFixtureTableCell.xib */,
 			);
@@ -598,6 +625,16 @@
 		53BE28F716B1BF530033308B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5361DBFA16C96CF20084494D /* Default.png */,
+				5361DBFB16C96CF30084494D /* Default-568h@2x.png */,
+				5361DBFC16C96CF40084494D /* Default@2x.png */,
+				5361DBFD16C96CF50084494D /* Icon.png */,
+				5361DBFE16C96CF60084494D /* Icon@2x.png */,
+				5390446916C42D1700DC1F79 /* grass_iphone-568h@2x.png */,
+				5390446516C42A5F00DC1F79 /* grass_bottom_iphone.png */,
+				5390446616C42A5F00DC1F79 /* grass_bottom_iphone@2x.png */,
+				5357C9BF16C3165600E0207A /* grass_iphone.png */,
+				5357C9C116C3165600E0207A /* grass_iphone@2x.png */,
 				53BE291E16B1C0B80033308B /* blackButton.png */,
 				53BE291F16B1C0B80033308B /* blackButton@2x.png */,
 				53BE292016B1C0B80033308B /* blackButtonHighlight.png */,
@@ -606,9 +643,6 @@
 				53BE292316B1C0B80033308B /* blueButton@2x.png */,
 				53BE292416B1C0B80033308B /* blueButtonHighlight.png */,
 				53BE292516B1C0B80033308B /* blueButtonHighlight@2x.png */,
-				53BE290816B1BFE10033308B /* Default-568h@2x.png */,
-				53BE290916B1BFE10033308B /* Default.png */,
-				53BE290A16B1BFE10033308B /* Default@2x.png */,
 				53BE290B16B1BFE10033308B /* reveal-icon.png */,
 				53BE290C16B1BFE10033308B /* reveal-icon@2x.png */,
 			);
@@ -688,19 +722,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5370AAFF16A885BF007E0DBB /* InfoPlist.strings in Resources */,
-				5370AB1C16A885BF007E0DBB /* TTLeagueTableViewController.xib in Resources */,
-				5370AB2216A885BF007E0DBB /* TTMenuViewController.xib in Resources */,
-				53BE290D16B1BFE10033308B /* Default-568h@2x.png in Resources */,
-				53BE290E16B1BFE10033308B /* Default.png in Resources */,
-				53BE290F16B1BFE10033308B /* Default@2x.png in Resources */,
+				5370AB1C16A885BF007E0DBB /* TTLeagueTableView.xib in Resources */,
+				5370AB2216A885BF007E0DBB /* TTMenuView.xib in Resources */,
 				53BE291016B1BFE10033308B /* reveal-icon.png in Resources */,
 				53BE291116B1BFE10033308B /* reveal-icon@2x.png in Resources */,
 				53BE291316B1BFF10033308B /* championship_teams.xml in Resources */,
 				53BE291916B1BFFC0033308B /* TTLeagueTableCell.xib in Resources */,
 				53BE291A16B1BFFC0033308B /* TTMatchResultCell.xib in Resources */,
 				53BE291B16B1BFFC0033308B /* TTPPGTableCell.xib in Resources */,
-				53BE291C16B1BFFC0033308B /* TTTeamDetailViewController.xib in Resources */,
-				53BE291D16B1BFFC0033308B /* TTTeamResultsViewController.xib in Resources */,
+				53BE291C16B1BFFC0033308B /* TTTeamDetailView.xib in Resources */,
+				53BE291D16B1BFFC0033308B /* TTTeamResultsView.xib in Resources */,
 				53BE292616B1C0B80033308B /* blackButton.png in Resources */,
 				53BE292716B1C0B80033308B /* blackButton@2x.png in Resources */,
 				53BE292816B1C0B80033308B /* blackButtonHighlight.png in Resources */,
@@ -709,10 +740,23 @@
 				53BE292B16B1C0B80033308B /* blueButton@2x.png in Resources */,
 				53BE292C16B1C0B80033308B /* blueButtonHighlight.png in Resources */,
 				53BE292D16B1C0B80033308B /* blueButtonHighlight@2x.png in Resources */,
-				53C3EEC416B86B81009896DB /* TTMatchDetailViewController.xib in Resources */,
+				53C3EEC416B86B81009896DB /* TTMatchDetailView.xib in Resources */,
 				531BF86316BA82B200D975AC /* TTFixturesView.xib in Resources */,
 				531BF86816BA84E700D975AC /* TTFixtureTableCell.xib in Resources */,
 				5357C97416BAB7C700E0207A /* TTMoreStatsView.xib in Resources */,
+				5357C97B16C1904D00E0207A /* TTSettingsView.xib in Resources */,
+				5357C99D16C1A12200E0207A /* TTAboutView.xib in Resources */,
+				5357C9C216C3165600E0207A /* grass_iphone.png in Resources */,
+				5357C9C416C3165600E0207A /* grass_iphone@2x.png in Resources */,
+				5390446716C42A5F00DC1F79 /* grass_bottom_iphone.png in Resources */,
+				5390446816C42A5F00DC1F79 /* grass_bottom_iphone@2x.png in Resources */,
+				5390446A16C42D1700DC1F79 /* grass_iphone-568h@2x.png in Resources */,
+				5361DBF516C66E040084494D /* prem_teams.xml in Resources */,
+				5361DBFF16C96CF70084494D /* Default.png in Resources */,
+				5361DC0016C96CF70084494D /* Default-568h@2x.png in Resources */,
+				5361DC0116C96CF70084494D /* Default@2x.png in Resources */,
+				5361DC0216C96CF70084494D /* Icon.png in Resources */,
+				5361DC0316C96CF70084494D /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +818,8 @@
 				531BF86116BA7CF100D975AC /* TTFixturesViewController.m in Sources */,
 				531BF86616BA84C000D975AC /* TTFixtureTableCell.m in Sources */,
 				5357C97316BAB7C700E0207A /* TTMoreStatsViewController.m in Sources */,
+				5357C97816C18FF700E0207A /* TTSettingsViewController.m in Sources */,
+				5357C99A16C1A0C900E0207A /* TTAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,20 +850,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		5370AB1A16A885BF007E0DBB /* TTLeagueTableViewController.xib */ = {
+		5370AB1A16A885BF007E0DBB /* TTLeagueTableView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5370AB1B16A885BF007E0DBB /* en */,
 			);
-			name = TTLeagueTableViewController.xib;
+			name = TTLeagueTableView.xib;
 			sourceTree = "<group>";
 		};
-		5370AB2016A885BF007E0DBB /* TTMenuViewController.xib */ = {
+		5370AB2016A885BF007E0DBB /* TTMenuView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5370AB2116A885BF007E0DBB /* en */,
 			);
-			name = TTMenuViewController.xib;
+			name = TTMenuView.xib;
 			sourceTree = "<group>";
 		};
 		5370AB3516A885BF007E0DBB /* InfoPlist.strings */ = {
@@ -889,6 +935,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
 				INFOPLIST_FILE = "TeamTracker/TeamTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamTracker\"",
@@ -905,6 +952,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TeamTracker/TeamTracker-Prefix.pch";
 				INFOPLIST_FILE = "TeamTracker/TeamTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TeamTracker\"",

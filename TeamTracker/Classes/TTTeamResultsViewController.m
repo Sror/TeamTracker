@@ -287,7 +287,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //Push a TTTeamResultsViewController with relevant team to the navigationController...
-    TTMatchDetailViewController *matchDetailViewController = [[TTMatchDetailViewController alloc] initWithNibName:@"TTMatchDetailViewController" bundle:nil];
+    TTMatchDetailViewController *matchDetailViewController = [[TTMatchDetailViewController alloc] initWithNibName:@"TTMatchDetailView" bundle:nil];
     //Get result object - indexed to place the most recent result first...
     TTMatchResult *result = nil;
     if (showAllLeagueResults) {

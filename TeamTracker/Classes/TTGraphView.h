@@ -10,12 +10,18 @@
 #import "CorePlot-CocoaTouch.h"
 #import "TTAppDelegate.h"
 
+#define MAX_PTS_YAXIS 140.0f
+
 typedef enum {
     TTGraphViewTypePredictedTotal,
-    TTGraphViewTypeLeaguePosition
+    TTGraphViewTypeLeaguePosition,
+    TTGraphViewTypePPGAutos,
+    TTGraphViewTypePPGPlayoffs,
+    TTGraphViewTypePPGSafety,
+    TTGraphViewTypePointsAccrued
 } TTGraphViewType;
 
-@interface TTGraphView : UIView <CPTPlotDataSource> {
+@interface TTGraphView : UIView <CPTPlotDataSource, CPTBarPlotDataSource, CPTBarPlotDelegate> {
     CPTGraphHostingView *hostView;
     NSArray *data;
     NSString *title;

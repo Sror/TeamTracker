@@ -27,7 +27,7 @@
         appDelegate = (TTAppDelegate*)[UIApplication sharedApplication].delegate;
         
         //Init menu options
-        menuOptions = [NSArray arrayWithObjects:@"Championship Table", @"Points per Game Table", @"All Previous Results", @"All Upcoming Fixtures", @"Favourite Team", nil];
+        menuOptions = [NSArray arrayWithObjects:@"Championship Table", @"Points per Game Table", @"All Previous Results", @"All Upcoming Fixtures", @"Favourite Team", @"Settings", nil];
     }
     return self;
 }
@@ -167,10 +167,10 @@
             //Only create new frontController instance if it is a DIFFERENT viewController class...
             if ( ![frontNavigationController.topViewController isKindOfClass:[TTLeagueTableViewController class]] ) {
                 TTLeagueTableViewController *frontViewController = nil;
-                frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableViewController" bundle:nil];
+                frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableView" bundle:nil];
                 frontViewController.sortMode = TTLeagueTableSortByPoints;
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
                 [revealController setFrontViewController:navigationController animated:YES];
             }
             //If it's the same, just toggle back...
@@ -186,10 +186,10 @@
             //Only create new frontController instance if it is a DIFFERENT viewController class...
             if ( ![frontNavigationController.topViewController isKindOfClass:[TTLeagueTableViewController class]] ) {
                 TTLeagueTableViewController *frontViewController = nil;
-                frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableViewController" bundle:nil];
+                frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableView" bundle:nil];
                 frontViewController.sortMode = TTLeagueTableSortByPointsPerGame;
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
                 [revealController setFrontViewController:navigationController animated:YES];
             }
             //If it's the same, just toggle back...
@@ -204,11 +204,11 @@
         case 2:
             //Only create new frontController instance if it is a DIFFERENT viewController class...
             if ( ![frontNavigationController.topViewController isKindOfClass:[TTTeamResultsViewController class]] ) {
-                TTTeamResultsViewController *frontViewController = [[TTTeamResultsViewController alloc] initWithNibName:@"TTTeamResultsViewController" bundle:nil];
+                TTTeamResultsViewController *frontViewController = [[TTTeamResultsViewController alloc] initWithNibName:@"TTTeamResultsView" bundle:nil];
                 frontViewController.showAllLeagueResults = YES;
                 
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
                 [revealController setFrontViewController:navigationController animated:YES];
             } else {
                 //Toggle back to the frontViewController to show favourite team...
@@ -223,7 +223,7 @@
                 frontViewController.showAllFixtures = YES;
                 
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
                 [revealController setFrontViewController:navigationController animated:YES];
             } else {
                 //Toggle back to the frontViewController to show favourite team...
@@ -243,13 +243,28 @@
                     }
                 }
                 TTTeamDetailViewController *frontViewController = nil;
-                frontViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailViewController" bundle:nil];
+                frontViewController = [[TTTeamDetailViewController alloc] initWithNibName:@"TTTeamDetailView" bundle:nil];
                 frontViewController.team = team;
                 frontViewController.didArriveAsFavouriteTeam = YES;
                 
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-                navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
                 [revealController setFrontViewController:navigationController animated:YES];
+            }
+        }
+            break;
+        case 5:
+        {
+            //Only create new frontController instance if it is a DIFFERENT viewController class...
+            if ( ![frontNavigationController.topViewController isKindOfClass:[TTSettingsViewController class]] ) {
+                TTSettingsViewController *frontViewController = [[TTSettingsViewController alloc] initWithNibName:@"TTSettingsView" bundle:nil];
+                
+                UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+                navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
+                [revealController setFrontViewController:navigationController animated:YES];
+            } else {
+                //Toggle back to the frontViewController to show settings screen...
+                [revealController revealToggle:self];
             }
         }
             break;

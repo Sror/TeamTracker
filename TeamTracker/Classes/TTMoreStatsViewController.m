@@ -32,9 +32,6 @@
     NSString *statsTitle = [NSString stringWithFormat:@"%@ Stats", self.team.name];
     self.title = statsTitle;
     
-    //layout graphs for current UI orienation
-    [self layoutGraphsForInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
-    
     //Find team's previous form for last 6 games
     for (int i = ([self.team.formArray count]-6); i < [self.team.formArray count]; i++) {
         NSString *formChar = nil;
@@ -84,12 +81,16 @@
     }
     //Set games Since label
     self.gamesSinceLabel.text = [NSString stringWithFormat:@"FtS: %d, CS: %d", fTS, cS];
-
 }
 
-- (void)addGraphsToScrollViewWithGraphData:(NSArray*)array AndGraphType:(NSInteger)type{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self layoutGraphsForInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
+}
+
+- (void)addGraphsToScrollViewWithGraphData:(NSArray*)array AndGraphType:(NSInteger)type AtIndex:(NSInteger)index {
     CGRect graphFrame;
-    graphFrame.origin.x = self.scrollView.frame.size.width * type;
+    graphFrame.origin.x = self.scrollView.frame.size.width * index;
     graphFrame.origin.y = 0;
     graphFrame.size = self.scrollView.frame.size;
     
@@ -107,14 +108,25 @@
         self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.view.frame.size.height);
         
     } else if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-        self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.view.frame.size.height/2.0);
+        self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y, self.scrollView.frame.size.width, self.view.frame.size.height - 208.0);
     }
     
-    [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.ppgArray AndGraphType:TTGraphViewTypePredictedTotal];
-    [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.leaguePositionArray AndGraphType:TTGraphViewTypeLeaguePosition];
+    [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.leaguePositionArray AndGraphType:TTGraphViewTypeLeaguePosition AtIndex:0];
+    [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.pointsArray AndGraphType:TTGraphViewTypePointsAccrued AtIndex:1];
+    [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.ppgArray AndGraphType:TTGraphViewTypePredictedTotal AtIndex:2];
+    
+    //Decide on this graph based on League position
+    if (self.team.leaguePosition <= 6) {
+        [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.pointsArray AndGraphType:TTGraphViewTypePPGAutos AtIndex:3];
+    } else if (self.team.leaguePosition > 6 && self.team.leaguePosition <= 12) {
+        [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.pointsArray AndGraphType:TTGraphViewTypePPGPlayoffs AtIndex:3];
+    } else {
+        [self addGraphsToScrollViewWithGraphData:(NSArray*)self.team.pointsArray AndGraphType:TTGraphViewTypePPGSafety AtIndex:3];
+    }
     
     //Set scrollView contentSize
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * GRAPHS_COUNT, self.scrollView.frame.size.height);
+    self.pageControl.numberOfPages = GRAPHS_COUNT;
     
     [UIView animateWithDuration:0.5f animations:^{self.scrollView.alpha = 1.0f;}
                      completion:^ (BOOL finished) {
@@ -143,6 +155,8 @@
         self.defenceLabel.hidden = YES;
         self.gamesSinceTitleLabel.hidden = YES;
         self.gamesSinceLabel.hidden = YES;
+        self.grassImageView.hidden = YES;
+        self.helpButton.hidden = YES;
     } else {
         //Hide other UI
         self.previousFormLabel.hidden = NO;
@@ -155,7 +169,10 @@
         self.defenceLabel.hidden = NO;
         self.gamesSinceTitleLabel.hidden = NO;
         self.gamesSinceLabel.hidden = NO;
+        self.grassImageView.hidden = NO;
+        self.helpButton.hidden = NO;
     }
+    
     [UIView animateWithDuration:0.5 animations:^{self.scrollView.alpha = 0.0f;}
                      completion:^ (BOOL finished) {
                          if (finished) {
@@ -190,4 +207,10 @@
     frame.size = self.scrollView.frame.size;
     [self.scrollView scrollRectToVisible:frame animated:YES];
 }
+
+- (IBAction)helpButtonTapped:(id)sender {
+    UIAlertView *teamSavedAlert = [[UIAlertView alloc] initWithTitle:@"Help" message:@"This screen shows extended stats:\n\n\u2022 Form over past 6 games\n\u2022 Goals scored/conceded per game\n\u2022 Games since team failed to score\n\u2022 Games since team a clean sheet\n\n Rotate the phone to make graphs fill the screen!" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+    [teamSavedAlert show];
+}
+
 @end

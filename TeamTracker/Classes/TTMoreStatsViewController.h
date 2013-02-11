@@ -10,24 +10,28 @@
 #import "TTTeam.h"
 #import "TTGraphView.h"
 
-#define GRAPHS_COUNT 2
+#define GRAPHS_COUNT 4
 
-@interface TTMoreStatsViewController : UIViewController <UIScrollViewDelegate>
+@interface TTMoreStatsViewController : UIViewController <UIScrollViewDelegate> {
+}
 
 - (IBAction)pageControlTapped:(id)sender;
-- (void)addGraphsToScrollViewWithGraphData:(NSArray*)array AndGraphType:(NSInteger)type;
+- (IBAction)helpButtonTapped:(id)sender;
+- (void)addGraphsToScrollViewWithGraphData:(NSArray*)array AndGraphType:(NSInteger)type AtIndex:(NSInteger)index;
 - (void)layoutGraphsForInterfaceOrientation:(UIInterfaceOrientation)orientation;
 
 @property (nonatomic) TTTeam *team;
 @property (nonatomic) IBOutlet UIView *barView;
 @property (nonatomic) IBOutlet UILabel *previousFormLabel;
 @property (nonatomic) IBOutlet UILabel *previousFormTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *attackTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *attackLabel;
-@property (weak, nonatomic) IBOutlet UILabel *defenceTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *defenceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *gamesSinceTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *gamesSinceLabel;
+@property (nonatomic) IBOutlet UILabel *attackTitleLabel;
+@property (nonatomic) IBOutlet UILabel *attackLabel;
+@property (nonatomic) IBOutlet UILabel *defenceTitleLabel;
+@property (nonatomic) IBOutlet UILabel *defenceLabel;
+@property (nonatomic) IBOutlet UILabel *gamesSinceTitleLabel;
+@property (nonatomic) IBOutlet UILabel *gamesSinceLabel;
+@property (nonatomic) IBOutlet UIImageView *grassImageView;
 @property (nonatomic) IBOutlet UIPageControl *pageControl;
+@property (nonatomic) IBOutlet UIButton *helpButton;
 @property (nonatomic) IBOutlet UIScrollView *scrollView;
 @end

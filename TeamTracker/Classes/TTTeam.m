@@ -31,6 +31,7 @@
 @synthesize ppgArray;
 @synthesize formArray;
 @synthesize leaguePositionArray;
+@synthesize pointsArray;
 @synthesize results;
 @synthesize fixtures;
 @synthesize played;
@@ -43,6 +44,7 @@
         self.ppgArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.formArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.leaguePositionArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
+        self.pointsArray = [NSMutableArray arrayWithCapacity:NUM_GAMES];
         self.played = NO;
     }
     return self;

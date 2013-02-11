@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results>
+	<teams>
+		<team>
+			<teamname>Arsenal</teamname>
+		</team>
+		<team>
+			<teamname>Aston Villa</teamname>
+		</team>
+		<team>
+			<teamname>Chelsea</teamname>
+		</team>
+		<team>
+			<teamname>Everton</teamname>
+		</team>
+		<team>
+			<teamname>Fulham</teamname>
+		</team>
+		<team>
+			<teamname>Liverpool</teamname>
+		</team>
+		<team>
+			<teamname>Man City</teamname>
+		</team>
+		<team>
+			<teamname>Man United</teamname>
+		</team>
+		<team>
+			<teamname>Newcastle</teamname>
+		</team>
+		<team>
+			<teamname>Norwich</teamname>
+		</team>
+		<team>
+			<teamname>QPR</teamname>
+		</team>
+		<team>
+			<teamname>Reading</teamname>
+		</team>
+		<team>
+			<teamname>Southampton</teamname>
+		</team>
+		<team>
+			<teamname>Stoke</teamname>
+		</team>
+		<team>
+			<teamname>Sunderland</teamname>
+		</team>
+		<team>
+			<teamname>Swansea</teamname>
+		</team>
+		<team>
+			<teamname>Tottenham</teamname>
+		</team>
+		<team>
+			<teamname>West Brom</teamname>
+		</team>
+		<team>
+			<teamname>West Ham</teamname>
+		</team>
+		<team>
+			<teamname>Wigan</teamname>
+		</team>
+	</teams>
+</results>

@@ -21,11 +21,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *frontViewController, *rearViewController;
-    frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableViewController" bundle:nil];
-    rearViewController = [[TTMenuViewController alloc] initWithNibName:@"TTMenuViewController" bundle:nil];
+    frontViewController = [[TTLeagueTableViewController alloc] initWithNibName:@"TTLeagueTableView" bundle:nil];
+    rearViewController = [[TTMenuViewController alloc] initWithNibName:@"TTMenuView" bundle:nil];
 	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-    navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.14453125 blue:0.2890625 alpha:1.0];
+    navigationController.navigationBar.tintColor = [UIColor colorWithRed:(7.0/255.0) green:(57.0/255.0) blue:(157.0/255.0) alpha:1.0];
     
     //Set navigationController's title font...
     [[UINavigationBar appearance] setTitleTextAttributes:
@@ -56,16 +56,22 @@
     [self.window setRootViewController:revealController];
     
     //Get a URL to the teams list file...
-    NSString *teamsPath = [[NSBundle mainBundle] pathForResource:@"championship_teams" ofType:@"xml"];
+    NSString *teamsPath = [[NSBundle mainBundle] pathForResource:TEAMS_XML ofType:@"xml"];
     //Get a URL to the results file
-    NSURL *resultsURL = [NSURL URLWithString:@"http://dl.dropbox.com/u/5400542/championship_results.xml"];
+    NSURL *resultsURL = [NSURL URLWithString:RESULTS_XML];
 
     //Init teamsParser object with local teams list path, results XML URL and cache expiry of 1hr...
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:(NSInteger)TTTeamXMLCacheExpiryDefault forKey:@"cachePolicy"];
+    
     self.teamsParser = [[TTTeamsParser alloc] initWithLocalTeamsXMLFile:teamsPath AndResultsURL:resultsURL
-                                                   WithCacheExpiry:TTTeamXMLCacheExpiryDefault];
+                                                   WithCacheExpiry:[defaults integerForKey:@"cachePolicy"]];
     
     //Parse local teams list file
     self.parseTeamsListError = [self.teamsParser parseTeamsList];
+    
+    //Show status bar now we have finished loading app
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
     [self.window makeKeyAndVisible];
     return YES;

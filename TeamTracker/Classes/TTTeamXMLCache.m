@@ -39,10 +39,11 @@
 }
 
 - (void)invalidateCache {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //Delete cache data
     cacheDataArray = nil;
     //Reset cache expiry
-    cacheExpiryDate = [NSDate dateWithTimeIntervalSinceNow:cacheExpiryTimeout];
+    cacheExpiryDate = [NSDate dateWithTimeIntervalSinceNow:[defaults integerForKey:@"cachePolicy"]];
 }
 
 @end

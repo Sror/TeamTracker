@@ -12,10 +12,7 @@
 #import "TTTeam.h"
 #import "TTMatchResult.h"
 #import "TTFixture.h"
-
-
-#define NUM_TEAMS 24
-#define NUM_GAMES 46
+#import "TTAppDelegate.h"
 
 typedef enum {
     TTLeagueTableSortByPoints,

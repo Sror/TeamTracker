@@ -45,6 +45,32 @@
     [self.view addGestureRecognizer:revealController.panGestureRecognizer];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //Move away team details to correct place
+    CGRect frame = self.awayScore.frame;
+    self.awayScore.frame = CGRectMake(frame.origin.x, (self.view.frame.size.height / 2.0) + 45.0, frame.size.width, frame.size.height);
+    frame = self.awayTeam.frame;
+    self.awayTeam.frame = CGRectMake(frame.origin.x, (self.view.frame.size.height / 2.0) + 45.0, frame.size.width, frame.size.height);
+    frame = self.awayGoalScorers.frame;
+    self.awayGoalScorers.frame = CGRectMake(frame.origin.x, (self.view.frame.size.height / 2.0) + 77.0, frame.size.width, frame.size.height);
+    
+    //Fade in
+    [UIView animateWithDuration:0.3 animations:^{
+        self.homeTeam.alpha = 1.0;
+        self.homeScore.alpha = 1.0;
+        self.homeGoalScorers.alpha = 1.0;
+        self.awayTeam.alpha = 1.0;
+        self.awayScore.alpha = 1.0;
+        self.awayGoalScorers.alpha = 1.0;
+    }
+                     completion:^ (BOOL finished) {
+                         if (finished) {
+                             //
+                         }
+                     }];
+}
+
 -(BOOL)shouldAutorotate
 {
     return YES;

@@ -31,6 +31,18 @@
             case TTGraphViewTypeLeaguePosition:
                 title = @"League Position";
                 break;
+            case TTGraphViewTypePPGAutos:
+                title = @"Points Remaining for Autos";
+                break;
+            case TTGraphViewTypePPGPlayoffs:
+                title = @"Points Remaining for Playoffs";
+                break;
+            case TTGraphViewTypePPGSafety:
+                title = @"Points Remaining for Safety";
+                break;
+            case TTGraphViewTypePointsAccrued:
+                title = @"Points Gained vs Max Points";
+                break;
             default:
                 break;
         }
@@ -50,30 +62,55 @@
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
-	if(fieldEnum == CPTScatterPlotFieldX)
+	if(fieldEnum == CPTScatterPlotFieldX || fieldEnum == CPTBarPlotFieldBarLocation)
 	{
         return [NSNumber numberWithInteger:(index+1)];
     }
 	else
 	{
+        NSNumber *numToPlot = [data objectAtIndex:index];
+        NSInteger numToPlotInt = [numToPlot integerValue];
+        
 		if([(NSString*)plot.identifier isEqualToString:@"plot"]) {
-            NSNumber *numToPlot = [data objectAtIndex:index];
-            
-            switch (graphType) {
-                case TTGraphViewTypePredictedTotal:
-                    ;
-                    float predTotal = [numToPlot floatValue];
-                    predTotal *= 46.0f;
-                    numToPlot = [NSNumber numberWithFloat:predTotal];
-                    return numToPlot;
-                    break;
-                case TTGraphViewTypeLeaguePosition:
-                    return numToPlot;
-                    break;
-                default:
-                    break;
+            if (graphType == TTGraphViewTypePredictedTotal) {
+                float predTotal = [numToPlot floatValue];
+                predTotal *= 46.0f;
+                numToPlot = [NSNumber numberWithFloat:predTotal];
             }
+        } else if([(NSString*)plot.identifier isEqualToString:@"bestCase"]) {
+            if (graphType == TTGraphViewTypePPGAutos) {
+                numToPlotInt = AUTOS_BESTCASE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGPlayoffs) {
+                numToPlotInt= PLAYOFFS_BESTCASE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGSafety) {
+                numToPlotInt = CHMP_SAFETY_BESTCASE - numToPlotInt;
+            }
+            numToPlot = [NSNumber numberWithInteger:numToPlotInt];
+        } else if([(NSString*)plot.identifier isEqualToString:@"average"]) {
+            if (graphType == TTGraphViewTypePPGAutos) {
+                numToPlotInt = AUTOS_AVERAGE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGPlayoffs) {
+                numToPlotInt = PLAYOFFS_AVERAGE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGSafety) {
+                numToPlotInt = CHMP_SAFETY_AVERAGE - numToPlotInt;
+            }
+            numToPlot = [NSNumber numberWithInteger:numToPlotInt];
+        } else if([(NSString*)plot.identifier isEqualToString:@"worstCase"]) {
+            if (graphType == TTGraphViewTypePPGAutos) {
+                numToPlotInt = AUTOS_WORSTCASE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGPlayoffs) {
+                numToPlotInt = PLAYOFFS_WORSTCASE - numToPlotInt;
+            } else if (graphType == TTGraphViewTypePPGSafety) {
+                numToPlotInt = CHMP_SAFETY_WORSTCASE - numToPlotInt;
+            }
+            numToPlot = [NSNumber numberWithInteger:numToPlotInt];
+        } else if([(NSString*)plot.identifier isEqualToString:@"maxPoints"]) {
+            numToPlotInt = (index+1)*3;
+            numToPlot = [NSNumber numberWithInteger:numToPlotInt];
+        } else if([(NSString*)plot.identifier isEqualToString:@"pointsAccrued"]) {
+            numToPlot = [NSNumber numberWithInteger:numToPlotInt];
         }
+        return numToPlot;
     }
 }
 
@@ -113,6 +150,19 @@
             break;
         case TTGraphViewTypeLeaguePosition:
             graph.paddingBottom = 20.0f;
+            break;
+        case TTGraphViewTypePPGAutos:
+            graph.paddingBottom = 30.0f;
+            break;
+        case TTGraphViewTypePPGPlayoffs:
+            graph.paddingBottom = 30.0f;
+            break;
+        case TTGraphViewTypePPGSafety:
+            graph.paddingBottom = 30.0f;
+            break;
+        case TTGraphViewTypePointsAccrued:
+            graph.paddingBottom = 30.0f;
+            break;
         default:
             break;
     }
@@ -136,10 +186,23 @@
 	plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0) length:CPTDecimalFromFloat(NUM_GAMES)];
     switch (graphType) {
         case TTGraphViewTypePredictedTotal:
-            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(140.0f)];
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(MAX_PTS_YAXIS)];
             break;
         case TTGraphViewTypeLeaguePosition:
-            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(24.0f) length:CPTDecimalFromFloat(-24.0f)];
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat((float)NUM_TEAMS) length:CPTDecimalFromFloat(-(float)(NUM_TEAMS)+0.5f)];
+            break;
+        case TTGraphViewTypePPGAutos:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(100.0f)];
+            break;
+        case TTGraphViewTypePPGPlayoffs:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(100.0f)];
+            break;
+        case TTGraphViewTypePPGSafety:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(60.0f)];
+            break;
+        case TTGraphViewTypePointsAccrued:
+            plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(MAX_PTS_YAXIS)];
+            break;
         default:
             break;
     }
@@ -195,8 +258,25 @@
             x.labelOffset = -20.0f;
             break;
         case TTGraphViewTypeLeaguePosition:
-            x.titleOffset = 30.0f;
-            x.labelOffset = 30.0f;
+            x.titleOffset = 300.0f;
+            x.labelOffset = 300.0f;
+            break;
+        case TTGraphViewTypePPGAutos:
+            x.titleOffset = -30.0f;
+            x.labelOffset = -20.0f;
+            break;
+        case TTGraphViewTypePPGPlayoffs:
+            x.titleOffset = -30.0f;
+            x.labelOffset = -20.0f;
+            break;
+        case TTGraphViewTypePPGSafety:
+            x.titleOffset = -30.0f;
+            x.labelOffset = -20.0f;
+            break;
+        case TTGraphViewTypePointsAccrued:
+            x.titleOffset = -30.0f;
+            x.labelOffset = -20.0f;
+            break;
         default:
             break;
     }
@@ -219,6 +299,19 @@
             break;
         case TTGraphViewTypeLeaguePosition:
             yMajorInterval = 2.0f;
+            break;
+        case TTGraphViewTypePPGAutos:
+            yMajorInterval = 20.0f;
+            break;
+        case TTGraphViewTypePPGPlayoffs:
+            yMajorInterval = 20.0f;
+            break;
+        case TTGraphViewTypePPGSafety:
+            yMajorInterval = 10.0f;
+            break;
+        case TTGraphViewTypePointsAccrued:
+            yMajorInterval = 20.0f;
+            break;
         default:
             break;
     }
@@ -243,35 +336,104 @@
     [yFormatter setGeneratesDecimalNumbers:NO];
     [yFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     y.labelFormatter = yFormatter;
-	
-	CPTScatterPlot *predTotalPlot = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
-	predTotalPlot.identifier = @"plot";
-    CPTMutableLineStyle *predTotalLineStyle = [CPTMutableLineStyle lineStyle];
-    predTotalLineStyle.lineWidth = 1.0f;
-    predTotalLineStyle.lineColor = [CPTColor whiteColor];
+    
+    //Line plot shadow
     CPTMutableShadow *lineShadow = [CPTMutableShadow shadow];
     lineShadow.shadowOffset = CGSizeMake(0.0, -2.0f);
     lineShadow.shadowBlurRadius = 2.0f;
     lineShadow.shadowColor = [CPTColor blackColor];
-    predTotalPlot.dataLineStyle = predTotalLineStyle;
-    predTotalPlot.shadow = lineShadow;
-	predTotalPlot.dataSource = self;
-	[graph addPlot:predTotalPlot toPlotSpace:graph.defaultPlotSpace];
-	
+    
+    //Graph line styles
+    if (graphType == TTGraphViewTypePredictedTotal || graphType == TTGraphViewTypeLeaguePosition) {
+        
+        CPTScatterPlot *predTotalPlot = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
+        predTotalPlot.identifier = @"plot";
+        CPTMutableLineStyle *predTotalLineStyle = [CPTMutableLineStyle lineStyle];
+        predTotalLineStyle.lineWidth = 1.0f;
+        predTotalLineStyle.lineColor = [CPTColor whiteColor];
+        predTotalPlot.dataLineStyle = predTotalLineStyle;
+        predTotalPlot.shadow = lineShadow;
+        predTotalPlot.dataSource = self;
+        [graph addPlot:predTotalPlot toPlotSpace:graph.defaultPlotSpace];
+        
+    } else if (graphType == TTGraphViewTypePPGAutos || graphType == TTGraphViewTypePPGPlayoffs || graphType == TTGraphViewTypePPGSafety) {
+        
+        CPTScatterPlot *leaguePositionPlotBC = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
+        leaguePositionPlotBC.identifier = @"bestCase";
+        CPTMutableLineStyle *leaguePositionLineStyleBC = [CPTMutableLineStyle lineStyle];
+        leaguePositionLineStyleBC.lineWidth = 1.0f;
+        leaguePositionLineStyleBC.lineColor = [CPTColor greenColor];
+        leaguePositionPlotBC.dataLineStyle = leaguePositionLineStyleBC;
+        leaguePositionPlotBC.shadow = lineShadow;
+        leaguePositionPlotBC.dataSource = self;
+        [graph addPlot:leaguePositionPlotBC toPlotSpace:graph.defaultPlotSpace];
+        
+        CPTScatterPlot *leaguePositionPlotAV = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
+        leaguePositionPlotAV.identifier = @"average";
+        CPTMutableLineStyle *leaguePositionLineStyleAV = [CPTMutableLineStyle lineStyle];
+        leaguePositionLineStyleAV.lineWidth = 1.0f;
+        leaguePositionLineStyleAV.lineColor = [CPTColor whiteColor];
+        leaguePositionPlotAV.dataLineStyle = leaguePositionLineStyleAV;
+        leaguePositionPlotAV.shadow = lineShadow;
+        leaguePositionPlotAV.dataSource = self;
+        [graph addPlot:leaguePositionPlotAV toPlotSpace:graph.defaultPlotSpace];
+        
+        CPTScatterPlot *leaguePositionPlotWC = [[CPTScatterPlot alloc] initWithFrame:hostView.bounds];
+        leaguePositionPlotWC.identifier = @"worstCase";
+        CPTMutableLineStyle *leaguePositionLineStyleWC = [CPTMutableLineStyle lineStyle];
+        leaguePositionLineStyleWC.lineWidth = 1.0f;
+        leaguePositionLineStyleWC.lineColor = [CPTColor redColor];
+        leaguePositionPlotWC.dataLineStyle = leaguePositionLineStyleWC;
+        leaguePositionPlotWC.shadow = lineShadow;
+        leaguePositionPlotWC.dataSource = self;
+        [graph addPlot:leaguePositionPlotWC toPlotSpace:graph.defaultPlotSpace];
+        
+    } else if (graphType == TTGraphViewTypePointsAccrued) {
+        
+        CPTBarPlot *maxPointsPlot = [[CPTBarPlot alloc] initWithFrame:hostView.bounds];
+        maxPointsPlot.identifier = @"maxPoints";
+        //pointsAccruedPlot.barWidth = [[NSDecimalNumber decimalNumberWithString:@"5.0"] decimalValue];
+        //pointsAccruedPlot.barOffset = [[NSDecimalNumber decimalNumberWithString:@"10.0"] decimalValue];
+        //pointsAccruedPlot.barCornerRadius = 5.0;
+        // Remove bar outlines
+        CPTMutableLineStyle *borderLineStyle = [CPTMutableLineStyle lineStyle];
+        borderLineStyle.lineColor = [CPTColor clearColor];
+        maxPointsPlot.lineStyle = borderLineStyle;
+        maxPointsPlot.shadow = lineShadow;
+        maxPointsPlot.dataSource = self;
+        [graph addPlot:maxPointsPlot toPlotSpace:graph.defaultPlotSpace];
+        
+        CPTBarPlot *pointsAccruedPlot = [[CPTBarPlot alloc] initWithFrame:hostView.bounds];
+        pointsAccruedPlot.identifier = @"pointsAccrued";
+        //pointsAccruedPlot.barWidth = [[NSDecimalNumber decimalNumberWithString:@"5.0"] decimalValue];
+        //pointsAccruedPlot.barOffset = [[NSDecimalNumber decimalNumberWithString:@"10.0"] decimalValue];
+        //pointsAccruedPlot.barCornerRadius = 5.0;
+        // Remove bar outlines
+        pointsAccruedPlot.lineStyle = borderLineStyle;
+        pointsAccruedPlot.shadow = lineShadow;
+        pointsAccruedPlot.dataSource = self;
+        [graph addPlot:pointsAccruedPlot toPlotSpace:graph.defaultPlotSpace];
+        
+    }
+    
     // 4 - Set theme
     //[graph applyTheme:[CPTTheme themeNamed:kCPTSlateTheme]];
     graph.fill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.2 green:0.2 blue:0.2 alpha:1.0]];
     graph.plotAreaFrame.fill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.15 green:0.15 blue:0.15 alpha:1.0]];
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+-(CPTFill *)barFillForBarPlot:(CPTBarPlot *)barPlot
+                  recordIndex:(NSUInteger)index
 {
-    // Drawing code
+    CPTFill *fill = nil;
+    if ( [barPlot.identifier isEqual:@"pointsAccrued"] )
+    {
+        fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+        
+    } else {
+        fill = [CPTFill fillWithColor:[CPTColor grayColor]];
+    }
+    return fill;
 }
-*/
 
 @end

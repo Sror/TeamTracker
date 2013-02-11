@@ -192,6 +192,7 @@
                             team.awayGamesPlayed = team.awayWins + team.awayDraws + team.awayLosses;
                             team.latestPPG = [NSNumber numberWithFloat:((float)team.points / (float)team.gamesPlayed)];
                             [team.ppgArray addObject:team.latestPPG];
+                            [team.pointsArray addObject:[NSNumber numberWithInteger:team.points]];
                             team.totalGoalsFor = team.homeGoalsFor + team.awayGoalsFor;
                             team.totalGoalsAgainst = team.homeGoalsAgainst + team.awayGoalsAgainst;
                             team.totalGoalDifference = team.totalGoalsFor - team.totalGoalsAgainst;
@@ -311,6 +312,7 @@
         [team.ppgArray removeAllObjects];
         [team.formArray removeAllObjects];
         [team.leaguePositionArray removeAllObjects];
+        [team.pointsArray removeAllObjects];
         [team.fixtures removeAllObjects];
         [team.results removeAllObjects];
     }

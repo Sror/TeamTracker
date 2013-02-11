@@ -38,6 +38,7 @@
 @property (nonatomic, retain) NSMutableArray *ppgArray;
 @property (nonatomic, retain) NSMutableArray *formArray;
 @property (nonatomic, retain) NSMutableArray *leaguePositionArray;
+@property (nonatomic, retain) NSMutableArray *pointsArray;
 @property (nonatomic, retain) NSMutableArray *results;
 @property (nonatomic, retain) NSMutableArray *fixtures;
 @property (nonatomic) BOOL played;
